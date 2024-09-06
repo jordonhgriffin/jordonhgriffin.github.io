@@ -180,3 +180,11 @@ blockquote {
 #to-top:hover svg {
     fill: #000;
 }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 40px;
+}
