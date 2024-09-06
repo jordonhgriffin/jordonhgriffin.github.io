@@ -48,6 +48,33 @@
             color: #666;
             font-size: 0.9em;
         }
+        
+        #navigation {
+            position: fixed;
+            top: 20%;  // Change this to 20% to start near the top
+            right: 20px;
+            transform: translateY(-50%);
+            transition: top 0.3s ease-in-out;
+        }
+
+        #navigation ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #navigation li {
+            margin-bottom: 10px;
+        }
+
+        #navigation a {
+            color: #333;
+            text-decoration: none;
+            // Removed font-weight: bold;
+        }
+
+        #navigation a:hover {
+            color: #000;
+        }
     </style>
 </head>
 <body>
@@ -127,6 +154,33 @@
             e.preventDefault();
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
+
+        // Add this new script for the navigation
+        var navigation = document.getElementById("navigation");
+        var heroHeight = document.getElementById("hero").offsetHeight;
+        var lastScrollTop = 0;
+
+        function updateNavPosition() {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > heroHeight) {
+                navigation.style.top = "50%";
+            } else {
+                var progress = scrollTop / heroHeight;
+                var newTop = 20 + (30 * progress); // Start at 20%, end at 50%
+                navigation.style.top = newTop + "%";
+            }
+            navigation.style.transform = "translateY(-50%)";
+        }
+
+        window.addEventListener("scroll", updateNavPosition);
+        window.addEventListener("resize", function() {
+            heroHeight = document.getElementById("hero").offsetHeight;
+            updateNavPosition();
+        });
+
+        // Initial position
+        updateNavPosition();
     </script>
     <footer>
         &copy; 2024 Skipping Rose LLC. All rights reserved.
