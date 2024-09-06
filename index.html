@@ -2,90 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Skipping Rose Services - Technology and Business Solutions</title>
+    <title>Welcome to Skipping Rose Services</title>
     <meta name="description" content="Skipping Rose Services provides innovative technology and business solutions to help your company thrive.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-    <link href="style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #333;
+        }
+    </style>
 </head>
 <body>
-    <div id="hero">
-        <div id="logo"><span id="s">S</span><span id="r">R</span></div>
-        <div id="welcome">
-            <h1 id="heading">Skipping Rose Services</h1>
-            <h2 id="subline">Innovative Technology and Business Solutions</h2>
-        </div>
-        <div id="navigation">
-            <ul>
-                <li><a href="#about-us">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-        <div id="to-bottom">
-            <a href="#about-us">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,4c4.41,0,8,3.59,8,8s-3.59,8-8,8s-8-3.59-8-8S7.59,4,12,4 M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10 c5.52,0,10-4.48,10-10C22,6.48,17.52,2,12,2L12,2z M13,12l0-4h-2l0,4H8l4,4l4-4H13z"/>
-                </svg>
-            </a>
-        </div>
+    <div class="container">
+        <h1>Welcome to Skipping Rose Services</h1>
+        <p>Click below to explore our innovative technology and business solutions.</p>
+        <a href="skippingrose.html" class="cta-button">Enter Site</a>
     </div>
-    <div id="site-content">
-        <h3 id="about-us">About Us</h3>
-        <p>At Skipping Rose Services, we're passionate about leveraging technology to solve complex business challenges. Our team of experts brings years of experience in both tech and business sectors, allowing us to provide comprehensive solutions tailored to your unique needs.</p>
-        <blockquote>"Innovative solutions for tomorrow's challenges."</blockquote>
-        <p>We pride ourselves on staying at the forefront of technological advancements, ensuring that our clients always have access to cutting-edge solutions. Our approach combines technical expertise with a deep understanding of business processes, allowing us to deliver results that drive growth and efficiency.</p>
-        
-        <h3 id="services">Services</h3>
-        <div class="service">
-            <h4 class="service-heading">Technology Consulting</h4>
-            <p class="service-description">We provide expert guidance on technology strategy, helping you make informed decisions about IT infrastructure, software solutions, and digital transformation initiatives.</p>
-        </div>
-        <div class="service">
-            <h4 class="service-heading">Custom Software Development</h4>
-            <p class="service-description">Our team of skilled developers can create bespoke software solutions tailored to your specific business needs, from web applications to mobile apps and enterprise systems.</p>
-        </div>
-        <div class="service">
-            <h4 class="service-heading">Business Process Optimization</h4>
-            <p class="service-description">We analyze your current business processes and implement technology-driven solutions to streamline operations, increase efficiency, and reduce costs.</p>
-        </div>
-        
-        <h3 id="contact">Contact</h3>
-        <p>Ready to take your business to the next level with our technology and business solutions? Get in touch with us today.</p>
-        <div id="cta-container">
-            <button class="cta-button"><a href="mailto:jordon@skippingrose.com">Contact Us</a></button>
-        </div>
-    </div>
-    <!-- Add this just before the closing </body> tag -->
-    <div id="to-top">
-        <a href="#hero">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-            </svg>
-        </a>
-    </div>
-    <!-- Add this just before the closing </body> tag, after the #to-top div -->
-    <script>
-        // Get the button
-        var toTopButton = document.getElementById("to-top");
-
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                toTopButton.classList.add("show");
-            } else {
-                toTopButton.classList.remove("show");
-            }
-        }
-
-        // Smooth scroll to top when the button is clicked
-        toTopButton.addEventListener("click", function(e) {
-            e.preventDefault();
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
-    </script>
 </body>
 </html>
