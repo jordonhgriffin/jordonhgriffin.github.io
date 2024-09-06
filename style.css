@@ -43,9 +43,11 @@ body {
 }
 
 #navigation {
-    position: absolute;
-    top: 20px;
+    position: fixed;
+    top: 50%;
     right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
 }
 
 #navigation ul {
@@ -54,8 +56,8 @@ body {
 }
 
 #navigation li {
-    display: inline;
-    margin-left: 20px;
+    display: block;
+    margin: 20px 0;
 }
 
 #navigation a {
@@ -63,6 +65,11 @@ body {
     color: #000;
     font-weight: 300;
     font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+#navigation a:hover {
+    color: #666;
 }
 
 #to-bottom {
