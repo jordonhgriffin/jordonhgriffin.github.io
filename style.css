@@ -1,0 +1,98 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#logo {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+#l { color: #000; }
+#b { color: #666; }
+
+#welcome {
+    text-align: center;
+}
+
+#heading {
+    font-size: 2.5em;
+    margin-bottom: 0;
+}
+
+#subline {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+#navigation {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#navigation li {
+    display: inline;
+    margin-left: 20px;
+}
+
+#navigation a {
+    text-decoration: none;
+    color: #000;
+}
+
+#to-bottom {
+    position: absolute;
+    bottom: 20px;
+}
+
+#to-bottom svg {
+    width: 40px;
+    height: 40px;
+}
+
+#site-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h3 {
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+}
+
+blockquote {
+    font-style: italic;
+    border-left: 3px solid #000;
+    padding-left: 20px;
+    margin-left: 0;
+}
+
+.cta-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.cta-button a {
+    color: #fff;
+    text-decoration: none;
+}
