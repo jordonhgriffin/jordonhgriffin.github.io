@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Leon Bubova - Developer</title>
-    <meta name="description" content="A Personal Portfolio Website to showcase my projects and experiences">
+    <title>Skipping Rose Services - Technology and Business Solutions</title>
+    <meta name="description" content="Skipping Rose Services provides innovative technology and business solutions to help your company thrive.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
     <link href="style.css" rel="stylesheet">
@@ -11,20 +11,20 @@
 </head>
 <body>
     <div id="hero">
-        <div id="logo"><span id="l">L</span><span id="b">B</span></div>
+        <div id="logo"><span id="s">S</span><span id="r">R</span></div>
         <div id="welcome">
-            <h1 id="heading">hi, i'm leon.</h1>
-            <h2 id="subline">software developer with focus on web technology</h2>
+            <h1 id="heading">Skipping Rose Services</h1>
+            <h2 id="subline">Innovative Technology and Business Solutions</h2>
         </div>
         <div id="navigation">
             <ul>
-                <li><a href="#about-me">about me</a></li>
-                <li><a href="#projects">projects</a></li>
-                <li><a href="#contact">contact</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
         <div id="to-bottom">
-            <a href="#about-me">
+            <a href="#about-us">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M12,4c4.41,0,8,3.59,8,8s-3.59,8-8,8s-8-3.59-8-8S7.59,4,12,4 M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10 c5.52,0,10-4.48,10-10C22,6.48,17.52,2,12,2L12,2z M13,12l0-4h-2l0,4H8l4,4l4-4H13z"/>
                 </svg>
@@ -32,30 +32,60 @@
         </div>
     </div>
     <div id="site-content">
-        <h3 id="about-me">about me.</h3>
-        <p>I love to build things for the web. Coming up with implementations for ideas and little projects is something that I do alot in my free time. I'm always on the lookout for a cool sideproject that I can turn into code.</p>
-        <blockquote>"Done is better than perfect!"</blockquote>
-        <p>To make it easy for me to start I try to keep my tech stack compact and tend to focus on fewer technologies that I can learn to their fullest potential. For my most recent projects that has been Symfony/Laravel for backend side of things, because I use this stack at my full-time position right now and ReactJS on the frontend coupled with an SQL database. I've also started to get to know CI tools like Github Actions/Gitlab CI and Circle CI</p>
+        <h3 id="about-us">About Us</h3>
+        <p>At Skipping Rose Services, we're passionate about leveraging technology to solve complex business challenges. Our team of experts brings years of experience in both tech and business sectors, allowing us to provide comprehensive solutions tailored to your unique needs.</p>
+        <blockquote>"Innovative solutions for tomorrow's challenges."</blockquote>
+        <p>We pride ourselves on staying at the forefront of technological advancements, ensuring that our clients always have access to cutting-edge solutions. Our approach combines technical expertise with a deep understanding of business processes, allowing us to deliver results that drive growth and efficiency.</p>
         
-        <h3 id="projects">projects.</h3>
-        <div class="project">
-            <h4 class="project-heading">Paper Hands</h4>
-            <div class="project-container">
-                <img src="paper_hands.png" alt="Paper Hands Project">
-            </div>
-            <p class="project-description">Paper Hands is a paper trade web application, that simulates buying stocks. You can register, login and manage your portfolio by buying and selling stocks.</p>
-            <p>PHP - Symfony - Twig - CSS - SQL</p>
-            <div class="project-button-container">
-                <button class="project-button code-button"><a href="#">&lt;/&gt; code</a></button>
-            </div>
+        <h3 id="services">Services</h3>
+        <div class="service">
+            <h4 class="service-heading">Technology Consulting</h4>
+            <p class="service-description">We provide expert guidance on technology strategy, helping you make informed decisions about IT infrastructure, software solutions, and digital transformation initiatives.</p>
         </div>
-        <!-- Add more project sections as needed -->
+        <div class="service">
+            <h4 class="service-heading">Custom Software Development</h4>
+            <p class="service-description">Our team of skilled developers can create bespoke software solutions tailored to your specific business needs, from web applications to mobile apps and enterprise systems.</p>
+        </div>
+        <div class="service">
+            <h4 class="service-heading">Business Process Optimization</h4>
+            <p class="service-description">We analyze your current business processes and implement technology-driven solutions to streamline operations, increase efficiency, and reduce costs.</p>
+        </div>
         
-        <h3 id="contact">contact.</h3>
-        <p>Let me know if you have any questions. I would love to hear from you.</p>
+        <h3 id="contact">Contact</h3>
+        <p>Ready to take your business to the next level with our technology and business solutions? Get in touch with us today.</p>
         <div id="cta-container">
-            <button class="cta-button"><a href="mailto:bubova.leon@gmail.com">Contact</a></button>
+            <button class="cta-button"><a href="mailto:jordon@skippingrose.com">Contact Us</a></button>
         </div>
     </div>
+    <!-- Add this just before the closing </body> tag -->
+    <div id="to-top">
+        <a href="#hero">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8S16.41,20,12,20 M12,22c5.52,0,10-4.48,10-10c0-5.52-4.48-10-10-10 C6.48,2,2,6.48,2,12C2,17.52,6.48,22,12,22L12,22z M11,12l0,4h2l0-4h3l-4-4l-4,4H11z"/>
+            </svg>
+        </a>
+    </div>
+    <!-- Add this just before the closing </body> tag, after the #to-top div -->
+    <script>
+        // Get the button
+        var toTopButton = document.getElementById("to-top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                toTopButton.classList.add("show");
+            } else {
+                toTopButton.classList.remove("show");
+            }
+        }
+
+        // Smooth scroll to top when the button is clicked
+        toTopButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
 </body>
 </html>

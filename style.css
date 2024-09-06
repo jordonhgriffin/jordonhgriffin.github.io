@@ -22,21 +22,21 @@ body {
     margin-bottom: 20px;
 }
 
-#l { color: #000; }
-#b { color: #666; }
+#s { color: #000; }
+#r { color: #666; }
 
 #welcome {
     text-align: center;
 }
 
 #heading {
-    font-size: 3.5em;
+    font-size: 3em;
     margin-bottom: 0;
     font-weight: 300;
 }
 
 #subline {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 300;
     color: #666;
     margin-top: 10px;
@@ -45,7 +45,7 @@ body {
 #navigation {
     position: fixed;
     top: 50%;
-    right: 20px;
+    right: 40px;
     transform: translateY(-50%);
     z-index: 1000;
 }
@@ -84,7 +84,7 @@ body {
 }
 
 #site-content {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 40px 20px;
 }
@@ -92,8 +92,14 @@ body {
 h3 {
     border-bottom: 1px solid #000;
     padding-bottom: 10px;
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: 300;
+    margin-top: 60px;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.8;
 }
 
 blockquote {
@@ -101,53 +107,22 @@ blockquote {
     border-left: 3px solid #000;
     padding-left: 20px;
     margin-left: 0;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #666;
 }
 
-.project {
-    margin-bottom: 40px;
+.service {
+    margin-bottom: 30px;
 }
 
-.project-heading {
-    font-size: 1.5em;
+.service-heading {
+    font-size: 1.3em;
     font-weight: 400;
     margin-bottom: 10px;
 }
 
-.project-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.project-description {
-    margin-top: 20px;
-}
-
-.project-button-container {
-    margin-top: 20px;
-}
-
-.project-button {
-    background-color: transparent;
-    border: 1px solid #000;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.project-button a {
-    color: #000;
-    text-decoration: none;
-}
-
-.project-button:hover {
-    background-color: #000;
-}
-
-.project-button:hover a {
-    color: #fff;
+.service-description {
+    margin-top: 10px;
 }
 
 .cta-button {
@@ -156,10 +131,47 @@ blockquote {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #333;
 }
 
 .cta-button a {
     color: #fff;
     text-decoration: none;
+}
+
+#cta-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Add these styles at the end of your existing CSS */
+
+#to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+#to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#to-top svg {
+    width: 40px;
+    height: 40px;
+    fill: #666;
+    transition: fill 0.3s;
+}
+
+#to-top:hover svg {
+    fill: #000;
 }
