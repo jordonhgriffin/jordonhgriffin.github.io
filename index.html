@@ -34,7 +34,7 @@
         }
 
         #logo img {
-            height: 250px;
+            height: 250px; /* Adjust this value as needed */
             width: auto;
         }
 
@@ -90,7 +90,7 @@
 
         #to-bottom {
             position: absolute;
-            bottom: 20px;
+            bottom: 0px;
         }
 
         #to-bottom svg {
@@ -277,6 +277,7 @@
                 background-color: #f4f4f4;
                 transition: left 0.3s ease-in-out;
                 z-index: 1000;
+                padding-top: 60px;
             }
 
             #navigation.open {
@@ -301,6 +302,7 @@
                 border: none;
                 font-size: 24px;
                 cursor: pointer;
+                color: #000;
             }
 
             #site-content {
@@ -440,6 +442,7 @@
         </a>
     </div>
     <script>
+        // Existing scroll to top functionality
         var toTopButton = document.getElementById("to-top");
 
         window.onscroll = function() {scrollFunction()};
@@ -457,36 +460,12 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
-        var navigation = document.getElementById("navigation");
-        var heroHeight = document.getElementById("hero").offsetHeight;
-        var lastScrollTop = 0;
-
-        function updateNavPosition() {
-            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > heroHeight) {
-                navigation.style.top = "50%";
-            } else {
-                var progress = scrollTop / heroHeight;
-                var newTop = 20 + (30 * progress);
-                navigation.style.top = newTop + "%";
-            }
-            navigation.style.transform = "translateY(-50%)";
-        }
-
-        window.addEventListener("scroll", updateNavPosition);
-        window.addEventListener("resize", function() {
-            heroHeight = document.getElementById("hero").offsetHeight;
-            updateNavPosition();
-        });
-
-        updateNavPosition();
-
-        // Mobile menu toggle
+        // Mobile menu functionality
         const menuToggle = document.getElementById('menu-toggle');
         const navigation = document.getElementById('navigation');
 
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event from bubbling up
             navigation.classList.toggle('open');
         });
 
@@ -500,10 +479,41 @@
 
         // Close menu when clicking outside
         document.addEventListener('click', (event) => {
-            if (!navigation.contains(event.target) && !menuToggle.contains(event.target)) {
+            if (navigation.classList.contains('open') && !navigation.contains(event.target) && !menuToggle.contains(event.target)) {
                 navigation.classList.remove('open');
             }
         });
+
+        // Prevent clicks inside the navigation menu from closing it
+        navigation.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+
+        // Existing navigation position update
+        var heroHeight = document.getElementById("hero").offsetHeight;
+
+        function updateNavPosition() {
+            if (window.innerWidth > 768) {  // Only update for non-mobile screens
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > heroHeight) {
+                    navigation.style.top = "50%";
+                } else {
+                    var progress = scrollTop / heroHeight;
+                    var newTop = 20 + (30 * progress);
+                    navigation.style.top = newTop + "%";
+                }
+                navigation.style.transform = "translateY(-50%)";
+            }
+        }
+
+        window.addEventListener("scroll", updateNavPosition);
+        window.addEventListener("resize", function() {
+            heroHeight = document.getElementById("hero").offsetHeight;
+            updateNavPosition();
+        });
+
+        updateNavPosition();
     </script>
     <footer>
         &copy; 2024 Jordon Harrison Griffin. All rights reserved.
