@@ -6,55 +6,64 @@
     <meta name="description" content="Jordon Griffin's professional profile - Project Manager and Web Developer specializing in IoT solutions, e-commerce platforms, and business process management.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-    <link href="style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        #hero {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
+            position: relative;
             background-color: #f4f4f4;
         }
-        .container {
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        h1 {
-            color: #333;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: #000;
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+
+        #logo {
+            font-size: 3em;
             font-weight: bold;
-            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            color: #000;
         }
-        .cta-button:hover {
-            background-color: #333;
+
+        #logo img {
+            height: 250px;
+            width: auto;
         }
-        footer {
+
+        #s { color: #000; }
+        #r { color: #666; }
+
+        #welcome {
             text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9em;
         }
-        
+
+        #heading {
+            font-size: 2.5em;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        #subline {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: #666;
+            margin-top: 10px;
+        }
+
         #navigation {
             position: fixed;
-            top: 20%;  // Change this to 20% to start near the top
-            right: 20px;
+            top: 50%;
+            right: 40px;
             transform: translateY(-50%);
-            transition: top 0.3s ease-in-out;
+            z-index: 1000;
         }
 
         #navigation ul {
@@ -63,17 +72,181 @@
         }
 
         #navigation li {
-            margin-bottom: 10px;
+            display: block;
+            margin: 20px 0;
         }
 
         #navigation a {
-            color: #333;
             text-decoration: none;
-            // Removed font-weight: bold;
+            color: #000;
+            font-weight: 300;
+            font-size: 1.1em;
+            transition: color 0.3s;
         }
 
         #navigation a:hover {
-            color: #000;
+            color: #666;
+        }
+
+        #to-bottom {
+            position: absolute;
+            bottom: 20px;
+        }
+
+        #to-bottom svg {
+            width: 40px;
+            height: 40px;
+            fill: #666;
+        }
+
+        #site-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h3 {
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+            font-size: 1.8em;
+            font-weight: 300;
+            margin-top: 60px;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        blockquote {
+            font-style: italic;
+            border-left: 3px solid #000;
+            padding-left: 20px;
+            margin-left: 0;
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .service {
+            margin-bottom: 30px;
+        }
+
+        .service-heading {
+            font-size: 1.3em;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .service-description {
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #333;
+        }
+
+        .cta-button a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #cta-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        #to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #to-top svg {
+            width: 24px;
+            height: 24px;
+            fill: #666;
+            transition: fill 0.3s;
+            display: block;
+        }
+
+        #to-top:hover svg {
+            fill: #000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 30px;
+        }
+
+        .experience-item h4, .education-item h4 {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .experience-item ul {
+            padding-left: 20px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            background-color: #f0f0f0;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 3px;
+        }
+
+        .container {
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #333;
         }
     </style>
 </head>
@@ -84,7 +257,7 @@
         </div>
         <div id="welcome">
             <h1 id="heading">Jordon Harrison Griffin</h1>
-            <h2 id="subline">Project Manager & Web Developer</h2>
+            <h2 id="subline">Information Technology & Project Management</h2>
         </div>
         <div id="navigation">
             <ul>
@@ -105,7 +278,7 @@
     </div>
     <div id="site-content">
         <h3 id="about">About Me</h3>
-        <p>Experienced Project Manager and Web Developer with a strong background in IoT solutions, e-commerce platforms, and business process management. Skilled in leading development teams, implementing strategic business solutions, and optimizing operations through cloud and IoT technologies.</p>
+        <p>Experienced Project Manager with a strong background in IoT solutions, e-commerce platforms, and business process management. Skilled in leading development teams, implementing strategic business solutions, and optimizing operations through cloud and IoT technologies.</p>
 
         <h3 id="experience">Professional Experience</h3>
         <div class="experience-item">
@@ -198,7 +371,6 @@
             <button class="cta-button"><a href="mailto:jordongriffin341@live.com">Contact Me</a></button>
         </div>
     </div>
-    <!-- Add this just before the closing </body> tag -->
     <div id="to-top">
         <a href="#hero">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -206,12 +378,9 @@
             </svg>
         </a>
     </div>
-    <!-- Add this just before the closing </body> tag, after the #to-top div -->
     <script>
-        // Get the button
         var toTopButton = document.getElementById("to-top");
 
-        // When the user scrolls down 20px from the top of the document, show the button
         window.onscroll = function() {scrollFunction()};
 
         function scrollFunction() {
@@ -222,13 +391,11 @@
             }
         }
 
-        // Smooth scroll to top when the button is clicked
         toTopButton.addEventListener("click", function(e) {
             e.preventDefault();
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
-        // Add this new script for the navigation
         var navigation = document.getElementById("navigation");
         var heroHeight = document.getElementById("hero").offsetHeight;
         var lastScrollTop = 0;
@@ -240,7 +407,7 @@
                 navigation.style.top = "50%";
             } else {
                 var progress = scrollTop / heroHeight;
-                var newTop = 20 + (30 * progress); // Start at 20%, end at 50%
+                var newTop = 20 + (30 * progress);
                 navigation.style.top = newTop + "%";
             }
             navigation.style.transform = "translateY(-50%)";
@@ -252,7 +419,6 @@
             updateNavPosition();
         });
 
-        // Initial position
         updateNavPosition();
     </script>
     <footer>
