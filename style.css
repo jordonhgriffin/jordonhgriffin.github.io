@@ -17,9 +17,15 @@ body {
 }
 
 #logo {
-    font-size: 4em;
+    font-size: 3em;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #000;
+}
+
+#logo img {
+    height: 250px; /* Adjust this value as needed */
+    width: auto;
 }
 
 #s { color: #000; }
@@ -30,13 +36,13 @@ body {
 }
 
 #heading {
-    font-size: 3em;
+    font-size: 2.5em;
     margin-bottom: 0;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 #subline {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: 300;
     color: #666;
     margin-top: 10px;
@@ -187,4 +193,38 @@ footer {
     color: #666;
     font-size: 0.9em;
     margin-top: 40px;
+}
+
+.experience-item, .education-item {
+    margin-bottom: 30px;
+}
+
+.experience-item h4, .education-item h4 {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.date {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.experience-item ul {
+    padding-left: 20px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills-list li {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 3px;
 }
