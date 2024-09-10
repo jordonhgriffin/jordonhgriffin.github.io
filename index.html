@@ -269,42 +269,7 @@
             }
 
             #navigation {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(244, 244, 244, 0.95);
-                transition: left 0.3s ease-in-out;
-                z-index: 1000;
-                padding-top: 60px;
-                overflow-y: auto;
-            }
-
-            #navigation.open {
-                left: 0;
-            }
-
-            #navigation ul {
-                padding: 20px;
-                list-style-type: none;
-            }
-
-            #navigation li {
-                margin: 20px 0;
-            }
-
-            #navigation a {
-                color: #000;
-                font-size: 1.4em;
-                font-weight: 400;
-                display: block;
-                padding: 10px 0;
-                text-decoration: none;
-            }
-
-            #navigation a:hover {
-                color: #666;
+                display: none; /* Hide desktop navigation on mobile */
             }
 
             #menu-toggle {
@@ -312,13 +277,62 @@
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                z-index: 1001;
+                z-index: 1002;
                 background: none;
                 border: none;
                 font-size: 30px;
                 cursor: pointer;
                 color: #000;
-                padding: 10px;
+            }
+
+            #mobile-navigation {
+                position: fixed;
+                top: 0;
+                left: -100%; /* Start off-screen */
+                width: 80%; /* Adjust width as needed */
+                height: 100%;
+                background-color: rgba(244, 244, 244, 0.95);
+                z-index: 1001;
+                overflow-y: auto;
+                transition: left 0.3s ease-in-out; /* Add smooth transition */
+            }
+
+            #mobile-navigation.open {
+                left: 0; /* Slide in */
+            }
+
+            /* Add overlay */
+            .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+            }
+
+            .overlay.open {
+                display: block;
+            }
+
+            #mobile-navigation ul {
+                list-style-type: none;
+                padding: 60px 20px 20px;
+                margin: 0;
+            }
+
+            #mobile-navigation li {
+                margin: 20px 0;
+            }
+
+            #mobile-navigation a {
+                color: #000;
+                font-size: 1.4em;
+                text-decoration: none;
+                display: block;
+                padding: 10px 0;
             }
 
             #site-content {
@@ -329,6 +343,16 @@
 </head>
 <body>
     <button id="menu-toggle">☰</button>
+    <div class="overlay"></div>
+    <nav id="mobile-navigation">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
     <div id="hero">
         <div id="logo">
             <img src="logo.png" alt="Jordon Griffin Logo">
@@ -336,17 +360,7 @@
         <div id="welcome">
             <h1 id="heading">Jordon Harrison Griffin</h1>
             <h2 id="subline">Information Technology <br> Project Management</h2>
-
         </div>
-        <nav id="navigation">
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
         <div id="to-bottom">
             <a href="#about">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -478,34 +492,31 @@
 
         // Mobile menu functionality
         const menuToggle = document.getElementById('menu-toggle');
-        const navigation = document.getElementById('navigation');
+        const mobileNavigation = document.getElementById('mobile-navigation');
+        const overlay = document.querySelector('.overlay');
 
         menuToggle.addEventListener('click', function(e) {
             e.stopPropagation();
-            navigation.classList.toggle('open');
-            document.body.style.overflow = navigation.classList.contains('open') ? 'hidden' : '';
+            mobileNavigation.classList.toggle('open');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = mobileNavigation.classList.contains('open') ? 'hidden' : '';
         });
 
         // Close menu when a link is clicked
-        const navLinks = document.querySelectorAll('#navigation a');
-        navLinks.forEach(link => {
+        const mobileNavLinks = document.querySelectorAll('#mobile-navigation a');
+        mobileNavLinks.forEach(link => {
             link.addEventListener('click', () => {
-                navigation.classList.remove('open');
+                mobileNavigation.classList.remove('open');
+                overlay.classList.remove('open');
                 document.body.style.overflow = '';
             });
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (event) => {
-            if (navigation.classList.contains('open') && !navigation.contains(event.target) && !menuToggle.contains(event.target)) {
-                navigation.classList.remove('open');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Prevent clicks inside the navigation menu from closing it
-        navigation.addEventListener('click', (event) => {
-            event.stopPropagation();
+        // Close menu when clicking on the overlay
+        overlay.addEventListener('click', () => {
+            mobileNavigation.classList.remove('open');
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
         });
 
         // Existing navigation position update
