@@ -248,18 +248,79 @@
         h1 {
             color: #333;
         }
+
+        /* Mobile-friendly styles */
+        @media (max-width: 768px) {
+            #hero {
+                height: auto;
+                padding: 40px 20px;
+            }
+
+            #logo img {
+                height: 150px;
+            }
+
+            #heading {
+                font-size: 2em;
+            }
+
+            #subline {
+                font-size: 1.2em;
+            }
+
+            #navigation {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100%;
+                background-color: #f4f4f4;
+                transition: left 0.3s ease-in-out;
+                z-index: 1000;
+            }
+
+            #navigation.open {
+                left: 0;
+            }
+
+            #navigation ul {
+                padding: 20px;
+            }
+
+            #navigation li {
+                margin: 10px 0;
+            }
+
+            #menu-toggle {
+                display: block;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1001;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            #site-content {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
+    <button id="menu-toggle">☰</button>
     <div id="hero">
         <div id="logo">
             <img src="logo.png" alt="Jordon Griffin Logo">
         </div>
         <div id="welcome">
             <h1 id="heading">Jordon Harrison Griffin</h1>
-            <h2 id="subline">Information Technology & Project Management</h2>
+            <h2 id="subline">Information Technology <br> Project Management</h2>
+
         </div>
-        <div id="navigation">
+        <nav id="navigation">
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -267,7 +328,7 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </div>
+        </nav>
         <div id="to-bottom">
             <a href="#about">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -420,6 +481,29 @@
         });
 
         updateNavPosition();
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navigation = document.getElementById('navigation');
+
+        menuToggle.addEventListener('click', () => {
+            navigation.classList.toggle('open');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = document.querySelectorAll('#navigation a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navigation.classList.remove('open');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!navigation.contains(event.target) && !menuToggle.contains(event.target)) {
+                navigation.classList.remove('open');
+            }
+        });
     </script>
     <footer>
         &copy; 2024 Jordon Harrison Griffin. All rights reserved.
