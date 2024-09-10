@@ -24,6 +24,7 @@
             align-items: center;
             position: relative;
             background-color: #f4f4f4;
+            text-align: center; /* Center text in hero */
         }
 
         #logo {
@@ -61,9 +62,10 @@
         #navigation {
             position: fixed;
             top: 50%;
-            right: 40px;
+            right: 40px; /* Ensure it's on the right side */
             transform: translateY(-50%);
             z-index: 1000;
+            display: none; /* Hide by default */
         }
 
         #navigation ul {
@@ -100,9 +102,10 @@
         }
 
         #site-content {
-            max-width: 1000px;
+            max-width: 800px; /* Reduce max-width for better readability */
             margin: 0 auto;
             padding: 40px 20px;
+            text-align: center; /* Center text content */
         }
 
         h3 {
@@ -205,6 +208,7 @@
 
         .experience-item, .education-item {
             margin-bottom: 30px;
+            text-align: left; /* Keep experience and education items left-aligned */
         }
 
         .experience-item h4, .education-item h4 {
@@ -228,6 +232,7 @@
             flex-wrap: wrap;
             list-style-type: none;
             padding: 0;
+            justify-content: center; /* Center skill items */
         }
 
         .skills-list li {
@@ -247,6 +252,13 @@
 
         h1 {
             color: #333;
+        }
+
+        /* Show desktop navigation only on larger screens */
+        @media (min-width: 769px) {
+            #navigation {
+                display: block;
+            }
         }
 
         /* Mobile-friendly styles */
@@ -269,7 +281,7 @@
             }
 
             #navigation {
-                display: none; /* Hide desktop navigation on mobile */
+                display: none; /* Ensure it's hidden on mobile */
             }
 
             #menu-toggle {
@@ -339,6 +351,13 @@
                 padding: 20px;
             }
         }
+
+        /* Hide mobile menu and toggle button on larger screens */
+        @media (min-width: 769px) {
+            #menu-toggle, #mobile-navigation, .overlay {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -369,6 +388,15 @@
             </a>
         </div>
     </div>
+    <nav id="navigation">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
     <div id="site-content">
         <h3 id="about">About Me</h3>
         <p>Experienced Project Manager with a strong background in IoT solutions, e-commerce platforms, and business process management. Skilled in leading development teams, implementing strategic business solutions, and optimizing operations through cloud and IoT technologies.</p>
@@ -519,31 +547,46 @@
             document.body.style.overflow = '';
         });
 
-        // Existing navigation position update
-        var heroHeight = document.getElementById("hero").offsetHeight;
-
+        // Update navigation position and visibility
         function updateNavPosition() {
-            if (window.innerWidth > 768) {  // Only update for non-mobile screens
-                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const isMobile = window.innerWidth <= 768;
+            const navigation = document.getElementById("navigation");
+            const mobileNavigation = document.getElementById("mobile-navigation");
+            const menuToggle = document.getElementById("menu-toggle");
+            const overlay = document.querySelector(".overlay");
+
+            if (isMobile) {
+                navigation.style.display = "none";
+                menuToggle.style.display = "block";
+                mobileNavigation.style.display = "block";
+            } else {
+                const heroHeight = document.getElementById("hero").offsetHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
                 if (scrollTop > heroHeight) {
                     navigation.style.top = "50%";
                 } else {
-                    var progress = scrollTop / heroHeight;
-                    var newTop = 20 + (30 * progress);
+                    const progress = scrollTop / heroHeight;
+                    const newTop = 20 + (30 * progress);
                     navigation.style.top = newTop + "%";
                 }
                 navigation.style.transform = "translateY(-50%)";
+                navigation.style.display = "block";
+
+                // Hide mobile elements on desktop
+                mobileNavigation.style.display = "none";
+                menuToggle.style.display = "none";
+                overlay.style.display = "none";
+                mobileNavigation.classList.remove("open");
+                document.body.style.overflow = "";
             }
         }
 
         window.addEventListener("scroll", updateNavPosition);
-        window.addEventListener("resize", function() {
-            heroHeight = document.getElementById("hero").offsetHeight;
-            updateNavPosition();
-        });
+        window.addEventListener("resize", updateNavPosition);
 
-        updateNavPosition();
+        // Initial call to set the correct position
+        document.addEventListener("DOMContentLoaded", updateNavPosition);
     </script>
     <footer>
         &copy; 2024 Jordon Harrison Griffin. All rights reserved.
