@@ -389,6 +389,12 @@
             height: 20px;
             fill: #fff;
         }
+
+        .social-button img {
+            width: 20px;
+            height: 20px;
+            filter: invert(1); /* This makes the black butterfly white to match other icons */
+        }
     </style>
 </head>
 <body>
@@ -424,7 +430,6 @@
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="https://github.com/jordonhgriffin" target="_blank">GitHub</a></li>
@@ -432,83 +437,46 @@
     </nav>
     <div id="site-content">
         <h3 id="about">About Me</h3>
-        <p>Experienced Project Manager with a strong background in IoT solutions, e-commerce platforms, and business process management. Skilled in leading development teams, implementing strategic business solutions, and optimizing operations through cloud and IoT technologies.</p>
+        <p>Project Manager specializing in industrial processes and IoT solutions. Proven track record in managing complex projects that drive productivity and operational precision. Skilled in applying cloud platforms, IIoT tools, and SCADA systems to achieve data-driven improvements in manufacturing environments.</p>
 
         <h3 id="experience">Professional Experience</h3>
         <div class="experience-item">
-            <h4>Project Manager - A Rose Affair LLC</h4>
-            <p class="date">May 2021 - Aug 2024</p>
+            <h4>Project Manager - A Rose Affair</h4>
+            <p class="date">2021 - 2024</p>
             <ul>
-                <li>Led business startup operations, establishing delivery operations, order processing, and business processes</li>
-                <li>Handled financial operations</li>
-                <li>Developed cross-platform landing page and integrated a POS system</li>
-                <li>Managed vendor relationships and coordinated logistics for inventory</li>
+                <li>Established foundational business operations, including delivery workflows, order processing, and streamlined business processes to support growth.</li>
+                <li>Oversaw financial operations, ensuring efficient management of resources and cost-effective operations.</li>
+                <li>Developed and launched a cross-platform landing page, integrating a point-of-sale (POS) system to enhance customer experience and sales.</li>
+                <li>Managed vendor relationships and coordinated inventory logistics, ensuring seamless supply chain operations and reliable stock levels.</li>
             </ul>
         </div>
         <div class="experience-item">
-            <h4>Web Content Specialist - Wonderland Brothers</h4>
-            <p class="date">Nov 2022 - Nov 2023</p>
+            <h4>Digital Solutions Specialist- Wonderland Brothers</h4>
+            <p class="date">2022 - 2023</p>
             <ul>
-                <li>Developed weekly email campaigns</li>
-                <li>Created custom websites for small businesses</li>
-                <li>Provided strategic consulting on operations, online presence, and process optimization through Cloud and IoT solutions</li>
-                <li>Implemented ETL processes for sales data</li>
+                <li>Designed and implemented scalable web solutions and email campaigns, enhancing operational workflows and communication efficiency.</li>
+                <li>Provided consulting on IoT integrations and cloud technologies, improving business operations and aligning with industrial standards.</li>
+                <li>Streamlined data management through ETL processes for sales and advertising data, enabling actionable insights and process optimization.</li>
             </ul>
         </div>
         <div class="experience-item">
-            <h4>Project Manager - EITS, University of Georgia</h4>
-            <p class="date">Aug 2023 - Nov 2023</p>
+            <h4>Systems Integration Analyst - University of Georgia EITS</h4>
+            <p class="date">2023 - 2024</p>
             <ul>
-                <li>Led development of Salesforce application</li>
-                <li>Transitioned from request-response model to self-service portal</li>
-                <li>Implemented automated ticket management tools, and customized knowledge base</li>
-                <li>Managed bi-weekly sprint cycles, documenting progress and presenting completed sprints to stakeholders</li>
+                <li>Led the transition to a Salesforce application, upgrading workflows from a legacy request-response model to a self-service portal with automated ticketing and a customized knowledge base.</li>
+                <li>Oversaw bi-weekly sprint cycles, documenting progress and delivering updates to stakeholders to ensure a smooth and efficient upgrade process.</li>
             </ul>
         </div>
         <div class="experience-item">
-            <h4>Camp Counselor - Rock Eagle 4-H Center, Georgia 4-H</h4>
-            <p class="date">January 2021 - July 2022</p>
+            <h4>Camp Counselor - Rock Eagle Georgia 4-H Center</h4>
+            <p class="date">2021 - 2022</p>
             <ul>
-                <li>Facilitated weekly educational programs</li>
-                <li>Led rope course activities, nature trails, herpetology and nutritional wellness classes</li>
-                <li>Implemented youth development strategies in a dynamic camp setting</li>
+                <li>Delivered educational programs and led hands-on activities including rope courses, nature trails, herpetology, and wellness classes.</li>
+                <li>Applied youth development strategies to create engaging, growth-oriented experiences in a dynamic camp environment.</li>
             </ul>
         </div>
 
-        <h3 id="skills">Skills</h3>
-        <h4>Product Management</h4>
-        <ul class="skills-list">
-            <li>IoT Solutions</li>
-            <li>B2B & E-Commerce Platforms</li>
-            <li>Strategic Business Development</li>
-            <li>Business Process Management</li>
-            <li>Product Lifecycle Management</li>
-            <li>Agile/SCRUM Methodologies</li>
-            <li>Data Analysis and Insights</li>
-            <li>ETL</li>
-            <li>Cloud Infrastructure</li>
-            <li>Broadband Economics</li>
-        </ul>
-        <h4>Development</h4>
-        <ul class="skills-list">
-            <li>Web App Development</li>
-            <li>Mobile App Development</li>
-            <li>Coding Strategy</li>
-            <li>API Integration</li>
-            <li>Version Control</li>
-            <li>Network Programming</li>
-        </ul>
-        <h4>Tools & Platforms</h4>
-        <ul class="skills-list">
-            <li>iWork</li>
-            <li>Google Workspace</li>
-            <li>Microsoft 365</li>
-            <li>AWS</li>
-            <li>Salesforce</li>
-            <li>Wireshark</li>
-            <li>Orka</li>
-            <li>Apple Business Manager</li>
-        </ul>
+        
 
         <h3 id="education">Education</h3>
         <div class="education-item">
@@ -527,9 +495,9 @@
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                     </svg>
                 </a>
-                <a href="https://x.com/jordonhgriffin" target="_blank" class="social-button">
+                <a href="https://bsky.app/profile/jordonhgriffin.bsky.social" target="_blank" class="social-button">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        <path d="M12 3L6 12l6 9 6-9-6-9zm0 3.5L15.5 12 12 16.5 8.5 12 12 6.5z"/>
                     </svg>
                 </a>
                 <a href="https://www.upwork.com/freelancers/~019527646c9c505e7e?mp_source=share" target="_blank" class="social-button">
