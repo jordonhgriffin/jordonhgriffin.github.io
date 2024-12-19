@@ -489,6 +489,78 @@
         .tool-logo:error {
             content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="%23666" d="M21 5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5zM5 19V5h14l.002 14H5z"/></svg>');
         }
+
+        .tools-controls {
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .filter-btn.active {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+
+        .tools-list li {
+            transition: all 0.3s ease;
+        }
+
+        .tools-list li.hidden {
+            display: none;
+        }
+
+        .tools-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .tool-header {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-logo {
+            transition: transform 0.3s ease;
+        }
+
+        .tools-list li:hover .tool-logo {
+            transform: scale(1.1);
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -587,6 +659,21 @@
         </div>
 
         <h3 id="tools">My Tools & Applications</h3>
+        <div class="tools-controls">
+            <div class="search-box">
+                <input type="text" id="toolSearch" placeholder="Search tools...">
+            </div>
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="development">Development</button>
+                <button class="filter-btn" data-category="finance">Finance & Trading</button>
+                <button class="filter-btn" data-category="internet">Internet & Communication</button>
+                <button class="filter-btn" data-category="media">Media & Entertainment</button>
+                <button class="filter-btn" data-category="productivity">Productivity & Design</button>
+                <button class="filter-btn" data-category="security">Security & System</button>
+                <button class="filter-btn" data-category="utilities">Utilities</button>
+            </div>
+        </div>
         <div class="tools-section">
             <div class="tools-category">
                 <h4>Development</h4>
@@ -711,6 +798,15 @@
                             <span class="tool-description">Email client by Apple</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="https://www.apple.com/maps/" target="_blank">
+                            <div class="tool-header">
+                                <img src="maps.jpeg" alt="Maps Logo" class="tool-logo">
+                                <span class="tool-name">Maps</span>
+                            </div>
+                            <span class="tool-description">Apple's mapping and navigation application</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -751,15 +847,6 @@
                                 <span class="tool-name">OBS</span>
                             </div>
                             <span class="tool-description">Open Broadcaster Software for streaming and recording</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://rogueamoeba.com/soundsource" target="_blank">
-                            <div class="tool-header">
-                                <img src="https://rogueamoeba.com/favicon.ico" alt="SoundSource Logo" class="tool-logo">
-                                <span class="tool-name">SoundSource</span>
-                            </div>
-                            <span class="tool-description">Advanced audio control and routing utility</span>
                         </a>
                     </li>
                 </ul>
@@ -823,15 +910,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://support.apple.com/en-us/105115" target="_blank">
-                            <div class="tool-header">
-                                <img src="passwords.png" alt="Passwords Logo" class="tool-logo">
-                                <span class="tool-name">Passwords</span>
-                            </div>
-                            <span class="tool-description">Password management tool</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://apps.apple.com/us/app/reminders/id1108187841&ved=2ahUKEwiS6Kf-1bSKAxXS4skDHT2dNxUQFnoECBcQAQ&usg=AOvVaw3v2ryHZKC-3WOBSj-9UvZg" target="_blank">
                             <div class="tool-header">
                                 <img src="reminders.png" alt="Reminders Logo" class="tool-logo">
@@ -874,12 +952,30 @@
                         </a>
                     </li>
                     <li>
+                        <a href="https://support.apple.com/en-us/105115" target="_blank">
+                            <div class="tool-header">
+                                <img src="passwords.png" alt="Passwords Logo" class="tool-logo">
+                                <span class="tool-name">Passwords</span>
+                            </div>
+                            <span class="tool-description">Password management tool</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="https://protonvpn.com" target="_blank">
                             <div class="tool-header">
                                 <img src="https://protonvpn.com/favicon.ico" alt="ProtonVPN Logo" class="tool-logo">
                                 <span class="tool-name">ProtonVPN</span>
                             </div>
                             <span class="tool-description">Secure VPN service client</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://rogueamoeba.com/soundsource" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://rogueamoeba.com/favicon.ico" alt="SoundSource Logo" class="tool-logo">
+                                <span class="tool-name">SoundSource</span>
+                            </div>
+                            <span class="tool-description">Advanced audio control and routing utility</span>
                         </a>
                     </li>
                 </ul>
@@ -958,6 +1054,15 @@
                                 <span class="tool-name">MiddleClick</span>
                             </div>
                             <span class="tool-description">Emulate scroll wheel click with three finger Click or Tap</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/mtolly/onyx/releases" target="_blank">
+                            <div class="tool-header">
+                                <img src="onyx.png" alt="Onyx Logo" class="tool-logo">
+                                <span class="tool-name">Onyx</span>
+                            </div>
+                            <span class="tool-description">Rhythm game file converter supporting Clone Hero, Rock Band, Guitar Hero and other music games</span>
                         </a>
                     </li>
                     <li>
@@ -1148,6 +1253,101 @@
 
         // Initial call to set the correct position
         document.addEventListener("DOMContentLoaded", updateNavPosition);
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const toolCategories = document.querySelectorAll('.tools-category');
+        const selectedCategories = new Set(['all']);
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+
+                if (category === 'all') {
+                    // Clear other selections and show all categories
+                    selectedCategories.clear();
+                    selectedCategories.add('all');
+                    filterButtons.forEach(btn => {
+                        btn.classList.toggle('active', btn.dataset.category === 'all');
+                    });
+                    toolCategories.forEach(cat => {
+                        cat.classList.remove('hidden');
+                    });
+                } else {
+                    // Handle regular category selection
+                    if (selectedCategories.has('all')) {
+                        selectedCategories.clear();
+                        filterButtons.find(btn => btn.dataset.category === 'all').classList.remove('active');
+                    }
+
+                    // Toggle the selected category
+                    if (selectedCategories.has(category)) {
+                        selectedCategories.delete(category);
+                        button.classList.remove('active');
+                    } else {
+                        selectedCategories.add(category);
+                        button.classList.add('active');
+                    }
+
+                    // Show all categories if none are selected
+                    if (selectedCategories.size === 0) {
+                        toolCategories.forEach(cat => {
+                            cat.classList.remove('hidden');
+                        });
+                        return;
+                    }
+
+                    // Show/hide categories based on selection
+                    toolCategories.forEach(category => {
+                        const categoryName = category.querySelector('h4').textContent.toLowerCase();
+                        let shouldShow = false;
+
+                        selectedCategories.forEach(selectedCat => {
+                            switch (selectedCat) {
+                                case 'development':
+                                    if (categoryName === 'development') shouldShow = true;
+                                    break;
+                                case 'finance':
+                                    if (categoryName === 'finance & trading') shouldShow = true;
+                                    break;
+                                case 'internet':
+                                    if (categoryName === 'internet & communication') shouldShow = true;
+                                    break;
+                                case 'media':
+                                    if (categoryName === 'media & entertainment') shouldShow = true;
+                                    break;
+                                case 'productivity':
+                                    if (categoryName === 'productivity & design') shouldShow = true;
+                                    break;
+                                case 'security':
+                                    if (categoryName === 'security & system') shouldShow = true;
+                                    break;
+                                case 'utilities':
+                                    if (categoryName === 'utilities') shouldShow = true;
+                                    break;
+                            }
+                        });
+
+                        category.classList.toggle('hidden', !shouldShow);
+                    });
+                }
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('toolSearch');
+        const toolItems = document.querySelectorAll('.tools-list li');
+
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            toolItems.forEach(item => {
+                const name = item.querySelector('.tool-name').textContent.toLowerCase();
+                const description = item.querySelector('.tool-description').textContent.toLowerCase();
+                const matches = name.includes(searchTerm) || description.includes(searchTerm);
+                
+                item.classList.toggle('hidden', !matches);
+            });
+        });
     </script>
     <footer>
         &copy; 2024 Jordon Harrison Griffin. All rights reserved.
