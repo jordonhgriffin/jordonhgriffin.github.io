@@ -397,6 +397,98 @@
             height: 20px;
             filter: invert(1); /* This makes the black butterfly white to match other icons */
         }
+
+        .tools-section {
+            margin: 30px 0;
+        }
+
+        .tools-category {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .tools-category h4 {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .tools-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .tools-list li {
+            background: #f8f8f8;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .tools-list li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .tools-list a {
+            display: block;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .tool-name {
+            display: block;
+            font-weight: 500;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .tool-description {
+            display: block;
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .tools-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .tool-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            background-color: transparent;
+            border-radius: 8px;
+            padding: 4px;  /* Add some padding */
+        }
+
+        /* Specific handling for SVG icons */
+        .tool-logo[src$=".svg"] {
+            filter: brightness(0.95);
+            background-color: transparent;
+            padding: 2px;  /* Slightly less padding for SVGs */
+        }
+
+        /* Fallback for failed image loads */
+        .tool-logo:error {
+            content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="%23666" d="M21 5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5zM5 19V5h14l.002 14H5z"/></svg>');
+        }
     </style>
 </head>
 <body>
@@ -408,6 +500,7 @@
             <li><a href="#experience">Experience</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#tools">Tools</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="https://github.com/jordonhgriffin" target="_blank">GitHub</a></li>
         </ul>
@@ -433,6 +526,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#tools">Tools</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="https://github.com/jordonhgriffin" target="_blank">GitHub</a></li>
         </ul>
@@ -490,6 +584,312 @@
             <h4>BBA in Management Information Systems</h4>
             <p>University of Georgia, Athens, Georgia</p>
             <p class="date">August 2019 - December 2023</p>
+        </div>
+
+        <h3 id="tools">My Tools & Applications</h3>
+        <div class="tools-section">
+            <div class="tools-category">
+                <h4>Development</h4>
+                <ul class="tools-list">
+                    <li>
+                        <a href="https://cursor.sh" target="_blank">
+                            <div class="tool-header">
+                                <img src="cursor.png" alt="Cursor Logo" class="tool-logo">
+                                <span class="tool-name">Cursor</span>
+                            </div>
+                            <span class="tool-description">AI-powered code editor with intelligent code completion</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.docker.com/products/docker-desktop" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://www.docker.com/wp-content/uploads/2023/04/cropped-Docker-favicon-192x192.png" alt="Docker Logo" class="tool-logo">
+                                <span class="tool-name">Docker</span>
+                            </div>
+                            <span class="tool-description">Container platform for building and running applications</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://developer.apple.com/xcode" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://developer.apple.com/assets/elements/icons/xcode-12/xcode-12-96x96_2x.png" alt="Xcode Logo" class="tool-logo">
+                                <span class="tool-name">Xcode</span>
+                            </div>
+                            <span class="tool-description">Apple's integrated development environment</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tools-category">
+                <h4>Productivity & Design</h4>
+                <ul class="tools-list">
+                    <li>
+                        <a href="https://www.drawio.com" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://www.drawio.com/favicon.ico" alt="draw.io Logo" class="tool-logo">
+                                <span class="tool-name">draw.io</span>
+                            </div>
+                            <span class="tool-description">Diagram and flowchart creation tool</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.apple.com/keynote" target="_blank">
+                            <div class="tool-header">
+                                <img src="keynote.png" alt="Keynote Logo" class="tool-logo">
+                                <span class="tool-name">Keynote</span>
+                            </div>
+                            <span class="tool-description">Apple's presentation software</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.microsoft.com/microsoft-365" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://www.microsoft.com/favicon.ico" alt="Microsoft Office Logo" class="tool-logo">
+                                <span class="tool-name">Microsoft Office Suite</span>
+                            </div>
+                            <span class="tool-description">Excel, PowerPoint, and Word for professional document creation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.apple.com/pages" target="_blank">
+                            <div class="tool-header">
+                                <img src="pages.png" alt="Pages Logo" class="tool-logo">
+                                <span class="tool-name">Pages</span>
+                            </div>
+                            <span class="tool-description">Word processing software by Apple</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Built into macOS" target="_blank">
+                            <div class="tool-header">
+                                <img src="freeform.png" alt="Freeform Logo" class="tool-logo">
+                                <span class="tool-name">Freeform</span>
+                            </div>
+                            <span class="tool-description">Digital whiteboard and collaboration tool</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tools-category">
+                <h4>Internet & Communication</h4>
+                <ul class="tools-list">
+                    <li>
+                        <a href="https://brave.com/download" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://brave.com/static-assets/images/brave-logo.svg" alt="Brave Logo" class="tool-logo">
+                                <span class="tool-name">Brave Browser</span>
+                            </div>
+                            <span class="tool-description">Privacy-focused web browser with built-in ad blocking</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mozilla.org/firefox" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://www.mozilla.org/media/img/favicons/firefox/browser/favicon-196x196.59e3822720be.png" alt="Firefox Logo" class="tool-logo">
+                                <span class="tool-name">Firefox</span>
+                            </div>
+                            <span class="tool-description">Open-source web browser</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://chat.openai.com" target="_blank">
+                            <div class="tool-header">
+                                <img src="chatgpt.jpg" alt="ChatGPT Logo" class="tool-logo">
+                                <span class="tool-name">ChatGPT</span>
+                            </div>
+                            <span class="tool-description">AI-powered chatbot and language model interface</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://discord.com/download" target="_blank">
+                            <div class="tool-header">
+                                <img src="discord.png" alt="Discord Logo" class="tool-logo">
+                                <span class="tool-name">Discord</span>
+                            </div>
+                            <span class="tool-description">Voice chat and messaging platform for communities</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://telegram.org" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://telegram.org/img/favicon.ico" alt="Telegram Logo" class="tool-logo">
+                                <span class="tool-name">Telegram</span>
+                            </div>
+                            <span class="tool-description">Secure messaging and communication platform</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tools-category">
+                <h4>Utilities</h4>
+                <ul class="tools-list">
+                    <li>
+                        <a href="https://github.com/sbmpost/AutoRaise" target="_blank">
+                            <div class="tool-header">
+                                <img src="autoraise.jpeg" alt="AutoRaise Logo" class="tool-logo">
+                                <span class="tool-name">AutoRaise</span>
+                            </div>
+                            <span class="tool-description">Window management tool that automatically brings windows to front when hovering</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://lowtechguys.com/clop" target="_blank">
+                            <div class="tool-header">
+                                <img src="clop-icon.png" alt="Clop Logo" class="tool-logo">
+                                <span class="tool-name">Clop</span>
+                            </div>
+                            <span class="tool-description">Automatic file optimization tool for photos PDFs and videos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.coconut-flavour.com/coconutbattery" target="_blank">
+                            <div class="tool-header">
+                                <img src="coconutbattery.png" alt="coconutBattery Logo" class="tool-logo">
+                                <span class="tool-name">coconutBattery</span>
+                            </div>
+                            <span class="tool-description">Battery health monitoring tool for Mac and iOS devices</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://daisydiskapp.com" target="_blank">
+                            <div class="tool-header">
+                                <img src="daisydisk.png" alt="DaisyDisk Logo" class="tool-logo">
+                                <span class="tool-name">DaisyDisk</span>
+                            </div>
+                            <span class="tool-description">Disk space analyzer with visual interface</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://dropoverapp.com" target="_blank">
+                            <div class="tool-header">
+                                <img src="dropover.png" alt="Dropover Logo" class="tool-logo">
+                                <span class="tool-name">Dropover</span>
+                            </div>
+                            <span class="tool-description">Drag and drop enhancement utility for file management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tools-category">
+                <h4>Media & Entertainment</h4>
+                <ul class="tools-list">
+                    <li>
+                        <a href="https://iina.io" target="_blank">
+                            <div class="tool-header">
+                                <img src="iina.png" alt="IINA Logo" class="tool-logo">
+                                <span class="tool-name">IINA</span>
+                            </div>
+                            <span class="tool-description">Modern media player for macOS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://obsproject.com" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://obsproject.com/favicon-32x32.png" alt="OBS Logo" class="tool-logo">
+                                <span class="tool-name">OBS</span>
+                            </div>
+                            <span class="tool-description">Open Broadcaster Software for streaming and recording</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://clonehero.net" target="_blank">
+                            <div class="tool-header">
+                                <img src="clonehero.jpeg" alt="Clone Hero Logo" class="tool-logo">
+                                <span class="tool-name">Clone Hero</span>
+                            </div>
+                            <span class="tool-description">Guitar Hero-style rhythm game clone</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://dolphin-emu.org" target="_blank">
+                            <div class="tool-header">
+                                <img src="dolphin.png" alt="Dolphin Logo" class="tool-logo">
+                                <span class="tool-name">Dolphin</span>
+                            </div>
+                            <span class="tool-description">Nintendo GameCube and Wii emulator</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://rogueamoeba.com/soundsource" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://rogueamoeba.com/favicon.ico" alt="SoundSource Logo" class="tool-logo">
+                                <span class="tool-name">SoundSource</span>
+                            </div>
+                            <span class="tool-description">Advanced audio control and routing utility</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tools-category">
+                <h4>Security & System</h4>
+                <ul class="tools-list">
+                    <li>
+                        <a href="https://protonvpn.com" target="_blank">
+                            <div class="tool-header">
+                                <img src="https://protonvpn.com/favicon.ico" alt="ProtonVPN Logo" class="tool-logo">
+                                <span class="tool-name">ProtonVPN</span>
+                            </div>
+                            <span class="tool-description">Secure VPN service client</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://adguard.com/en/adguard-safari/overview.html" target="_blank">
+                            <div class="tool-header">
+                                <img src="adguard.png" alt="AdGuard Logo" class="tool-logo">
+                                <span class="tool-name">AdGuard for Safari</span>
+                            </div>
+                            <span class="tool-description">Ad blocking and privacy protection extension</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://crystalidea.com/macs-fan-control" target="_blank">
+                            <div class="tool-header">
+                                <img src="macsfancontrol.png" alt="Macs Fan Control Logo" class="tool-logo">
+                                <span class="tool-name">Macs Fan Control</span>
+                            </div>
+                            <span class="tool-description">Fan speed control and monitoring</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/MonitorControl/MonitorControl" target="_blank">
+                            <div class="tool-header">
+                                <img src="monitorcontrol.png" alt="MonitorControl Logo" class="tool-logo">
+                                <span class="tool-name">MonitorControl</span>
+                            </div>
+                            <span class="tool-description">External monitor brightness control</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tools-category">
+                <h4>Finance & Trading</h4>
+                <ul class="tools-list">
+                    <li>
+                        <a href="https://www.tdameritrade.com/tools-and-platforms/thinkorswim.html" target="_blank">
+                            <div class="tool-header">
+                                <img src="thinkorswim.png" alt="ThinkorSwim Logo" class="tool-logo">
+                                <span class="tool-name">ThinkorSwim</span>
+                            </div>
+                            <span class="tool-description">Professional trading platform by TD Ameritrade</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tradingview.com" target="_blank">
+                            <div class="tool-header">
+                                <img src="tradingview.svg" alt="TradingView Logo" class="tool-logo">
+                                <span class="tool-name">TradingView</span>
+                            </div>
+                            <span class="tool-description">Financial market analysis and trading platform</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <h3 id="contact">Contact</h3>
