@@ -910,6 +910,27 @@
         [data-theme="dark"] .moon-icon {
             display: none;
         }
+
+        /* Update the ChatGPT logo styles */
+        .chatgpt-logo {
+            content: url('chatgpt-black.png');
+            width: 40px;  /* Set fixed width */
+            height: 40px;  /* Set fixed height */
+            object-fit: contain;  /* Maintain aspect ratio */
+        }
+
+        [data-theme="dark"] .chatgpt-logo {
+            content: url('chatgpt-white.png');
+            width: 40px;  /* Same dimensions in dark mode */
+            height: 40px;
+            object-fit: contain;
+        }
+
+        /* Update the ChatGPT tool item HTML */
+        <div class="tool-header">
+            <img src="chatgpt-black.png" alt="ChatGPT Logo" class="tool-logo chatgpt-logo">
+            <span class="tool-name">ChatGPT</span>
+        </div>
     </style>
 </head>
 <body>
@@ -1174,7 +1195,7 @@
                     <li>
                         <a href="https://chat.openai.com" target="_blank">
                             <div class="tool-header">
-                                <img src="chatgpt.png" alt="ChatGPT Logo" class="tool-logo">
+                                <img src="chatgpt-black.png" alt="ChatGPT Logo" class="tool-logo chatgpt-logo">
                                 <span class="tool-name">ChatGPT</span>
                             </div>
                             <span class="tool-description">AI-powered chatbot and language model interface</span>
