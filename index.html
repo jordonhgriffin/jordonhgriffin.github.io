@@ -933,6 +933,29 @@
                 width: 35%;
             }
         }
+
+        /* Add these styles at the root level */
+        html {
+            height: -webkit-fill-available;
+        }
+
+        body {
+            min-height: -webkit-fill-available;
+        }
+
+        /* Update mobile styles */
+        @media (max-width: 768px) {
+            #hero {
+                height: 100vh; /* Fallback */
+                height: -webkit-fill-available;
+                min-height: -webkit-fill-available;
+                max-height: -webkit-fill-available;
+                padding: 0;
+                justify-content: center;
+                /* Add padding to account for Safari's bottom bar */
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
     </style>
 </head>
 <body>
