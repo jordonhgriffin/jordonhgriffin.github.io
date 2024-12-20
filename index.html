@@ -27,7 +27,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
             position: relative;
             background-color: #f4f4f4;
@@ -36,16 +36,25 @@
         }
 
         #logo {
-            margin-top: auto;
+            margin-top: 60px;
+        }
+
+        #logo img {
+            height: 350px;
+            width: auto;
+            margin-bottom: 0;
         }
 
         #welcome {
-            margin: auto 0;
+            margin-top: 20px;
         }
 
         #to-bottom {
-            margin-bottom: 20px;
-            position: relative;
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
         }
 
         #logo {
@@ -81,6 +90,7 @@
             font-weight: 400;
             color: #666;
             margin-top: 10px;
+            margin-bottom: 60px;
         }
 
         #navigation {
@@ -312,8 +322,8 @@
         /* Mobile-friendly styles */
         @media (max-width: 768px) {
             #hero {
-                height: 100vh;
-                min-height: 100vh;
+                height: 65vh;
+                min-height: 50vh;
                 padding: 0;
                 display: flex;
                 flex-direction: column;
@@ -331,7 +341,7 @@
             }
 
             #welcome {
-                margin-top: 20px;
+                margin-top: 0px;
             }
 
             #heading {
@@ -342,6 +352,7 @@
             #subline {
                 font-size: 1.1em;
                 margin-top: 0;
+                margin-bottom: 40px;
             }
 
             #to-bottom {
@@ -847,7 +858,7 @@
             background-color: #3a3a3a;
         }
 
-        /* Update the mobile navigation styles */
+        /* Update mobile navigation styles */
         #mobile-navigation {
             position: fixed;
             top: 0;
@@ -860,68 +871,70 @@
             transition: right 0.3s ease-in-out;
         }
 
+        #mobile-navigation.open {
+            right: 0;
+        }
+
+        #mobile-navigation ul {
+            list-style-type: none;
+            padding: 60px 20px 20px;
+            margin: 0;
+            text-align: center;
+        }
+
+        #mobile-navigation li {
+            margin: 15px 0;
+        }
+
+        #mobile-navigation a {
+            color: #333;
+            font-size: 1.2em;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #mobile-navigation a:hover {
+            opacity: 0.6;
+        }
+
         [data-theme="dark"] #mobile-navigation {
             background-color: rgba(26, 26, 26, 0.95);
         }
 
-        /* For smaller screens */
+        [data-theme="dark"] #mobile-navigation a {
+            color: #fff;
+        }
+
+        /* Overlay styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .overlay.open {
+            display: block;
+        }
+
+        /* Mobile-specific adjustments */
         @media (max-width: 480px) {
             #mobile-navigation {
                 width: 35%;
             }
         }
-
-        /* Update the sun/moon icon styles */
-        .sun-icon {
-            display: none;
-        }
-
-        .moon-icon {
-            display: block;
-        }
-
-        [data-theme="dark"] .sun-icon {
-            display: block;
-        }
-
-        [data-theme="dark"] .moon-icon {
-            display: none;
-        }
-
-        /* Update the ChatGPT logo styles */
-        .chatgpt-logo {
-            content: url('chatgpt-black.png');
-            width: 35px;
-            height: 35px;
-            object-fit: contain;
-            margin: 2.5px;
-        }
-
-        [data-theme="dark"] .chatgpt-logo {
-            content: url('chatgpt-white.png');
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            margin: 0;
-        }
-
-        /* Update the scroll up button SVG */
-        <div id="to-top">
-            <a href="#hero">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-                </svg>
-            </a>
-        </div>
     </style>
 </head>
 <body>
     <button id="menu-toggle">☰</button>
     <button id="theme-toggle" aria-label="Toggle dark mode">
-        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
-        </svg>
-        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
         </svg>
     </button>
@@ -1554,223 +1567,15 @@
         </a>
     </div>
     <script>
-        // Update the scroll functionality
-        function smoothScrollTo(element, event) {
-            if (event) {
-                event.preventDefault();
-            }
-            const targetElement = document.querySelector(element);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-                // Remove the hash from URL after scrolling
-                history.pushState('', document.title, window.location.pathname);
-            }
-        }
-
-        // Update all navigation links
-        document.querySelectorAll('#navigation a, #mobile-navigation a, #to-bottom a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-                // Only handle internal links (those starting with #)
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    smoothScrollTo(href, e);
-                    
-                    // Close mobile menu if it's open
-                    if (mobileNavigation.classList.contains('open')) {
-                        mobileNavigation.classList.remove('open');
-                        overlay.classList.remove('open');
-                        document.body.style.overflow = '';
-                    }
-                }
-            });
-        });
-
-        // Update scroll to top button
-        const toTopButton = document.getElementById("to-top");
-        toTopButton.querySelector('a').addEventListener("click", function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-            // Remove the hash from URL
-            history.pushState('', document.title, window.location.pathname);
-        });
-
-        // Mobile menu functionality
+        // DOM Elements
         const menuToggle = document.getElementById('menu-toggle');
         const mobileNavigation = document.getElementById('mobile-navigation');
         const overlay = document.querySelector('.overlay');
-
-        menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            mobileNavigation.classList.toggle('open');
-            overlay.classList.toggle('open');
-            document.body.style.overflow = mobileNavigation.classList.contains('open') ? 'hidden' : '';
-        });
-
-        // Close menu when a link is clicked
-        const mobileNavLinks = document.querySelectorAll('#mobile-navigation a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNavigation.classList.remove('open');
-                overlay.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Close menu when clicking on the overlay
-        overlay.addEventListener('click', () => {
-            mobileNavigation.classList.remove('open');
-            overlay.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-
-        // Update navigation position and visibility
-        function updateNavPosition() {
-            const isMobile = window.innerWidth <= 768;
-            const navigation = document.getElementById("navigation");
-            const mobileNavigation = document.getElementById("mobile-navigation");
-            const menuToggle = document.getElementById("menu-toggle");
-            const overlay = document.querySelector(".overlay");
-
-            if (isMobile) {
-                navigation.style.display = "none";
-                menuToggle.style.display = "block";
-                mobileNavigation.style.display = "block";
-            } else {
-                const heroHeight = document.getElementById("hero").offsetHeight;
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (scrollTop > heroHeight) {
-                    navigation.style.top = "50%";
-                } else {
-                    const progress = scrollTop / heroHeight;
-                    const newTop = 20 + (30 * progress);
-                    navigation.style.top = newTop + "%";
-                }
-                navigation.style.transform = "translateY(-50%)";
-                navigation.style.display = "block";
-
-                // Hide mobile elements on desktop
-                mobileNavigation.style.display = "none";
-                menuToggle.style.display = "none";
-                overlay.style.display = "none";
-                mobileNavigation.classList.remove("open");
-                document.body.style.overflow = "";
-            }
-        }
-
-        window.addEventListener("scroll", updateNavPosition);
-        window.addEventListener("resize", updateNavPosition);
-
-        // Initial call to set the correct position
-        document.addEventListener("DOMContentLoaded", updateNavPosition);
-
-        // Updated filter and search functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const toolCategories = document.querySelectorAll('.tools-category');
-        const searchInput = document.getElementById('toolSearch');
-        const toolItems = document.querySelectorAll('.tools-list li');
-        const selectedCategories = new Set(['all']);
-
-        // Category mapping for proper filtering
-        const categoryMap = {
-            'all': 'all',
-            'communication': 'Communication',
-            'development': 'Development',
-            'finance': 'Finance',
-            'games': 'Games',
-            'internet': 'Internet',
-            'media': 'Media',
-            'navigation': 'Navigation',
-            'productivity': 'Productivity',
-            'security': 'Security',
-            'utilities': 'Utilities',
-            'virtualization': 'Virtualization'
-        };
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const category = button.dataset.category;
-                
-                if (category === 'all') {
-                    // Clear other selections when 'all' is clicked
-                    selectedCategories.clear();
-                    selectedCategories.add('all');
-                    filterButtons.forEach(btn => {
-                        btn.classList.toggle('active', btn.dataset.category === 'all');
-                    });
-                } else {
-                    // Remove 'all' if it's selected
-                    if (selectedCategories.has('all')) {
-                        selectedCategories.delete('all');
-                        filterButtons.find(btn => btn.dataset.category === 'all').classList.remove('active');
-                    }
-
-                    // Toggle the selected category
-                    if (selectedCategories.has(category)) {
-                        selectedCategories.delete(category);
-                        button.classList.remove('active');
-                    } else {
-                        selectedCategories.add(category);
-                        button.classList.add('active');
-                    }
-
-                    // If no categories are selected, show all categories
-                    if (selectedCategories.size === 0) {
-                        toolCategories.forEach(category => {
-                            category.classList.remove('hidden');
-                        });
-                        toolItems.forEach(item => {
-                            const matchesSearch = searchInput.value === '' || 
-                                item.querySelector('.tool-name').textContent.toLowerCase().includes(searchInput.value.toLowerCase()) ||
-                                item.querySelector('.tool-description').textContent.toLowerCase().includes(searchInput.value.toLowerCase());
-                            item.classList.toggle('hidden', !matchesSearch);
-                        });
-                        return;
-                    }
-                }
-
-                applySearchFilter();
-            });
-        });
-
-        // Enhanced search functionality
-        function applySearchFilter() {
-            const searchTerm = searchInput.value.toLowerCase();
-
-            toolItems.forEach(item => {
-                const name = item.querySelector('.tool-name').textContent.toLowerCase();
-                const description = item.querySelector('.tool-description').textContent.toLowerCase();
-                const category = item.closest('.tools-category').querySelector('h4').textContent;
-                
-                const matchesSearch = name.includes(searchTerm) || description.includes(searchTerm);
-                const matchesCategory = selectedCategories.has('all') || 
-                                     selectedCategories.has(category.toLowerCase());
-
-                item.classList.toggle('hidden', !matchesSearch || !matchesCategory);
-            });
-
-            // Show/hide empty categories
-            toolCategories.forEach(category => {
-                const visibleItems = category.querySelectorAll('.tools-list li:not(.hidden)').length;
-                category.classList.toggle('hidden', visibleItems === 0);
-            });
-        }
-
-        searchInput.addEventListener('input', applySearchFilter);
-
-        // Initial call to ensure proper state
-        applySearchFilter();
-
-        // Theme toggle functionality
         const themeToggle = document.getElementById('theme-toggle');
+        const toTopButton = document.getElementById("to-top");
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
+        // Theme functions
         function getCurrentTheme() {
             return localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
         }
@@ -1784,17 +1589,81 @@
         // Set initial theme
         setTheme(getCurrentTheme());
 
-        // Theme toggle button click handler
+        // Theme toggle event
         themeToggle.addEventListener('click', () => {
             const currentTheme = getCurrentTheme();
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             setTheme(newTheme);
         });
 
-        // Listen for system theme changes
+        // System theme change event
         prefersDarkScheme.addEventListener('change', (e) => {
             const theme = e.matches ? 'dark' : 'light';
             setTheme(theme);
+        });
+
+        // Mobile menu events
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileNavigation.classList.toggle('open');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = mobileNavigation.classList.contains('open') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileNavigation.classList.remove('open');
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        // Smooth scroll function
+        function smoothScrollTo(element, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            const targetElement = document.querySelector(element);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                history.pushState('', document.title, window.location.pathname);
+            }
+        }
+
+        // Navigation click events
+        document.querySelectorAll('#navigation a, #mobile-navigation a, #to-bottom a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    smoothScrollTo(href, e);
+                    
+                    if (mobileNavigation.classList.contains('open')) {
+                        mobileNavigation.classList.remove('open');
+                        overlay.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+
+        // Scroll to top button
+        toTopButton.querySelector('a').addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            history.pushState('', document.title, window.location.pathname);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileNavigation.contains(e.target) && !menuToggle.contains(e.target)) {
+                mobileNavigation.classList.remove('open');
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+            }
         });
     </script>
     <footer>
