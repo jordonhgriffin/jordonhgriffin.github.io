@@ -323,9 +323,10 @@
         /* Mobile-friendly styles */
         @media (max-width: 768px) {
             #hero {
-                height: 70vh;
+                height: 85vh;
                 padding: 0;
-                justify-content: center;
+                justify-content: flex-start;
+                padding-top: 60px;
             }
 
             #logo {
@@ -334,14 +335,14 @@
             }
 
             #logo img {
-                height: 300px;
+                height: 250px;
                 margin-bottom: 0;
                 padding-bottom: 0;
             }
 
             #welcome {
                 margin-top: 10px;
-                margin-bottom: 20px;
+                margin-bottom: 40px;
             }
 
             #heading {
@@ -358,12 +359,22 @@
             }
 
             #to-bottom {
-                margin-top: 0;
-                position: relative;
-                z-index: 1;
-                bottom: auto;
-                left: auto;
-                transform: none;
+                position: absolute;
+                bottom: .3vh;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 40px;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 3px;
+            }
+
+            #to-bottom svg {
+                width: 24px;
+                height: 24px;
             }
         }
 
@@ -712,6 +723,13 @@
             border-radius: 50%;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            padding: 8px;
         }
 
         #theme-toggle:hover {
@@ -946,14 +964,30 @@
         /* Update mobile styles */
         @media (max-width: 768px) {
             #hero {
-                height: 100vh; /* Fallback */
+                height: 100vh;
                 height: -webkit-fill-available;
                 min-height: -webkit-fill-available;
-                max-height: -webkit-fill-available;
                 padding: 0;
                 justify-content: center;
-                /* Add padding to account for Safari's bottom bar */
-                padding-bottom: env(safe-area-inset-bottom);
+            }
+
+            #to-bottom {
+                position: absolute;
+                bottom: .3vh;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 40px;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 3px;
+            }
+
+            #to-bottom svg {
+                width: 24px;
+                height: 24px;
             }
         }
     </style>
