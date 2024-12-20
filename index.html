@@ -893,6 +893,23 @@
                 width: 35%;
             }
         }
+
+        /* Update the sun/moon icon styles */
+        .sun-icon {
+            display: none;
+        }
+
+        .moon-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .sun-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .moon-icon {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -1534,7 +1551,7 @@
         </a>
     </div>
     <script>
-        // Add this function at the start of your script section
+        // Update the scroll functionality
         function smoothScrollTo(element, event) {
             if (event) {
                 event.preventDefault();
@@ -1544,11 +1561,13 @@
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
+                // Remove the hash from URL after scrolling
+                history.pushState('', document.title, window.location.pathname);
             }
         }
 
-        // Update the navigation link click handlers
-        document.querySelectorAll('#navigation a, #mobile-navigation a').forEach(link => {
+        // Update all navigation links
+        document.querySelectorAll('#navigation a, #mobile-navigation a, #to-bottom a').forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
                 // Only handle internal links (those starting with #)
@@ -1566,22 +1585,16 @@
             });
         });
 
-        // Existing scroll to top functionality
-        var toTopButton = document.getElementById("to-top");
-
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                toTopButton.classList.add("show");
-            } else {
-                toTopButton.classList.remove("show");
-            }
-        }
-
-        toTopButton.addEventListener("click", function(e) {
+        // Update scroll to top button
+        const toTopButton = document.getElementById("to-top");
+        toTopButton.querySelector('a').addEventListener("click", function(e) {
             e.preventDefault();
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            // Remove the hash from URL
+            history.pushState('', document.title, window.location.pathname);
         });
 
         // Mobile menu functionality
