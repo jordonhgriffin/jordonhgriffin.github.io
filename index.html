@@ -914,16 +914,18 @@
         /* Update the ChatGPT logo styles */
         .chatgpt-logo {
             content: url('chatgpt-black.png');
-            width: 40px;  /* Set fixed width */
-            height: 40px;  /* Set fixed height */
-            object-fit: contain;  /* Maintain aspect ratio */
+            width: 35px;  /* Slightly smaller for black version */
+            height: 35px;
+            object-fit: contain;
+            margin: 2.5px;  /* Add margin to keep the total space consistent */
         }
 
         [data-theme="dark"] .chatgpt-logo {
             content: url('chatgpt-white.png');
-            width: 40px;  /* Same dimensions in dark mode */
+            width: 40px;  /* Larger for white version */
             height: 40px;
             object-fit: contain;
+            margin: 0;  /* Remove margin since it's larger */
         }
 
         /* Update the ChatGPT tool item HTML */
