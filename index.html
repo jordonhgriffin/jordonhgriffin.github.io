@@ -324,7 +324,7 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 80%;
+                width: 25%;
                 height: 100%;
                 background-color: rgba(244, 244, 244, 0.95);
                 z-index: 1001;
@@ -868,6 +868,30 @@
 
         [data-theme="dark"] #menu-toggle:hover {
             background-color: #3a3a3a;
+        }
+
+        /* Update the mobile navigation styles */
+        #mobile-navigation {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 25%;
+            height: 100%;
+            background-color: rgba(244, 244, 244, 0.95);
+            z-index: 1001;
+            overflow-y: auto;
+            transition: right 0.3s ease-in-out;
+        }
+
+        [data-theme="dark"] #mobile-navigation {
+            background-color: rgba(26, 26, 26, 0.95);
+        }
+
+        /* For smaller screens */
+        @media (max-width: 480px) {
+            #mobile-navigation {
+                width: 35%;
+            }
         }
     </style>
 </head>
