@@ -596,10 +596,136 @@
         .hidden {
             display: none !important;
         }
+
+        /* Dark mode styles */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                color-scheme: dark;
+            }
+        }
+
+        /* Move these styles outside the media query and update them */
+        [data-theme="dark"] {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        [data-theme="dark"] #hero {
+            background-color: #2a2a2a;
+        }
+
+        [data-theme="dark"] #logo {
+            color: #fff;
+        }
+
+        [data-theme="dark"] #navigation a {
+            color: #e0e0e0;
+        }
+
+        [data-theme="dark"] .tools-list li {
+            background: #2a2a2a;
+        }
+
+        [data-theme="dark"] .tool-name {
+            color: #fff;
+        }
+
+        [data-theme="dark"] .skills-list li {
+            background-color: #2a2a2a;
+        }
+
+        [data-theme="dark"] footer {
+            background-color: #2a2a2a;
+        }
+
+        [data-theme="dark"] #mobile-navigation {
+            background-color: rgba(42, 42, 42, 0.95);
+        }
+
+        [data-theme="dark"] #mobile-navigation a {
+            color: #e0e0e0;
+        }
+
+        [data-theme="dark"] .filter-btn {
+            background: #2a2a2a;
+            color: #e0e0e0;
+            border-color: #444;
+        }
+
+        [data-theme="dark"] .filter-btn:hover {
+            background: #3a3a3a;
+        }
+
+        [data-theme="dark"] .filter-btn.active {
+            background: #e0e0e0;
+            color: #1a1a1a;
+        }
+
+        [data-theme="dark"] .search-box input {
+            background: #2a2a2a;
+            color: #e0e0e0;
+            border-color: #444;
+        }
+
+        [data-theme="dark"] .tool-description {
+            color: #aaa;
+        }
+
+        /* Theme toggle button styles */
+        #theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1002;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        #theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: #333;
+        }
+
+        /* Dark mode specific styles */
+        [data-theme="dark"] #theme-toggle {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+
+        [data-theme="dark"] #theme-toggle svg {
+            fill: #fff;
+        }
+
+        /* Update mobile styles */
+        @media (max-width: 768px) {
+            #theme-toggle {
+                bottom: 20px;
+                left: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <button id="menu-toggle">☰</button>
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+        </svg>
+    </button>
     <div class="overlay"></div>
     <nav id="mobile-navigation">
         <ul>
@@ -1445,6 +1571,36 @@
 
         // Initial call to ensure proper state
         applySearchFilter();
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function getCurrentTheme() {
+            return localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        // Set initial theme
+        setTheme(getCurrentTheme());
+
+        // Theme toggle button click handler
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = getCurrentTheme();
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+
+        // Listen for system theme changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            const theme = e.matches ? 'dark' : 'light';
+            setTheme(theme);
+        });
     </script>
     <footer>
         &copy; 2024 Jordon Harrison Griffin. All rights reserved.
