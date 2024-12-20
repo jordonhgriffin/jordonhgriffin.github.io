@@ -314,131 +314,41 @@
             #hero {
                 height: 100vh;
                 min-height: 100vh;
-                padding: 20px 0;
+                padding: 0;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 position: relative;
             }
 
+            #logo {
+                margin-top: 60px;
+            }
+
             #logo img {
-                height: 350px;
+                height: 250px;
                 margin-bottom: 0;
             }
 
             #welcome {
+                margin-top: 20px;
+            }
+
+            #heading {
+                font-size: 1.8em;
                 margin-bottom: 5px;
-                position: relative;
-                z-index: 1;
+            }
+
+            #subline {
+                font-size: 1.1em;
+                margin-top: 0;
             }
 
             #to-bottom {
                 position: absolute;
-                bottom: 40px;
+                bottom: 20px;
                 left: 50%;
                 transform: translateX(-50%);
-                z-index: 2;
-            }
-
-            #navigation {
-                display: none;
-            }
-
-            #menu-toggle {
-                display: block;
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                z-index: 1002;
-                background: none;
-                border: none;
-                font-size: 30px;
-                cursor: pointer;
-                color: #000;
-            }
-
-            #mobile-navigation {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 25%;
-                height: 100%;
-                background-color: rgba(244, 244, 244, 0.95);
-                z-index: 1001;
-                overflow-y: auto;
-                transition: right 0.3s ease-in-out;
-            }
-
-            #mobile-navigation.open {
-                right: 0;
-            }
-
-            /* Add overlay */
-            .overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                z-index: 1000;
-            }
-
-            .overlay.open {
-                display: block;
-            }
-
-            #mobile-navigation ul {
-                list-style-type: none;
-                padding: 15% 5% 5%;
-                margin: 0;
-                text-align: center;
-            }
-
-            #mobile-navigation li {
-                margin: 5% 0;
-            }
-
-            /* Update mobile navigation hover effects for both light and dark modes */
-            #mobile-navigation a {
-                color: #000;
-                font-size: 1.4em;
-                text-decoration: none;
-                display: block;
-                padding: 10px 0;
-                text-align: center;
-                width: 100%;
-                opacity: 1;
-                transition: opacity 0.3s ease;
-            }
-
-            #mobile-navigation a:hover {
-                opacity: 0.6;
-            }
-
-            [data-theme="dark"] #mobile-navigation a {
-                color: #fff;
-            }
-
-            [data-theme="dark"] #mobile-navigation a:hover {
-                opacity: 0.6;
-            }
-
-            #site-content {
-                padding: 20px;
-            }
-
-            #to-bottom {
-                bottom: 10px;
-            }
-
-            #hero {
-                padding-bottom: 15vh;
-            }
-
-            #welcome {
-                margin-bottom: 5px;
             }
         }
 
@@ -995,11 +905,11 @@
             margin: 0;
         }
 
-        /* Update the scroll down button icon */
-        <div id="to-bottom">
-            <a href="#about">
+        /* Update the scroll up button SVG */
+        <div id="to-top">
+            <a href="#hero">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+                    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
                 </svg>
             </a>
         </div>
@@ -1639,7 +1549,7 @@
     <div id="to-top">
         <a href="#hero">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 10l-6 6-6-6z"/>
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
             </svg>
         </a>
     </div>
