@@ -92,22 +92,70 @@
             color: #000;
             font-weight: 300;
             font-size: 1.1em;
-            transition: color 0.3s;
+            transition: opacity 0.3s ease;
+            opacity: 1;
         }
 
         #navigation a:hover {
-            color: #666;
+            opacity: 0.6;
+        }
+
+        [data-theme="dark"] #navigation a {
+            color: #fff;
+        }
+
+        [data-theme="dark"] #navigation a:hover {
+            opacity: 0.6;
+        }
+
+        #to-bottom, #to-top {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #to-bottom {
-            position: absolute;
-            bottom: 0px;
+            position: absolute;  /* Keep absolute for bottom button */
+            bottom: 20px;
         }
 
-        #to-bottom svg {
-            width: 40px;
-            height: 40px;
-            fill: #666;
+        #to-top {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        #to-bottom:hover, #to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        #to-bottom svg, #to-top svg {
+            width: 24px;
+            height: 24px;
+            fill: #333;
+            display: block;
+        }
+
+        /* Dark mode styles for both buttons */
+        [data-theme="dark"] #to-bottom,
+        [data-theme="dark"] #to-top {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+
+        [data-theme="dark"] #to-bottom svg,
+        [data-theme="dark"] #to-top svg {
+            fill: #fff;
         }
 
         #site-content {
@@ -175,49 +223,6 @@
         #cta-container {
             text-align: center;
             margin-top: 40px;
-        }
-
-        #to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            opacity: 1;
-            visibility: visible;
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        #to-top:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        #to-top svg {
-            width: 24px;
-            height: 24px;
-            fill: #333;
-            display: block;
-        }
-
-        /* Dark mode styles for to-top button */
-        [data-theme="dark"] #to-top {
-            background-color: #2a2a2a;
-            border-color: #444;
-        }
-
-        [data-theme="dark"] #to-top svg {
-            fill: #fff;
-        }
-
-        /* Remove the old show/hide transition since we're keeping it visible */
-        #to-top.show {
-            opacity: 1;
-            visibility: visible;
         }
 
         footer {
@@ -363,14 +368,29 @@
                 margin: 20px 0;
             }
 
+            /* Update mobile navigation hover effects for both light and dark modes */
             #mobile-navigation a {
                 color: #000;
                 font-size: 1.4em;
                 text-decoration: none;
                 display: block;
                 padding: 10px 0;
-                text-align: center;  /* Ensure links are centered */
-                width: 100%;  /* Make sure the entire width is clickable */
+                text-align: center;
+                width: 100%;
+                opacity: 1;
+                transition: opacity 0.3s ease;
+            }
+
+            #mobile-navigation a:hover {
+                opacity: 0.6;
+            }
+
+            [data-theme="dark"] #mobile-navigation a {
+                color: #fff;
+            }
+
+            [data-theme="dark"] #mobile-navigation a:hover {
+                opacity: 0.6;
             }
 
             #site-content {
@@ -931,10 +951,13 @@
             margin: 0;  /* Remove margin since it's larger */
         }
 
-        /* Update the ChatGPT tool item HTML */
-        <div class="tool-header">
-            <img src="chatgpt-black.png" alt="ChatGPT Logo" class="tool-logo chatgpt-logo">
-            <span class="tool-name">ChatGPT</span>
+        /* Update the scroll down button icon */
+        <div id="to-bottom">
+            <a href="#about">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+                </svg>
+            </a>
         </div>
     </style>
 </head>
@@ -971,7 +994,7 @@
         <div id="to-bottom">
             <a href="#about">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,4c4.41,0,8,3.59,8,8s-3.59,8-8,8s-8-3.59-8-8S7.59,4,12,4 M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10 c5.52,0,10-4.48,10-10C22,6.48,17.52,2,12,2L12,2z M13,12l0-4h-2l0,4H8l4,4l4-4H13z"/>
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
                 </svg>
             </a>
         </div>
@@ -992,8 +1015,8 @@
             process optimization. Skilled in streamlining workflows, managing inventory logistics, and driving data-driven
             improvements in manufacturing and business environments. Adept at bridging the gap between physical and digital
             systems through cloud platforms, and IIoT tools. Focused on delivering innovative solutions that drive growth and efficiency.</p>
-        <p>Throughout my academic journey, I’ve encountered numerous challenges and opportunities to learn and grow. I'm approaching life like a puzzle – some pieces require careful analysis and strategy, while others fall into place. I'm here for knowledge and expertise, and have come to value credibility and integrity above most.</p>
-        <p>In all that I do, I hold three guiding principles dear: building for others, optimizing efficiency, and embracing enjoyment along the way. I’m driven by the desire to find like-minded individuals who share these values.</p>
+        <p>Throughout my academic journey, I've encountered numerous challenges and opportunities to learn and grow. I'm approaching life like a puzzle – some pieces require careful analysis and strategy, while others fall into place. I'm here for knowledge and expertise, and have come to value credibility and integrity above most.</p>
+        <p>In all that I do, I hold three guiding principles dear: building for others, optimizing efficiency, and embracing enjoyment along the way. I'm driven by the desire to find like-minded individuals who share these values.</p>
 
         <h3 id="experience">Professional Experience</h3>
         <div class="experience-item">
