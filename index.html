@@ -1229,6 +1229,38 @@
         </a>
     </div>
     <script>
+        // Add this function at the start of your script section
+        function smoothScrollTo(element, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            const targetElement = document.querySelector(element);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Update the navigation link click handlers
+        document.querySelectorAll('#navigation a, #mobile-navigation a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                // Only handle internal links (those starting with #)
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    smoothScrollTo(href, e);
+                    
+                    // Close mobile menu if it's open
+                    if (mobileNavigation.classList.contains('open')) {
+                        mobileNavigation.classList.remove('open');
+                        overlay.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+
         // Existing scroll to top functionality
         var toTopButton = document.getElementById("to-top");
 
