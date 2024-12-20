@@ -27,12 +27,25 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             position: relative;
             background-color: #f4f4f4;
             text-align: center;
-            overflow: visible;
+            padding: 40px 0;
+        }
+
+        #logo {
+            margin-top: auto;
+        }
+
+        #welcome {
+            margin: auto 0;
+        }
+
+        #to-bottom {
+            margin-bottom: 20px;
+            position: relative;
         }
 
         #logo {
@@ -299,9 +312,13 @@
         /* Mobile-friendly styles */
         @media (max-width: 768px) {
             #hero {
-                height: auto;
+                height: 100vh;
                 min-height: 100vh;
-                padding: 0;
+                padding: 20px 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
             }
 
             #logo img {
@@ -309,14 +326,18 @@
                 margin-bottom: 0;
             }
 
-            #heading {
-                font-size: 2em;
-                margin-bottom: 0;
+            #welcome {
+                margin-bottom: 5px;
+                position: relative;
+                z-index: 1;
             }
 
-            #subline {
-                font-size: 1.2em;
-                margin-top: 5px;
+            #to-bottom {
+                position: absolute;
+                bottom: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2;
             }
 
             #navigation {
