@@ -835,15 +835,27 @@
 
         /* Add these styles for the menu toggle button */
         #menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1002;
             background-color: #ffffff;
             border: 1px solid #ddd;
             color: #333;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;  /* Changed from 8px to 4px for subtler rounding */
+            padding: 0;
         }
 
         #menu-toggle:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);  /* Slightly smaller scale effect */
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
