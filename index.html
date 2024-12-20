@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Jordon H Griffin</title>
     <meta name="description" content="Jordon Griffin's professional profile - Project Manager and Web Developer specializing in IoT solutions, e-commerce platforms, and business process management.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
     <style>
+        html, body {
+            overflow-x: hidden;
+            position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -458,6 +465,34 @@
         @media (max-width: 768px) {
             .tools-list {
                 grid-template-columns: 1fr;
+                padding: 0 10px;  /* Add some padding */
+                width: auto;      /* Let width be automatic */
+                max-width: 100%;  /* Ensure it doesn't exceed screen width */
+            }
+
+            .tools-category {
+                padding: 0 10px;  /* Add padding to categories */
+            }
+
+            /* Ensure the search box doesn't overflow */
+            .search-box {
+                padding: 0 10px;
+                width: auto;
+                max-width: 100%;
+            }
+
+            /* Make category filters wrap properly */
+            .category-filters {
+                padding: 0 10px;
+                width: auto;
+                max-width: 100%;
+            }
+
+            #site-content {
+                width: auto;
+                max-width: 100%;
+                padding: 20px 10px;
+                overflow-x: hidden;
             }
         }
 
