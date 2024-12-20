@@ -832,6 +832,31 @@
         [data-theme="dark"] .tools-section {
             color: #fff;
         }
+
+        /* Add these styles for the menu toggle button */
+        #menu-toggle {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        #menu-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Dark mode styles for menu toggle */
+        [data-theme="dark"] #menu-toggle {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #fff;
+        }
+
+        [data-theme="dark"] #menu-toggle:hover {
+            background-color: #3a3a3a;
+        }
     </style>
 </head>
 <body>
