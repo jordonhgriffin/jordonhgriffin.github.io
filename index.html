@@ -181,30 +181,43 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            padding: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        #to-top.show {
             opacity: 1;
             visibility: visible;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        #to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         #to-top svg {
             width: 24px;
             height: 24px;
-            fill: #666;
-            transition: fill 0.3s;
+            fill: #333;
             display: block;
         }
 
-        #to-top:hover svg {
-            fill: #000;
+        /* Dark mode styles for to-top button */
+        [data-theme="dark"] #to-top {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+
+        [data-theme="dark"] #to-top svg {
+            fill: #fff;
+        }
+
+        /* Remove the old show/hide transition since we're keeping it visible */
+        #to-top.show {
+            opacity: 1;
+            visibility: visible;
         }
 
         footer {
@@ -607,7 +620,7 @@
         /* Move these styles outside the media query and update them */
         [data-theme="dark"] {
             background-color: #1a1a1a;
-            color: #e0e0e0;
+            color: #fff;
         }
 
         [data-theme="dark"] #hero {
@@ -619,11 +632,12 @@
         }
 
         [data-theme="dark"] #navigation a {
-            color: #e0e0e0;
+            color: #fff;
         }
 
         [data-theme="dark"] .tools-list li {
             background: #2a2a2a;
+            border: 1px solid #444;
         }
 
         [data-theme="dark"] .tool-name {
@@ -632,24 +646,26 @@
 
         [data-theme="dark"] .skills-list li {
             background-color: #2a2a2a;
+            border: 1px solid #444;
         }
 
         [data-theme="dark"] footer {
             background-color: #2a2a2a;
+            color: #fff;
         }
 
         [data-theme="dark"] #mobile-navigation {
-            background-color: rgba(42, 42, 42, 0.95);
+            background-color: rgba(26, 26, 26, 0.95);
         }
 
         [data-theme="dark"] #mobile-navigation a {
-            color: #e0e0e0;
+            color: #fff;
         }
 
         [data-theme="dark"] .filter-btn {
             background: #2a2a2a;
-            color: #e0e0e0;
-            border-color: #444;
+            color: #fff;
+            border: 1px solid #444;
         }
 
         [data-theme="dark"] .filter-btn:hover {
@@ -657,18 +673,38 @@
         }
 
         [data-theme="dark"] .filter-btn.active {
-            background: #e0e0e0;
+            background: #ffffff;
             color: #1a1a1a;
+            border-color: #ffffff;
         }
 
         [data-theme="dark"] .search-box input {
             background: #2a2a2a;
-            color: #e0e0e0;
-            border-color: #444;
+            color: #fff;
+            border: 1px solid #444;
         }
 
-        [data-theme="dark"] .tool-description {
-            color: #aaa;
+        [data-theme="dark"] .search-box input::placeholder {
+            color: #999;
+        }
+
+        [data-theme="dark"] h3 {
+            color: #fff;
+            border-bottom-color: #444;
+        }
+
+        [data-theme="dark"] blockquote {
+            border-left-color: #444;
+            color: #fff;
+        }
+
+        [data-theme="dark"] .date {
+            color: #fff;
+        }
+
+        [data-theme="dark"] #to-bottom svg,
+        [data-theme="dark"] #to-top svg {
+            fill: #fff;
         }
 
         /* Theme toggle button styles */
@@ -713,6 +749,88 @@
                 bottom: 20px;
                 left: 20px;
             }
+        }
+
+        /* Update dark mode text colors */
+        [data-theme="dark"] {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        [data-theme="dark"] #heading {
+            color: #fff;
+        }
+
+        [data-theme="dark"] #subline {
+            color: #fff;
+        }
+
+        [data-theme="dark"] #navigation a {
+            color: #fff;
+        }
+
+        [data-theme="dark"] .tool-name {
+            color: #fff;
+        }
+
+        [data-theme="dark"] .tool-description {
+            color: #fff;
+        }
+
+        [data-theme="dark"] footer {
+            background-color: #2a2a2a;
+            color: #fff;
+        }
+
+        [data-theme="dark"] #mobile-navigation a {
+            color: #fff;
+        }
+
+        [data-theme="dark"] .filter-btn {
+            background: #2a2a2a;
+            color: #fff;
+            border: 1px solid #444;
+        }
+
+        [data-theme="dark"] h3 {
+            color: #fff;
+            border-bottom-color: #444;
+        }
+
+        [data-theme="dark"] p {
+            color: #fff;
+        }
+
+        [data-theme="dark"] blockquote {
+            border-left-color: #444;
+            color: #fff;
+        }
+
+        [data-theme="dark"] .date {
+            color: #fff;
+        }
+
+        [data-theme="dark"] #to-bottom svg,
+        [data-theme="dark"] #to-top svg {
+            fill: #fff;
+        }
+
+        [data-theme="dark"] .experience-item ul li {
+            color: #fff;
+        }
+
+        /* Add this to your dark mode styles */
+        [data-theme="dark"] .tools-category h4 {
+            color: #fff;
+            border-bottom-color: #444;
+        }
+
+        [data-theme="dark"] .tools-category {
+            color: #fff;
+        }
+
+        [data-theme="dark"] .tools-section {
+            color: #fff;
         }
     </style>
 </head>
