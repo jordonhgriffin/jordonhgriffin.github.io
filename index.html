@@ -40,21 +40,22 @@
         }
 
         #logo img {
-            height: 300px;
+            height: 250px;
             width: auto;
             margin-bottom: 0;
         }
 
         #welcome {
             margin-top: 20px;
+            margin-bottom: 30px;
         }
 
         #to-bottom {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
+            position: relative;
+            bottom: auto;
+            left: auto;
+            transform: none;
+            margin-top: 0;
         }
 
         #logo {
@@ -322,25 +323,42 @@
         /* Mobile-friendly styles */
         @media (max-width: 768px) {
             #hero {
-                height: 100vh;
+                height: 70vh;
                 padding: 0;
                 justify-content: center;
             }
 
             #logo {
                 margin-top: 0;
+                margin-bottom: 0;
             }
 
             #logo img {
-                height: 200px;
+                height: 300px;
+                margin-bottom: 0;
+                padding-bottom: 0;
             }
 
             #welcome {
-                margin-top: 20px;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+
+            #heading {
+                font-size: 1.8em;
+                margin-top: 0;
+                margin-bottom: 5px;
+                white-space: nowrap;
             }
 
             #subline {
-                margin-bottom: 20px;
+                margin-top: 5px;
+                margin-bottom: 15px;
+                font-size: 1.2em;
+            }
+
+            #to-bottom {
+                margin-top: 0;
             }
         }
 
