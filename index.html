@@ -31,7 +31,8 @@
             align-items: center;
             position: relative;
             background-color: #f4f4f4;
-            text-align: center; /* Center text in hero */
+            text-align: center;
+            overflow: visible;
         }
 
         #logo {
@@ -42,7 +43,7 @@
         }
 
         #logo img {
-            height: 450px; /* Adjust this value as needed */
+            height: 450px;
             width: auto;
             padding-bottom: 0px;
             margin-bottom: 0px;
@@ -53,6 +54,7 @@
 
         #welcome {
             text-align: center;
+            margin-bottom: 20px;
         }
 
         #heading {
@@ -71,10 +73,10 @@
         #navigation {
             position: fixed;
             top: 50%;
-            right: 40px; /* Ensure it's on the right side */
+            right: 3%;
             transform: translateY(-50%);
             z-index: 1000;
-            display: none; /* Hide by default */
+            display: none;
         }
 
         #navigation ul {
@@ -125,13 +127,18 @@
         }
 
         #to-bottom {
-            position: absolute;  /* Keep absolute for bottom button */
-            bottom: 20px;
+            position: absolute;
+            left: 50%;
+            bottom: 40px;
+            transform: translateX(-50%);
+            margin: 0;
+            z-index: 1;
         }
 
         #to-top {
-            bottom: 20px;
-            right: 20px;
+            position: fixed;
+            bottom: 2%;
+            right: 2%;
         }
 
         #to-bottom:hover, #to-top:hover {
@@ -159,10 +166,10 @@
         }
 
         #site-content {
-            max-width: 800px; /* Reduce max-width for better readability */
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
-            text-align: center; /* Center text content */
+            text-align: center;
         }
 
         h3 {
@@ -236,7 +243,7 @@
 
         .experience-item, .education-item {
             margin-bottom: 30px;
-            text-align: left; /* Keep experience and education items left-aligned */
+            text-align: left;
         }
 
         .experience-item h4, .education-item h4 {
@@ -260,7 +267,7 @@
             flex-wrap: wrap;
             list-style-type: none;
             padding: 0;
-            justify-content: center; /* Center skill items */
+            justify-content: center;
         }
 
         .skills-list li {
@@ -293,6 +300,7 @@
         @media (max-width: 768px) {
             #hero {
                 height: auto;
+                min-height: 100vh;
                 padding: 40px 20px;
             }
 
@@ -309,7 +317,7 @@
             }
 
             #navigation {
-                display: none; /* Ensure it's hidden on mobile */
+                display: none;
             }
 
             #menu-toggle {
@@ -359,13 +367,13 @@
 
             #mobile-navigation ul {
                 list-style-type: none;
-                padding: 60px 20px 20px;
+                padding: 15% 5% 5%;
                 margin: 0;
-                text-align: center;  /* Center the text */
+                text-align: center;
             }
 
             #mobile-navigation li {
-                margin: 20px 0;
+                margin: 5% 0;
             }
 
             /* Update mobile navigation hover effects for both light and dark modes */
@@ -395,6 +403,18 @@
 
             #site-content {
                 padding: 20px;
+            }
+
+            #to-bottom {
+                bottom: 30px;
+            }
+
+            #hero {
+                padding-bottom: 15vh;
+            }
+
+            #welcome {
+                margin-bottom: 15px;
             }
         }
 
@@ -437,7 +457,7 @@
         .social-button img {
             width: 20px;
             height: 20px;
-            filter: invert(1); /* This makes the black butterfly white to match other icons */
+            filter: invert(1);
         }
 
         .tools-section {
@@ -501,13 +521,13 @@
         @media (max-width: 768px) {
             .tools-list {
                 grid-template-columns: 1fr;
-                padding: 0 10px;  /* Add some padding */
-                width: auto;      /* Let width be automatic */
-                max-width: 100%;  /* Ensure it doesn't exceed screen width */
+                padding: 0 10px;
+                width: auto;
+                max-width: 100%;
             }
 
             .tools-category {
-                padding: 0 10px;  /* Add padding to categories */
+                padding: 0 10px;
             }
 
             /* Ensure the search box doesn't overflow */
@@ -545,14 +565,14 @@
             object-fit: contain;
             background-color: transparent;
             border-radius: 8px;
-            padding: 4px;  /* Add some padding */
+            padding: 4px;
         }
 
         /* Specific handling for SVG icons */
         .tool-logo[src$=".svg"] {
             filter: brightness(0.95);
             background-color: transparent;
-            padding: 2px;  /* Slightly less padding for SVGs */
+            padding: 2px;
         }
 
         /* Fallback for failed image loads */
@@ -733,8 +753,8 @@
         /* Theme toggle button styles */
         #theme-toggle {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 2%;
+            left: 2%;
             z-index: 1002;
             background-color: #ffffff;
             border: 1px solid #ddd;
@@ -769,8 +789,8 @@
         /* Update mobile styles */
         @media (max-width: 768px) {
             #theme-toggle {
-                bottom: 20px;
-                left: 20px;
+                bottom: 2%;
+                left: 2%;
             }
         }
 
@@ -859,8 +879,8 @@
         /* Add these styles for the menu toggle button */
         #menu-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 2%;
+            right: 2%;
             z-index: 1002;
             background-color: #ffffff;
             border: 1px solid #ddd;
@@ -873,12 +893,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 4px;  /* Changed from 8px to 4px for subtler rounding */
+            border-radius: 4px;
             padding: 0;
         }
 
         #menu-toggle:hover {
-            transform: scale(1.05);  /* Slightly smaller scale effect */
+            transform: scale(1.05);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
@@ -937,18 +957,18 @@
         /* Update the ChatGPT logo styles */
         .chatgpt-logo {
             content: url('chatgpt-black.png');
-            width: 35px;  /* Slightly smaller for black version */
+            width: 35px;
             height: 35px;
             object-fit: contain;
-            margin: 2.5px;  /* Add margin to keep the total space consistent */
+            margin: 2.5px;
         }
 
         [data-theme="dark"] .chatgpt-logo {
             content: url('chatgpt-white.png');
-            width: 40px;  /* Larger for white version */
+            width: 40px;
             height: 40px;
             object-fit: contain;
-            margin: 0;  /* Remove margin since it's larger */
+            margin: 0;
         }
 
         /* Update the scroll down button icon */
@@ -1595,7 +1615,7 @@
     <div id="to-top">
         <a href="#hero">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 10l-6 6-6-6z"/>
             </svg>
         </a>
     </div>
