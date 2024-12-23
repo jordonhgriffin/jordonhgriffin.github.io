@@ -324,7 +324,7 @@
         /* Mobile-friendly styles */
         @media (max-width: 768px) {
             #hero {
-                height: 85vh;
+                height: 70vh;
                 padding: 0;
                 justify-content: flex-start;
                 padding-top: 60px;
@@ -343,7 +343,7 @@
 
             #welcome {
                 margin-top: 10px;
-                margin-bottom: 40px;
+                margin-bottom: 20px;
             }
 
             #heading {
@@ -361,8 +361,8 @@
             }
 
             #to-bottom {
-                position: absolute;
-                bottom: .3vh;
+                position: fixed;
+                bottom: 2%;
                 left: 50%;
                 transform: translateX(-50%);
                 width: 40px;
@@ -372,6 +372,7 @@
                 align-items: center;
                 justify-content: center;
                 padding: 3px;
+                z-index: 1002;
             }
 
             #to-bottom svg {
