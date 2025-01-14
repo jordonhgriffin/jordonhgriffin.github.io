@@ -2016,6 +2016,38 @@
         const sections = document.querySelectorAll('h3[id], #hero');
         const navLinks = document.querySelectorAll('#navigation a');
 
+        // Navigation active state function
+        function updateActiveLink() {
+            const scrollPosition = window.scrollY;
+            let activeSection = '';
+
+            // Find the current active section
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = sections[i];
+                const sectionTop = section.offsetTop - 100; // Add offset for better detection
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop) {
+                    activeSection = section.getAttribute('id');
+                    break;
+                }
+            }
+
+            // Special case for the hero section
+            if (scrollPosition < sections[0].offsetTop - 100) {
+                activeSection = 'hero';
+            }
+
+            // Update active state of navigation links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href').substring(1);
+                if (href === activeSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
         // Theme functions
         function getCurrentTheme() {
             const savedTheme = localStorage.getItem('theme');
@@ -2036,55 +2068,11 @@
                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>';
         }
 
-        // Navigation active state function
-        function updateActiveLink() {
-            let currentSection = '';
-            const scrollPosition = window.scrollY + 300;
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                const href = link.getAttribute('href').substring(1);
-                if (href === currentSection) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Handle the case when at the top of the page
-            if (window.scrollY < 300) {
-                navLinks.forEach(link => {
-                    if (link.getAttribute('href') === '#hero') {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        }
-
-        // Add smooth scroll function
-        function smoothScrollTo(element, event) {
-            if (event) {
-                event.preventDefault();
-            }
-            const targetElement = document.querySelector(element);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        }
-
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             // Set initial theme
-            setTheme(getCurrentTheme());
+            const initialTheme = getCurrentTheme();
+            setTheme(initialTheme);
             
             // Theme toggle event
             themeToggle.addEventListener('click', () => {
@@ -2099,62 +2087,77 @@
                 setTheme(theme);
             });
 
-            // Add click events to all navigation links
-            document.querySelectorAll('#navigation a, #mobile-navigation a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const href = link.getAttribute('href');
-                    if (href.startsWith('#')) {
-                        e.preventDefault();
-                        smoothScrollTo(href);
-                        
-                        // Close mobile menu if open
-                        if (mobileNavigation.classList.contains('open')) {
-                            mobileNavigation.classList.remove('open');
-                            overlay.classList.remove('open');
-                            document.body.style.overflow = '';
-                        }
-                    }
-                });
-            });
-
-            // Handle scroll to top button
-            document.querySelector('#to-top a').addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
             // Initialize navigation
             updateActiveLink();
+        });
 
-            // Mobile menu initialization
-            menuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                mobileNavigation.classList.toggle('open');
-                overlay.classList.toggle('open');
-                document.body.style.overflow = mobileNavigation.classList.contains('open') ? 'hidden' : '';
-            });
+        // Add scroll event listener for navigation
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(updateActiveLink);
+        });
 
-            overlay.addEventListener('click', () => {
-                mobileNavigation.classList.remove('open');
-                overlay.classList.remove('open');
-                document.body.style.overflow = '';
-            });
+        // Add smooth scroll function
+        function smoothScrollTo(element, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            const targetElement = document.querySelector(element);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
 
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!mobileNavigation.contains(e.target) && !menuToggle.contains(e.target)) {
-                    mobileNavigation.classList.remove('open');
-                    overlay.classList.remove('open');
-                    document.body.style.overflow = '';
+        // Add click events to all navigation links
+        document.querySelectorAll('#navigation a, #mobile-navigation a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    smoothScrollTo(href);
+                    
+                    // Close mobile menu if open
+                    if (mobileNavigation.classList.contains('open')) {
+                        mobileNavigation.classList.remove('open');
+                        overlay.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
                 }
             });
         });
 
-        // Add scroll event listener for navigation
-        window.addEventListener('scroll', updateActiveLink);
+        // Handle scroll to top button
+        document.querySelector('#to-top a').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile menu initialization
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileNavigation.classList.toggle('open');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = mobileNavigation.classList.contains('open') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileNavigation.classList.remove('open');
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileNavigation.contains(e.target) && !menuToggle.contains(e.target)) {
+                mobileNavigation.classList.remove('open');
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
     </script>
     <footer>
         &copy; 2024 Jordon Harrison Griffin. All rights reserved.
