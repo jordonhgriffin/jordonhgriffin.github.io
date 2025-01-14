@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
     <style>
+        /* Add these new styles at the root level */
+        :root {
+            --tron-blue: #0ff;
+            --tron-blue-glow: rgba(0, 255, 255, 0.5);
+            --tron-grid: rgba(0, 255, 255, 0.1);
+            --dark-bg: #ffffff;
+            --darker-bg: #f4f4f4;
+            --glow-color: #ffffff;
+            --glow-effect: rgba(0, 0, 0, 0.3);
+            --grid-color: rgba(0, 0, 0, 0.1);
+            --text-color: #333;
+            --border-color: #ffffff;
+        }
+
         html, body {
             overflow-x: hidden;
             position: relative;
@@ -18,9 +32,14 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
+            color: var(--text-color);
             line-height: 1.6;
-            background-color: #fafafa;
+            background-color: var(--dark-bg);
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center center;
         }
 
         #hero {
@@ -30,10 +49,25 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            background-color: #f4f4f4;
+            background-color: var(--darker-bg);
             text-align: center;
             padding: 0;
             margin-bottom: 8vh;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 48%, var(--grid-color) 49%, var(--grid-color) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, var(--grid-color) 49%, var(--grid-color) 51%, transparent 52%);
+            background-size: 100px 100px;
+            opacity: 0.3;
         }
 
         #logo {
@@ -44,15 +78,25 @@
             background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 50%;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px var(--glow-effect);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid var(--border-color);
             width: 400px;
             height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px var(--glow-effect);
+            }
+            to {
+                box-shadow: 0 0 30px var(--glow-effect);
+            }
         }
 
         #logo img {
@@ -69,10 +113,10 @@
             background: rgba(255, 255, 255, 0.9);
             padding: 15px 30px;
             border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px var(--glow-effect);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid var(--border-color);
         }
 
         [data-theme="dark"] #logo {
@@ -121,6 +165,7 @@
             position: fixed;
             bottom: 2%;
             right: 2%;
+            z-index: 1003;
         }
 
         #to-bottom:hover {
@@ -150,46 +195,47 @@
         #site-content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
+            padding: 0 20px;
         }
 
-        h3 {
-            border-bottom: none;
-            padding: 20px;
+        /* Section island styling */
+        .section-island {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 0 15px var(--glow-effect);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+
+        [data-theme="dark"] .section-island {
+            background: rgba(42, 42, 42, 0.8);
+            border: 1px solid rgba(68, 68, 68, 0.3);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        /* Section title styling */
+        .section-island h3 {
+            text-align: center;
             font-size: 1.8em;
             font-weight: 300;
-            margin-top: 60px;
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 0 0 30px 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-color);
         }
 
-        [data-theme="dark"] h3 {
-            background: rgba(42, 42, 42, 0.9);
-            border: 1px solid rgba(68, 68, 68, 0.3);
-            color: #fff;
+        /* Update the HTML structure for each section */
+        #site-content > h3:first-child {
+            margin-top: 0;
         }
 
-        .content-section {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 30px;
-            margin-bottom: 40px;
-            text-align: left;
-        }
-
-        [data-theme="dark"] .content-section {
-            background: rgba(42, 42, 42, 0.9);
-            border: 1px solid rgba(68, 68, 68, 0.3);
+        /* Update footer spacing */
+        footer {
+            margin-top: 50px;
         }
 
         .experience-item, .education-item {
@@ -229,21 +275,23 @@
         }
 
         .cta-button {
-            background-color: #000;
-            color: #fff;
-            border: none;
+            background-color: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            box-shadow: 0 0 15px var(--glow-effect);
+            transition: all 0.3s ease;
             padding: 10px 20px;
             cursor: pointer;
             font-size: 1em;
-            transition: background-color 0.3s;
         }
 
         .cta-button:hover {
-            background-color: #333;
+            background-color: var(--text-color);
+            color: var(--dark-bg);
         }
 
         .cta-button a {
-            color: #fff;
+            color: inherit;
             text-decoration: none;
         }
 
@@ -255,10 +303,20 @@
         footer {
             text-align: center;
             padding: 20px;
-            color: #666;
+            color: var(--text-color);
             font-size: 0.9em;
-            margin-top: 40px;
-            background-color: #f4f4f4;
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 0 15px var(--glow-effect);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        [data-theme="dark"] footer {
+            background: rgba(42, 42, 42, 0.9);
+            border-top: 1px solid rgba(68, 68, 68, 0.3);
+            color: #fff;
         }
 
         /* Dark mode styles */
@@ -270,8 +328,17 @@
 
         /* Move these styles outside the media query and update them */
         [data-theme="dark"] {
-            background-color: #1a1a1a;
-            color: #fff;
+            --glow-color: #f3f3f3;
+            --glow-effect: rgba(243, 243, 243, 0.5);
+            --grid-color: rgba(243, 243, 243, 0.1);
+            --dark-bg: #1a1a1a;
+            --darker-bg: #000911;
+            --text-color: #ffffff;
+            --border-color: var(--glow-color);
+        }
+
+        [data-theme="dark"] body {
+            background-color: var(--dark-bg);
         }
 
         [data-theme="dark"] #hero {
@@ -404,6 +471,10 @@
                 height: 80px;
                 padding-right: 5px;
             }
+
+            #to-top {
+                bottom: calc(2% + 50px);
+            }
         }
 
         /* Hide mobile menu and toggle button on larger screens */
@@ -425,21 +496,23 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #000;
+            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: background-color 0.3s;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 0 15px var(--glow-effect);
         }
 
         .social-button:hover {
-            background-color: #333;
+            background-color: var(--text-color);
         }
 
         .social-button svg {
             width: 20px;
             height: 20px;
-            fill: #fff;
+            fill: var(--text-color);
         }
 
         .social-button img {
@@ -449,19 +522,18 @@
         }
 
         .tools-section {
-            margin: 30px 0;
+            margin: 0;
         }
 
         .tools-category {
-            margin-bottom: 40px;
-            text-align: left;
+            margin-bottom: 20px;
         }
 
         .tools-category h4 {
             font-size: 1.4em;
-            margin-bottom: 20px;
-            color: #333;
-            border-bottom: 1px solid #eee;
+            margin: 0 0 15px 0;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
         }
 
@@ -474,14 +546,15 @@
         }
 
         .tools-list li {
-            background: #f8f8f8;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
             border-radius: 8px;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .tools-list li:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px var(--glow-effect);
+            transform: translateY(-5px);
         }
 
         .tools-list a {
@@ -496,13 +569,13 @@
             font-weight: 500;
             font-size: 1.1em;
             margin-bottom: 8px;
-            color: #000;
+            color: var(--text-color);
         }
 
         .tool-description {
             display: block;
             font-size: 0.9em;
-            color: #666;
+            color: var(--text-color);
             line-height: 1.4;
         }
 
@@ -568,72 +641,46 @@
             content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="%23666" d="M21 5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5zM5 19V5h14l.002 14H5z"/></svg>');
         }
 
+        /* Update tools controls styling */
         .tools-controls {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .search-box {
-            margin-bottom: 20px;
-        }
-
-        .search-box input {
+            margin-bottom: 15px;
             width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            background-color: #ffffff;
-            color: #333;
-            transition: all 0.3s ease;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: #666;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        /* Dark mode styles for search box */
-        [data-theme="dark"] .search-box input {
-            background-color: #2a2a2a;
-            border-color: #444;
-            color: #fff;
-        }
-
-        [data-theme="dark"] .search-box input:focus {
-            border-color: #666;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        [data-theme="dark"] .search-box input::placeholder {
-            color: #888;
         }
 
         .category-filters {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            justify-content: center;
         }
 
         .filter-btn {
             padding: 8px 16px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-color);
             border-radius: 20px;
-            background: white;
+            background: transparent;
             cursor: pointer;
             transition: all 0.3s ease;
-            color: #333;
+            color: var(--text-color);
         }
 
         .filter-btn:hover {
-            background: #f0f0f0;
+            background: var(--text-color);
+            color: var(--dark-bg);
         }
 
         .filter-btn.active {
-            background: #000;
-            color: #fff;
-            border-color: #000;
+            background: var(--text-color);
+            color: var(--dark-bg);
+            border-color: var(--border-color);
         }
 
         .tools-list li {
@@ -685,6 +732,8 @@
 
         [data-theme="dark"] #logo {
             color: #fff;
+            border-color: var(--border-color);
+            box-shadow: 0 0 20px var(--glow-effect);
         }
 
         [data-theme="dark"] #navigation a {
@@ -697,7 +746,7 @@
         }
 
         [data-theme="dark"] .tool-name {
-            color: #fff;
+            color: var(--text-color);
         }
 
         [data-theme="dark"] .skills-list li {
@@ -769,12 +818,12 @@
             bottom: 2%;
             left: 2%;
             z-index: 1002;
-            background-color: #ffffff;
-            border: 1px solid #ddd;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
             cursor: pointer;
             padding: 8px;
             border-radius: 50%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px var(--glow-effect);
             transition: all 0.3s ease;
             width: 40px;
             height: 40px;
@@ -793,7 +842,7 @@
         #theme-toggle svg {
             width: 24px;
             height: 24px;
-            fill: #333;
+            fill: var(--text-color);
         }
 
         /* Dark mode specific styles */
@@ -803,7 +852,7 @@
         }
 
         [data-theme="dark"] #theme-toggle svg {
-            fill: #fff;
+            fill: var(--text-color);
         }
 
         /* Update mobile styles */
@@ -902,10 +951,10 @@
             top: 2%;
             right: 2%;
             z-index: 1002;
-            background-color: #ffffff;
-            border: 1px solid #ddd;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
             color: #333;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px var(--glow-effect);
             transition: all 0.3s ease;
             width: 40px;
             height: 40px;
@@ -944,6 +993,7 @@
             z-index: 1001;
             overflow-y: auto;
             transition: right 0.3s ease-in-out;
+            border-left: 1px solid var(--border-color);
         }
 
         #mobile-navigation.open {
@@ -1045,13 +1095,13 @@
         }
 
         /* Common button styles */
-        #to-bottom, #to-top, #theme-toggle {
+        #to-bottom, #to-top, #theme-toggle, #menu-toggle {
             width: 40px;
             height: 40px;
-            background-color: #ffffff;
-            border: 1px solid #ddd;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
             border-radius: 50%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px var(--glow-effect);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -1061,7 +1111,7 @@
         }
 
         /* Remove the general hover effect for to-bottom */
-        #to-top:hover, #theme-toggle:hover {
+        #to-top:hover, #theme-toggle:hover, #menu-toggle:hover {
             transform: scale(1.1);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
@@ -1082,10 +1132,10 @@
             background: rgba(255, 255, 255, 0.9);
             padding: 12px;
             border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px var(--glow-effect);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
             width: 100px;
             display: none;
@@ -1115,7 +1165,7 @@
 
         #navigation a {
             text-decoration: none;
-            color: #000;
+            color: var(--text-color);
             font-weight: 300;
             font-size: 1.1em;
             transition: all 0.3s ease;
@@ -1128,7 +1178,7 @@
 
         #navigation a:hover {
             opacity: 1;
-            background: rgba(0, 0, 0, 0.1);
+            background: var(--grid-color);
             transform: scale(1.05);
         }
 
@@ -1279,7 +1329,7 @@
 
         #navigation a.active {
             opacity: 1;
-            background: rgba(0, 0, 0, 0.1);
+            background: var(--grid-color);
             transform: scale(1.05);
             font-weight: 500;
         }
@@ -1294,12 +1344,11 @@
         }
 
         [data-theme="dark"] body {
-            background-color: #1a1a1a;
-            color: #fff;
+            background-color: var(--dark-bg);
         }
 
         [data-theme="dark"] #site-content {
-            background-color: #1a1a1a;
+            background-color: transparent;
         }
 
         [data-theme="dark"] .tools-list li {
@@ -1383,6 +1432,40 @@
         [data-theme="dark"] #menu-toggle {
             color: #fff;
         }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--glow-effect);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--border-color);
+            box-shadow: 0 0 20px var(--glow-effect);
+        }
+
+        /* Dark mode styles for search box */
+        [data-theme="dark"] .search-box input {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #fff;
+        }
+
+        [data-theme="dark"] .search-box input:focus {
+            border-color: #666;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        [data-theme="dark"] .search-box input::placeholder {
+            color: #888;
+        }
     </style>
 </head>
 <body>
@@ -1423,8 +1506,8 @@
         </ul>
     </nav>
     <div id="site-content">
-        <h3 id="about">About Me</h3>
-        <div class="content-section">
+        <div class="section-island">
+            <h3 id="about">About Me</h3>
             <p>Project Manager and Digital Solutions Specialist with experience in supply chain management, IoT solutions, and
                 process optimization. Skilled in streamlining workflows, managing inventory logistics, and driving data-driven
                 improvements in manufacturing and business environments. Adept at bridging the gap between physical and digital
@@ -1433,8 +1516,8 @@
             <p>In all that I do, I hold three guiding principles dear: building for others, optimizing efficiency, and embracing enjoyment along the way. I'm driven by the desire to find like-minded individuals who share these values.</p>
         </div>
 
-        <h3 id="experience">Professional Experience</h3>
-        <div class="content-section">
+        <div class="section-island">
+            <h3 id="experience">Professional Experience</h3>
             <div class="experience-item">
                 <h4>Project Manager - A Rose Affair</h4>
                 <p class="date">2021 - 2024</p>
@@ -1472,8 +1555,8 @@
             </div>
         </div>
 
-        <h3 id="education">Education</h3>
-        <div class="content-section">
+        <div class="section-island">
+            <h3 id="education">Education</h3>
             <div class="education-item">
                 <div class="education-container">
                     <div class="education-info">
@@ -1488,8 +1571,8 @@
             </div>
         </div>
 
-        <h3 id="tools">My Tools & Applications</h3>
-        <div class="content-section">
+        <div class="section-island">
+            <h3 id="tools">My Tools & Applications</h3>
             <div class="tools-controls">
                 <div class="search-box">
                     <input type="text" id="toolSearch" placeholder="Search tools...">
@@ -1992,8 +2075,8 @@
             </div>
         </div>
 
-        <h3 id="contact">Contact</h3>
-        <div class="content-section">
+        <div class="section-island">
+            <h3 id="contact">Contact</h3>
             <p>Interested in collaborating or have any questions? Feel free to reach out!</p>
             <div id="contact-info">
                 <p>Location: Douglasville, GA</p>
@@ -2040,28 +2123,28 @@
 
         // Navigation active state function
         function updateActiveLink() {
-            const scrollPosition = window.scrollY;
+            const scrollPosition = window.scrollY + 100; // Add offset for better detection
+            const sections = document.querySelectorAll('.section-island');
             let activeSection = '';
 
             // Find the current active section
-            for (let i = sections.length - 1; i >= 0; i--) {
-                const section = sections[i];
-                const sectionTop = section.offsetTop - 100; // Add offset for better detection
-                const sectionBottom = sectionTop + section.offsetHeight;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.querySelector('h3').getAttribute('id');
                 
-                if (scrollPosition >= sectionTop) {
-                    activeSection = section.getAttribute('id');
-                    break;
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    activeSection = sectionId;
                 }
-            }
+            });
 
-            // Special case for the hero section
-            if (scrollPosition < sections[0].offsetTop - 100) {
+            // Special case for hero section
+            if (scrollPosition < sections[0].offsetTop) {
                 activeSection = 'hero';
             }
 
             // Update active state of navigation links
-            navLinks.forEach(link => {
+            document.querySelectorAll('#navigation a').forEach(link => {
                 link.classList.remove('active');
                 const href = link.getAttribute('href').substring(1);
                 if (href === activeSection) {
@@ -2180,9 +2263,74 @@
                 document.body.style.overflow = '';
             }
         });
+
+        // Tools filtering functionality
+        const toolSearch = document.getElementById('toolSearch');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const toolItems = document.querySelectorAll('.tools-list li');
+        let activeCategories = new Set(['all']);
+
+        // Function to update tool visibility based on search and filters
+        function updateToolVisibility() {
+            const searchTerm = toolSearch.value.toLowerCase();
+            
+            toolItems.forEach(item => {
+                const toolName = item.querySelector('.tool-name').textContent.toLowerCase();
+                const toolDescription = item.querySelector('.tool-description').textContent.toLowerCase();
+                const toolCategory = item.closest('.tools-category').querySelector('h4').textContent.toLowerCase();
+                
+                const matchesSearch = toolName.includes(searchTerm) || toolDescription.includes(searchTerm);
+                const matchesCategory = activeCategories.has('all') || activeCategories.has(toolCategory);
+                
+                item.style.display = matchesSearch && matchesCategory ? 'block' : 'none';
+            });
+        }
+
+        // Add click handlers for filter buttons
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category').toLowerCase();
+                
+                if (category === 'all') {
+                    // If 'All' is clicked, clear other selections
+                    activeCategories.clear();
+                    activeCategories.add('all');
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                } else {
+                    // Remove 'all' category when specific category is selected
+                    activeCategories.delete('all');
+                    const allButton = document.querySelector('.filter-btn[data-category="all"]');
+                    allButton.classList.remove('active');
+                    
+                    // Toggle the clicked category
+                    if (button.classList.contains('active')) {
+                        button.classList.remove('active');
+                        activeCategories.delete(category);
+                        // If no categories are selected, default to 'all'
+                        if (activeCategories.size === 0) {
+                            activeCategories.add('all');
+                            allButton.classList.add('active');
+                        }
+                    } else {
+                        button.classList.add('active');
+                        activeCategories.add(category);
+                    }
+                }
+                
+                updateToolVisibility();
+            });
+        });
+
+        // Add search functionality
+        toolSearch.addEventListener('input', updateToolVisibility);
+
+        // Initialize with 'all' selected
+        document.querySelector('.filter-btn[data-category="all"]').classList.add('active');
+        updateToolVisibility();
     </script>
     <footer>
-        &copy; 2024 Jordon Harrison Griffin. All rights reserved.
+        Last Updated January 14, 2025
     </footer>
 </body>
 </html>
