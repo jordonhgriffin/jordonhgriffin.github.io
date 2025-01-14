@@ -2005,6 +2005,19 @@
             }
         }
 
+        // Add smooth scroll function
+        function smoothScrollTo(element, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            const targetElement = document.querySelector(element);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             // Set initial theme
@@ -2021,6 +2034,33 @@
             prefersDarkScheme.addEventListener('change', (e) => {
                 const theme = e.matches ? 'dark' : 'light';
                 setTheme(theme);
+            });
+
+            // Add click events to all navigation links
+            document.querySelectorAll('#navigation a, #mobile-navigation a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        smoothScrollTo(href);
+                        
+                        // Close mobile menu if open
+                        if (mobileNavigation.classList.contains('open')) {
+                            mobileNavigation.classList.remove('open');
+                            overlay.classList.remove('open');
+                            document.body.style.overflow = '';
+                        }
+                    }
+                });
+            });
+
+            // Handle scroll to top button
+            document.querySelector('#to-top a').addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
 
             // Initialize navigation
