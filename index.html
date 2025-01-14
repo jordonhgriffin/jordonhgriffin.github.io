@@ -63,27 +63,7 @@
 
         #welcome {
             margin-top: 20px;
-            margin-bottom: 30px;
-        }
-
-        #to-bottom {
-            position: absolute;
-            left: 50%;
-            bottom: 25px;
-            transform: translateX(-50%);
-            margin: 0;
-            z-index: 1;
-        }
-
-        [data-theme="dark"] #logo {
-            background: rgba(42, 42, 42, 0.9);
-            border: 1px solid rgba(68, 68, 68, 0.3);
-        }
-
-        #welcome {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 60px;
             background: rgba(255, 255, 255, 0.9);
             padding: 20px 40px;
             border-radius: 16px;
@@ -91,6 +71,11 @@
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="dark"] #logo {
+            background: rgba(42, 42, 42, 0.9);
+            border: 1px solid rgba(68, 68, 68, 0.3);
         }
 
         [data-theme="dark"] #welcome {
@@ -124,7 +109,7 @@
         #to-bottom {
             position: absolute;
             left: 50%;
-            bottom: 40px;
+            bottom: -20px;
             transform: translateX(-50%);
             margin: 0;
             z-index: 1;
@@ -1148,7 +1133,14 @@
             height: 24px;
             fill: #333;
             display: block;
-            transform: rotate(180deg);
+        }
+
+        #to-top path {
+            d: path("M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z");
+        }
+
+        [data-theme="dark"] #to-top svg {
+            fill: #fff;
         }
     </style>
 </head>
@@ -1791,7 +1783,7 @@
     <div id="to-top">
         <a href="#hero">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/>
             </svg>
         </a>
     </div>
