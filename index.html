@@ -2274,15 +2274,37 @@
         function updateToolVisibility() {
             const searchTerm = toolSearch.value.toLowerCase();
             
-            toolItems.forEach(item => {
-                const toolName = item.querySelector('.tool-name').textContent.toLowerCase();
-                const toolDescription = item.querySelector('.tool-description').textContent.toLowerCase();
-                const toolCategory = item.closest('.tools-category').querySelector('h4').textContent.toLowerCase();
+            // Get all tool categories
+            const toolCategories = document.querySelectorAll('.tools-category');
+            
+            toolCategories.forEach(category => {
+                const categoryName = category.querySelector('h4').textContent.toLowerCase();
+                const toolsInCategory = category.querySelectorAll('.tools-list li');
+                let hasVisibleTools = false;
                 
-                const matchesSearch = toolName.includes(searchTerm) || toolDescription.includes(searchTerm);
-                const matchesCategory = activeCategories.has('all') || activeCategories.has(toolCategory);
+                toolsInCategory.forEach(item => {
+                    const toolName = item.querySelector('.tool-name').textContent.toLowerCase();
+                    const toolDescription = item.querySelector('.tool-description').textContent.toLowerCase();
+                    
+                    const matchesSearch = toolName.includes(searchTerm) || toolDescription.includes(searchTerm);
+                    const matchesCategory = activeCategories.has('all') || activeCategories.has(categoryName);
+                    
+                    item.style.display = matchesSearch && matchesCategory ? 'block' : 'none';
+                    
+                    if (matchesSearch && matchesCategory) {
+                        hasVisibleTools = true;
+                    }
+                });
                 
-                item.style.display = matchesSearch && matchesCategory ? 'block' : 'none';
+                // Only show category if it has visible tools AND either:
+                // 1. 'all' is selected, OR
+                // 2. this specific category is selected
+                const shouldShowCategory = hasVisibleTools && (activeCategories.has('all') || activeCategories.has(categoryName));
+                
+                // Hide/show the category header
+                category.querySelector('h4').style.display = shouldShowCategory ? 'block' : 'none';
+                // Hide/show the tools list
+                category.querySelector('.tools-list').style.display = shouldShowCategory ? 'grid' : 'none';
             });
         }
 
