@@ -894,15 +894,19 @@
         .tools-controls {
             margin: 0 auto 30px;
             padding: 0 20px;
+            max-width: 600px; /* Add max-width for better desktop layout */
         }
 
         .search-box {
             margin-bottom: 20px;
             width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         .search-box input {
             width: 100%;
+            max-width: 500px; /* Add max-width for better control */
             padding: 12px 16px;
             border: 2px solid var(--border-color);
             border-radius: 16px;
@@ -915,9 +919,33 @@
             -webkit-backdrop-filter: blur(5px);
         }
 
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--text-color);
+        /* Mobile adjustments for tools section */
+        @media (max-width: 768px) {
+            .tools-controls {
+                padding: 0 15px;
+                margin: 0 auto 20px;
+            }
+
+            .search-box input {
+                font-size: 14px;
+                padding: 10px 14px;
+                max-width: 100%; /* Allow full width on mobile */
+            }
+        }
+
+        /* Dark mode adjustments for search box */
+        [data-theme="dark"] .search-box input {
+            background-color: rgba(42, 42, 42, 0.9);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="dark"] .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        [data-theme="dark"] .search-box input:focus {
+            border-color: rgba(255, 255, 255, 0.4);
             box-shadow: 0 0 20px var(--glow-effect);
         }
 
@@ -953,56 +981,6 @@
             background: var(--text-color);
             color: var(--dark-bg);
             border-color: var(--text-color);
-        }
-
-        /* Mobile adjustments for tools section */
-        @media (max-width: 768px) {
-            .tools-controls {
-                padding: 0 15px;
-            }
-
-            .category-filters {
-                padding: 0 5px;
-                gap: 8px;
-            }
-
-            .filter-btn {
-                padding: 6px 12px;
-                font-size: 13px;
-                flex: 0 0 auto;
-            }
-
-            .search-box input {
-                font-size: 14px;
-                padding: 10px 14px;
-            }
-        }
-
-        /* Dark mode adjustments for tools section */
-        [data-theme="dark"] .search-box input {
-            background-color: rgba(42, 42, 42, 0.9);
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        [data-theme="dark"] .search-box input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        [data-theme="dark"] .filter-btn {
-            background-color: rgba(42, 42, 42, 0.9);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        [data-theme="dark"] .filter-btn:hover {
-            background-color: #fff;
-            color: #2a2a2a;
-        }
-
-        [data-theme="dark"] .filter-btn.active {
-            background-color: #fff;
-            color: #2a2a2a;
-            border-color: #fff;
         }
 
         .tools-list li {
