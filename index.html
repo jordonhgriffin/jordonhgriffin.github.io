@@ -60,70 +60,75 @@
 
         /* Logo styles */
         #logo {
-            width: 15%;
-            min-width: 80px;
-            max-width: 150px;
+            width: 100%;
             height: auto;
             aspect-ratio: 1;
             display: flex;
             align-items: center;
             justify-content: center;
             background: transparent;
-            padding: 5%;
-            margin: 0 auto 5%;
+            padding: 3%;
+            margin: 4%;
             position: relative;
             z-index: 30;
-        }
-
-        @media (max-width: 768px) {
-            #logo {
-                width: 100%;
-                min-width: 60px;
-                margin: 2% auto;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #logo {
-                width: 25%;
-                min-width: 50px;
-            }
+            border-radius: 50%;
         }
 
         #logo img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            padding: 0;
+            margin: 0;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            #logo {
+                width: 100%;
+                height: auto;
+                padding: 3%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #logo {
+                width: 100%;
+                height: auto;
+                padding: 3%;
+            }
         }
 
         /* Navigation section styles */
         #nav-section {
-            width: 25%;
+            width: 20%;
             position: fixed;
-            right: 0;
+            right: 5%;
             top: 0;
             height: 100vh;
             z-index: 1002;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2%;
+            padding: 0;
+            background: transparent;
         }
 
         #navigation {
             position: relative;
             width: 80%;
-            margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 1.5vh;
         }
 
         #navigation ul {
             list-style: none;
-            padding: 5%;
+            padding: 20px;
             margin: 0;
             width: 100%;
+            box-sizing: border-box;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
             box-shadow: 0 0 20px var(--glow-effect);
@@ -133,6 +138,10 @@
             text-align: center;
         }
 
+        #navigation li {
+            margin: 10px 0;
+        }
+
         #navigation a {
             color: var(--text-color);
             text-decoration: none;
@@ -140,7 +149,7 @@
             font-weight: 300;
             transition: all 0.3s ease;
             display: block;
-            padding: 3% 5%;
+            padding: 8px 16px;
             border-radius: 8px;
         }
 
@@ -159,17 +168,14 @@
         }
 
         /* Content area */
+        #content-section {
+            margin-right: 27%;
+            padding: 2% 3%;
+        }
+
         #site-content {
-            position: relative;
-            margin-top: 0;
-            background-color: transparent;
-            z-index: 20;
-            padding-top: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
+            margin: 0 auto;
+            padding: 2% 0;
         }
 
         .section-island {
@@ -259,13 +265,13 @@
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             margin: 20px;
-            max-width: 100%;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 200px;
+            position: relative;
         }
 
         [data-theme="dark"] #welcome {
@@ -285,9 +291,15 @@
         }
 
         #site-content {
-            margin-left: 50px;
-            max-width: calc(100vw - 400px);
-            padding-right: 350px;
+            position: relative;
+            margin-top: 100vh;
+            background-color: transparent;
+            z-index: 20;
+            padding-top: 2rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         #hero * {
@@ -295,16 +307,8 @@
         }
 
         #site-content {
-            position: relative;
-            margin-top: 100vh;
-            background-color: transparent;
-            z-index: 20;
-            padding-top: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
+            margin-left: 50px;
+            padding-right: 350px;
         }
 
         /* Update section island styles for better contrast with grid */
@@ -364,7 +368,6 @@
             margin-top: 20px;
             margin-bottom: 40px;
             padding: 15px 30px;
-            max-width: 800px;
             position: relative;
         }
 
@@ -834,7 +837,6 @@
                 grid-template-columns: 1fr;
                 padding: 0 10px;
                 width: auto;
-                max-width: 100%;
             }
 
             .tools-category {
@@ -845,19 +847,16 @@
             .search-box {
                 padding: 0 10px;
                 width: auto;
-                max-width: 100%;
             }
 
             /* Make category filters wrap properly */
             .category-filters {
                 padding: 0 10px;
                 width: auto;
-                max-width: 100%;
             }
 
             #site-content {
                 width: auto;
-                max-width: 100%;
                 padding: 20px 10px;
                 overflow-x: hidden;
             }
@@ -894,7 +893,6 @@
         /* Update tools controls styling */
         .tools-controls {
             margin: 0 auto 30px;
-            max-width: 800px;
             padding: 0 20px;
         }
 
@@ -1417,8 +1415,10 @@
 
         /* Common button styles for all circular buttons */
         #to-bottom, #to-top, #theme-toggle, #menu-toggle {
-            width: 40px;
-            height: 40px;
+            width: 2.5vw;
+            height: 2.5vw;
+            min-width: 28px;
+            min-height: 28px;
             background-color: transparent;
             border: 2px solid var(--border-color);
             border-radius: 50%;
@@ -1427,7 +1427,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8px;
+            padding: 0.5vw;
             transition: all 0.3s ease;
             position: fixed;
             z-index: 1002;
@@ -1435,25 +1435,105 @@
 
         /* Button icon styles */
         #to-bottom svg, #to-top svg, #theme-toggle svg, #menu-toggle svg {
-            width: 24px;
-            height: 24px;
+            width: 1.5vw;
+            height: 1.5vw;
+            min-width: 16px;
+            min-height: 16px;
             fill: var(--text-color);
         }
 
         /* Button positions */
         #to-top {
-            bottom: 20px;
-            right: 20px;
+            bottom: 2%;
+            right: 2%;
         }
 
         #theme-toggle {
-            bottom: 20px;
-            left: 20px;
+            bottom: 2%;
+            left: 2%;
         }
 
-        #menu-toggle {
-            top: 20px;
-            right: 20px;
+        /* Navigation section styles */
+        #nav-section {
+            width: 20%;
+            position: fixed;
+            right: 5%;
+            top: 0;
+            height: 100vh;
+            z-index: 1002;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            background: transparent;
+        }
+
+        #navigation {
+            position: relative;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5vh;
+        }
+
+        /* Logo styles */
+        #logo {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            padding: 3%;
+            margin: 4%;
+            position: relative;
+            z-index: 30;
+            border-radius: 50%;
+        }
+
+        /* Content area */
+        #content-section {
+            margin-right: 27%;
+            padding: 2% 3%;
+        }
+
+        #site-content {
+            margin: 0 auto;
+            padding: 2% 0;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            #nav-section {
+                width: 100%;
+                height: auto;
+                position: relative;
+                right: 0;
+                padding: 2% 0;
+            }
+
+            #navigation {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            #content-section {
+                margin-right: 0;
+                padding: 2%;
+            }
+
+            #to-bottom, #to-top, #theme-toggle, #menu-toggle {
+                width: 28px;
+                height: 28px;
+                padding: 4px;
+            }
+
+            #to-bottom svg, #to-top svg, #theme-toggle svg, #menu-toggle svg {
+                width: 16px;
+                height: 16px;
+            }
         }
 
         /* Hover effects */
@@ -1841,17 +1921,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 0;
+            background: transparent;
         }
 
         #content-section {
             flex: 1;
-            margin-right: 25%;
-            padding: 5%;
+            margin-right: 300px;
+            padding: 20px;
         }
 
         #navigation {
             position: relative;
             width: 200px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1880,13 +1963,25 @@
                 width: 100%;
                 height: auto;
                 position: relative;
-                padding-top: 10px;
+                padding: 10px 0;
             }
 
             #content-section {
                 margin-right: 0;
-                padding: 5% 2.5%;
+                padding: 10px;
             }
+
+            #logo {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #logo {
+                width: 100%;
+                height: auto;
+                }
         }
 
         /* Mobile-specific title adjustments */
@@ -2005,21 +2100,11 @@
         }
 
         #welcome {
-            text-align: center;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 16px;
-            box-shadow: 0 0 15px var(--glow-effect);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            margin: 20px;
-            max-width: 100%;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 200px;
+            text-align: left;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            padding: 15px 30px;
+            position: relative;
         }
 
         @media (max-width: 768px) {
@@ -2110,6 +2195,55 @@
             toolSearch.addEventListener('input', updateToolVisibility);
             updateToolVisibility();
         });
+
+        // Add scroll event listener for navigation
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(updateActiveLink);
+        });
+
+        // Function to update active navigation link based on scroll position
+        function updateActiveLink() {
+            const scrollPosition = window.scrollY;
+
+            // Get all sections and their positions
+            const sections = document.querySelectorAll('div.section-island');
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100; // Offset for better UX
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    // Find the first h3 with an id in this section
+                    const heading = section.querySelector('h3[id]');
+                    if (heading) {
+                        currentSection = heading.id;
+                    }
+                }
+            });
+
+            // Special case for welcome section at the top
+            if (scrollPosition < 100) {
+                currentSection = 'welcome';
+            }
+
+            // Remove active class from all links
+            document.querySelectorAll('#navigation a').forEach(link => {
+                link.classList.remove('active');
+                
+                // Get the href attribute and extract the section id
+                const href = link.getAttribute('href');
+                const sectionId = href.replace('#', '');
+                
+                // Add active class if this link matches current section
+                if (sectionId === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize navigation
+        updateActiveLink();
     </script>
 </head>
 <body>
@@ -2121,7 +2255,7 @@
                     <img src="logo.png" alt="Jordon Griffin Logo">
                 </div>
                 <ul>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#main-container">About</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#tools">Tools</a></li>
