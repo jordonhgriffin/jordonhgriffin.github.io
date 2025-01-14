@@ -1,0 +1,64 @@
+Introduction
+
+This document provides a comprehensive overview of my workflows on macOS, detailing the applications I use and how they enhance my productivity and experience. My setup is designed to streamline tasks, improve efficiency, and leverage the full potential of macOS.
+
+Core Applications and Workflows
+
+1. Cursor
+   - Cursor is central to my workflow, serving as a powerful code editor and file manager. It seamlessly integrates with Xcode, allowing me to write and manage code efficiently. The ability to open folders and communicate using the files inside enhances my productivity.
+
+2. Xcode
+   - I use Xcode for all my development projects. Its integration with Cursor allows for a smooth coding experience, with real-time syncing and intelligent code completion.
+
+3. Mail
+   - Mail is my primary email client. I have set up multiple accounts to manage personal and professional communications efficiently. Custom rules and filters help keep my inbox organized.
+
+4. Safari/Brave Browser
+   - I use both Safari and Brave for browsing. Brave's privacy features and ad-blocking capabilities enhance my online experience, while Safari's integration with macOS provides a seamless browsing experience.
+
+5. Notes
+   - Notes is my go-to app for organizing thoughts and managing tasks. I use it to jot down ideas, create to-do lists, and store important information.
+
+Productivity Tools
+
+1. Raycast
+   - Raycast is a productivity launcher that speeds up my workflow. I use custom commands to automate tasks and access applications quickly.
+
+2. Reminders
+   - Reminders helps me manage tasks and deadlines. I set up alerts and recurring reminders to stay on top of my schedule.
+
+Development Tools
+
+1. Docker
+   - Docker is essential for creating isolated development environments. I use it to run applications in containers, ensuring consistency across different systems.
+
+2. GitHub
+   - GitHub is my platform of choice for version control and collaboration. I manage repositories, track changes, and collaborate with others on projects.
+
+Media and Communication
+
+1. Discord/Telegram
+   - I use Discord and Telegram for communication and collaboration. They are essential for staying connected with teams and communities.
+
+2. OBS
+   - OBS is my tool for streaming and recording. I use it to create content and share my work with a wider audience.
+
+Utilities and Enhancements
+
+1. AdGuard for Safari
+   - AdGuard enhances my browsing experience by blocking ads and protecting my privacy.
+
+2. DaisyDisk
+   - DaisyDisk helps me manage disk space efficiently. I use it to identify and clean up large files and folders.
+
+Security and Privacy
+
+1. ProtonVPN
+   - ProtonVPN ensures my online activities are secure and private. I use it to encrypt my internet connection and access restricted content.
+
+2. Passwords
+   - I use a password manager to store and manage my passwords securely. It helps me generate strong passwords and keep my accounts safe.
+
+Conclusion
+
+My macOS workflows are designed to maximize productivity and efficiency. By leveraging these applications and tools, I can manage tasks effectively and enhance my overall experience. I am always exploring new ways to optimize my setup and embrace new technologies. 
