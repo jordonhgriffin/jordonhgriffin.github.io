@@ -2098,6 +2098,21 @@
                 min-height: 180px;
             }
         }
+
+        /* Experience item link styles */
+        .experience-item h4 a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-item h4 a:hover {
+            opacity: 0.7;
+        }
+
+        .experience-item h4 a:visited {
+            color: var(--text-color);
+        }
     </style>
     <script>
         // Initialize tools filtering as soon as possible
@@ -2262,26 +2277,7 @@
                 <div class="section-island">
                     <h3 id="experience">Professional Experience</h3>
                     <div class="experience-item">
-                        <h4>Project Manager - A Rose Affair</h4>
-                        <p class="date">2021 - 2024</p>
-                        <ul>
-                            <li>Established foundational business operations, including delivery workflows, order processing, and streamlined business processes to support growth.</li>
-                            <li>Oversaw financial operations, ensuring efficient management of resources and cost-effective operations.</li>
-                            <li>Developed and launched a cross-platform landing page, integrating a point-of-sale (POS) system to enhance customer experience and sales.</li>
-                            <li>Managed vendor relationships and coordinated inventory logistics, ensuring seamless supply chain operations and reliable stock levels.</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h4>Digital Solutions Specialist- Wonderland Brothers</h4>
-                        <p class="date">2022 - 2023</p>
-                        <ul>
-                            <li>Designed and implemented scalable web solutions and email campaigns, enhancing operational workflows and communication efficiency.</li>
-                            <li>Provided consulting on IoT integrations and cloud technologies, improving business operations and aligning with industrial standards.</li>
-                            <li>Streamlined data management through ETL processes for sales and advertising data, enabling actionable insights and process optimization.</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h4>Quality Control Inspector - First Electronics Corporation</h4>
+                        <h4>Quality Control Inspector - <a href="https://feccables.com" target="_blank">First Electronics Corporation</a></h4>
                         <p class="date">2025 - Present</p>
                         <ul>
                             <li>Perform comprehensive electrical testing and quality inspections for level 3 custom cable harnesses</li>
@@ -2292,11 +2288,30 @@
                         </ul>
                     </div>
                     <div class="experience-item">
+                        <h4>Project Manager - A Rose Affair</h4>
+                        <p class="date">2021 - 2024</p>
+                        <ul>
+                            <li>Established foundational business operations, including delivery workflows, order processing, and streamlined business processes to support growth.</li>
+                            <li>Oversaw financial operations, ensuring efficient management of resources and cost-effective operations.</li>
+                            <li>Developed and launched a cross-platform landing page, integrating a point-of-sale (POS) system to enhance customer experience and sales.</li>
+                            <li>Managed vendor relationships and coordinated inventory logistics, ensuring seamless supply chain operations and reliable stock levels.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
                         <h4>Systems Integration Analyst - University of Georgia EITS</h4>
-                        <p class="date">2023 - 2024</p>
+                        <p class="date">2023</p>
                         <ul>
                             <li>Led the transition to a Salesforce application, upgrading workflows from a legacy request-response model to a self-service portal with automated ticketing and a customized knowledge base.</li>
                             <li>Oversaw bi-weekly sprint cycles, documenting progress and delivering updates to stakeholders to ensure a smooth and efficient upgrade process.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Digital Solutions Specialist- Wonderland Brothers</h4>
+                        <p class="date">2022 - 2023</p>
+                        <ul>
+                            <li>Designed and implemented scalable web solutions and email campaigns, enhancing operational workflows and communication efficiency.</li>
+                            <li>Provided consulting on IoT integrations and cloud technologies, improving business operations and aligning with industrial standards.</li>
+                            <li>Streamlined data management through ETL processes for sales and advertising data, enabling actionable insights and process optimization.</li>
                         </ul>
                     </div>
                     <div class="experience-item">
@@ -3077,14 +3092,13 @@
                         if (this.classList.contains('active')) {
                             this.classList.remove('active');
                             activeCategories.delete(category);
+                            if (activeCategories.size === 0) {
+                                activeCategories.add('all');
+                                document.querySelector('.filter-btn[data-category="all"]').classList.add('active');
+                            }
                         } else {
                             this.classList.add('active');
                             activeCategories.add(category);
-                        }
-                        
-                        if (activeCategories.size === 0) {
-                            activeCategories.add('all');
-                            document.querySelector('.filter-btn[data-category="all"]').classList.add('active');
                         }
                     }
                     
