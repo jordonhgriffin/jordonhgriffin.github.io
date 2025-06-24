@@ -18,6 +18,12 @@
             --content-padding: 2.5%;
             --button-size: 3vw;
             --min-button-size: 40px;
+            --link-color: #555;
+            --link-hover-color: #000;
+            --link-bg: rgba(0, 0, 0, 0.05);
+            --link-hover-bg: rgba(0, 0, 0, 0.1);
+            --link-glow: rgba(0, 0, 0, 0.1);
+            --link-hover-glow: rgba(0, 0, 0, 0.2);
         }
 
         [data-theme="dark"] {
@@ -27,6 +33,12 @@
             --darker-bg: #222;
             --text-color: #fff;
             --border-color: rgba(255, 255, 255, 0.2);
+            --link-color: #ccc;
+            --link-hover-color: #fff;
+            --link-bg: rgba(255, 255, 255, 0.1);
+            --link-hover-bg: rgba(255, 255, 255, 0.2);
+            --link-glow: rgba(255, 255, 255, 0.1);
+            --link-hover-glow: rgba(255, 255, 255, 0.2);
         }
 
         html, body {
@@ -2101,17 +2113,79 @@
 
         /* Experience item link styles */
         .experience-item h4 a {
-            color: var(--text-color);
+            color: var(--link-color);
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--link-bg);
+            position: relative;
+            display: inline-block;
+            box-shadow: 0 0 5px var(--link-glow);
+            transform-origin: center;
         }
 
         .experience-item h4 a:hover {
-            opacity: 0.7;
+            color: var(--link-hover-color);
+            background: var(--link-hover-bg);
+            transform: translateX(2px) scale(1.02);
+            box-shadow: 0 0 10px var(--link-hover-glow);
         }
 
-        .experience-item h4 a:visited {
-            color: var(--text-color);
+        .experience-item h4 a:active {
+            transform: translateX(2px) scale(0.98);
+            transition: all 0.1s ease;
+        }
+
+        .certification-link {
+            color: var(--link-color);
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--link-bg);
+            position: relative;
+            display: inline-block;
+            box-shadow: 0 0 5px var(--link-glow);
+            transform-origin: center;
+        }
+
+        .certification-link:hover {
+            color: var(--link-hover-color);
+            background: var(--link-hover-bg);
+            transform: translateX(2px) scale(1.02);
+            box-shadow: 0 0 10px var(--link-hover-glow);
+        }
+
+        .certification-link:active {
+            transform: translateX(2px) scale(0.98);
+            transition: all 0.1s ease;
+        }
+
+        .certification-item {
+            margin: 15px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .certification-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--link-color);
+        }
+
+        .certification-item {
+            margin: 15px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .certification-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--link-color);
         }
     </style>
     <script>
@@ -2267,8 +2341,8 @@
                         <h2 id="subline">Information Technology<br>Project Management</h2>
                     </div>
                     <p>Hey, I'm Jordon! I'm a Project Manager and Systems Specialist with a background in supply chain management, IoT solutions, and process optimization. 
-                        I have experience in both manufacturing quality assurance and digital platform management. I enjoy streamlining workflows, solving logistics challenges, and finding data-driven ways to improve processes. 
-                        My experience bridges both the physical and digital sides of complex operations.</p>
+                        I have experience in both manufacturing quality assurance and digital platform management. I enjoy streamlining workflows, solving logistics challenges, and finding data-driven ways to improve processes. 
+                        My experience bridges both the physical and digital sides of complex operations.</p>
                     <p>Throughout my academic journey, I've encountered numerous challenges and opportunities to learn and grow. I'm approaching life like a puzzle – some pieces require careful analysis and strategy, while others fall into place. I'm here for knowledge and expertise, and have come to value credibility and integrity above most. I'm also a big fan of the outdoors, and love to hike, camp, and explore new places.</p>
                     <p>In all that I do, I hold three guiding principles dear: building for others, optimizing efficiency, and embracing enjoyment along the way. I'm driven by the desire to find like-minded individuals who share these values.</p>
                 </div>
@@ -2336,6 +2410,14 @@
                                 <img src="ugabd.png" alt="UGA Bulldog Logo" class="education-logo">
                             </div>
                         </div>
+                    </div>
+                    
+                    <h4>Professional Certifications</h4>
+                    <div class="certification-item">
+                        <a href="https://www.ipc.org/ipc-certification-programs/ipc-whma-620" target="_blank" class="certification-link">IPC/WHMA-A-620 Requirements and Acceptance for Cable and Wire Harness Assemblies</a>
+                    </div>
+                    <div class="certification-item">
+                        <a href="https://www.ipc.org/ipc-certification-programs/ipc-j-std-001" target="_blank" class="certification-link">IPC J-STD-001 Requirements for Soldered Electrical & Electronic Assemblies</a>
                     </div>
                 </div>
 
