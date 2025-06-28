@@ -1715,23 +1715,40 @@
 
         .education-container {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             width: 100%;
-            gap: 20px;
+            position: relative;
         }
 
         .education-info {
-            width: 65%;
+            width: calc(100% - 200px);
             padding-right: 0;
+            z-index: 2;
+        }
+
+        .education-info h4 {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            background: var(--dark-bg);
+            display: inline-block;
+            padding-right: 10px;
+        }
+
+        .education-info p {
+            background: var(--dark-bg);
+            display: inline-block;
+            padding-right: 10px;
         }
 
         .education-logo-container {
-            width: 35%;
+            width: 175px;
             display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding-right: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            z-index: 1;
         }
 
         .education-logo {
@@ -1739,18 +1756,15 @@
             height: 175px;
             object-fit: contain;
             margin: 0;
-            position: static;
-            transform: none;
         }
 
         @media (max-width: 768px) {
             .education-info {
-                width: 60%;
+                width: calc(100% - 160px);
             }
             
             .education-logo-container {
-                width: 40%;
-                padding-right: 10px;
+                width: 150px;
             }
             
             .education-logo {
@@ -2385,7 +2399,7 @@
                     <div class="education-item">
                         <div class="education-container">
                             <div class="education-info">
-                                <h4>BBA in Management Information Systems</h4>
+                                <h4>BBA in Management<br>Information Systems</h4>
                                 <p><a href="https://www.uga.edu/" target="_blank" class="certification-link">University of Georgia</a> <br>Athens, Georgia</p>
                                 <p class="date">August 2019 - December 2023</p>
                             </div>
