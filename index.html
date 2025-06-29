@@ -890,6 +890,14 @@
             padding: 4px;
         }
 
+        /* Specific handling for Canva logo */
+        img[src$="canva.webp"].tool-logo {
+            width: 40px;
+            height: 40px;
+            padding: 4px;
+            object-fit: cover;
+        }
+
         /* Specific handling for SVG icons */
         .tool-logo[src$=".svg"] {
             filter: brightness(0.95);
@@ -1011,6 +1019,10 @@
         .tool-header {
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 48px;
         }
 
         .tool-logo {
@@ -2652,6 +2664,15 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="https://www.canva.com" target="_blank">
+                                        <div class="tool-header">
+                                            <img src="canva.webp" alt="Canva Logo" class="tool-logo">
+                                            <span class="tool-name">Canva</span>
+                                        </div>
+                                        <span class="tool-description">Online graphic design platform for creating visual content</span>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="https://support.apple.com/guide/freeform/welcome/mac" target="_blank">
                                         <div class="tool-header">
                                             <img src="freeform.png" alt="Freeform Logo" class="tool-logo">
@@ -3179,7 +3200,7 @@
         });
     </script>
     <footer>
-        Version 1.1.0 Last Updated 2025
+        Version 1.1.1 Last Updated 2025
     </footer>
 </body>
 </html>
