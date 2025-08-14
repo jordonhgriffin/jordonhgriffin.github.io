@@ -2203,6 +2203,58 @@
             left: 0;
             color: var(--link-color);
         }
+
+        /* Mantra styling */
+        .mantra {
+            text-align: center;
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mantra a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .mantra span {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--text-color);
+            box-shadow: 0 0 15px var(--glow-effect);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .mantra a:hover span {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px var(--glow-effect);
+        }
+
+        [data-theme="dark"] .mantra span {
+            background: rgba(42, 42, 42, 0.9);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        /* Mobile adjustments for mantra */
+        @media (max-width: 768px) {
+            .mantra {
+                margin: 20px 0;
+            }
+            
+            .mantra span {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
     </style>
     <script>
         // Initialize tools filtering as soon as possible
@@ -2361,6 +2413,11 @@
                         My experience bridges both the physical and digital sides of complex operations.</p>
                     <p>Throughout my academic journey, I've encountered numerous challenges and opportunities to learn and grow. I'm approaching life like a puzzle – some pieces require careful analysis and strategy, while others fall into place. I'm here for knowledge and expertise, and have come to value credibility and integrity above most. I'm also a big fan of the outdoors, and love to hike, camp, and explore new places.</p>
                     <p>In all that I do, I hold three guiding principles dear: building for others, optimizing efficiency, and embracing enjoyment along the way. I'm driven by the desire to find like-minded individuals who share these values.</p>
+                    <div class="mantra">
+                        <a href="https://www.google.com/search?q=Societas+Melior+Pro+Bono+Omnium" target="_blank">
+                            <span>Societas Melior Pro Bono Omnium</span>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="section-island">
