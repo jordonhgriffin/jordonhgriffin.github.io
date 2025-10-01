@@ -58,7 +58,7 @@
             line-height: 1.6;
             background-color: var(--dark-bg);
             min-height: 100vh;
-            background-image: 
+            background-image:
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 20px 20px;
@@ -1697,7 +1697,7 @@
             .education-info {
                 padding-right: 100px;
             }
-            
+
             .education-logo {
                 width: 80px;
                 height: 80px;
@@ -1757,14 +1757,14 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .education-info {
                 flex: 0 0 100%;
                 max-width: 100%;
                 padding-right: 0;
                 margin-bottom: 5%;
             }
-            
+
             .education-logo-container {
                 flex: 0 0 100%;
                 width: 100%;
@@ -2253,7 +2253,7 @@
             .mantra {
                 margin: 20px 0;
             }
-            
+
             .mantra span {
                 padding: 10px 20px;
                 font-size: 1em;
@@ -2273,19 +2273,19 @@
 
             function updateToolVisibility() {
                 const searchTerm = toolSearch.value.toLowerCase();
-                
+
                 toolCategories.forEach(category => {
                     const categoryName = category.querySelector('h4').textContent.trim().toLowerCase();
                     const toolsInCategory = category.querySelectorAll('.tools-list li');
                     let hasVisibleTools = false;
-                    
+
                     toolsInCategory.forEach(item => {
                         const toolName = item.querySelector('.tool-name').textContent.toLowerCase();
                         const toolDescription = item.querySelector('.tool-description').textContent.toLowerCase();
-                        
+
                         const matchesSearch = toolName.includes(searchTerm) || toolDescription.includes(searchTerm);
                         const matchesCategory = activeCategories.has('all') || activeCategories.has(categoryName);
-                        
+
                         if (matchesSearch && matchesCategory) {
                             item.style.display = '';
                             hasVisibleTools = true;
@@ -2293,7 +2293,7 @@
                             item.style.display = 'none';
                         }
                     });
-                    
+
                     category.style.display = hasVisibleTools ? '' : 'none';
                 });
             }
@@ -2302,7 +2302,7 @@
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
                     const category = this.getAttribute('data-category').toLowerCase();
-                    
+
                     if (category === 'all') {
                         activeCategories.clear();
                         activeCategories.add('all');
@@ -2313,7 +2313,7 @@
                             activeCategories.clear();
                             document.querySelector('.filter-btn[data-category="all"]').classList.remove('active');
                         }
-                        
+
                         if (this.classList.contains('active')) {
                             this.classList.remove('active');
                             activeCategories.delete(category);
@@ -2326,7 +2326,7 @@
                             activeCategories.add(category);
                         }
                     }
-                    
+
                     updateToolVisibility();
                 });
             });
@@ -2351,7 +2351,7 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 100; // Offset for better UX
                 const sectionHeight = section.offsetHeight;
-                
+
                 if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                     // Find the first h3 with an id in this section
                     const heading = section.querySelector('h3[id]');
@@ -2369,11 +2369,11 @@
             // Remove active class from all links
             document.querySelectorAll('#navigation a').forEach(link => {
                 link.classList.remove('active');
-                
+
                 // Get the href attribute and extract the section id
                 const href = link.getAttribute('href');
                 const sectionId = href.replace('#', '');
-                
+
                 // Add active class if this link matches current section
                 if (sectionId === currentSection) {
                     link.classList.add('active');
@@ -2412,8 +2412,8 @@
                         <h1 id="heading">Jordon Harrison Griffin</h1>
                         <h2 id="subline">Information Technology<br>Project Management</h2>
                     </div>
-                    <p>Hey, I'm Jordon! I'm a Project Manager and Systems Specialist with a background in supply chain management, IoT solutions, and process optimization. 
-                        I have experience in both manufacturing quality assurance and digital platform management. I enjoy streamlining workflows, solving logistics challenges, and finding data-driven ways to improve processes. 
+                    <p>Hey, I'm Jordon! I'm a Project Manager and Systems Specialist with a background in supply chain management, IoT solutions, and process optimization.
+                        I have experience in both manufacturing quality assurance and digital platform management. I enjoy streamlining workflows, solving logistics challenges, and finding data-driven ways to improve processes.
                         My experience bridges both the physical and digital sides of complex operations.</p>
                     <p>Throughout my academic journey, I've encountered numerous challenges and opportunities to learn and grow. I'm approaching life like a puzzle – some pieces require careful analysis and strategy, while others fall into place. I'm here for knowledge and expertise, and have come to value credibility and integrity above most. I'm also a big fan of the outdoors, and love to hike, camp, and explore new places.</p>
                     <p>In all that I do, I hold three guiding principles dear: building for others, optimizing efficiency, and embracing enjoyment along the way. I'm driven by the desire to find like-minded individuals who share these values.</p>
@@ -2465,7 +2465,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <h4>Professional Certifications</h4>
                     <div class="certification-item">
                         <a href="https://whma.org/ipcwhma-a-620/a-620-certification/" target="_blank" class="certification-link">IPC/WHMA-A-620 Requirements and Acceptance for Cable and Wire Harness Assemblies</a>
@@ -3081,9 +3081,9 @@
             document.documentElement.setAttribute('data-theme', theme);
             document.body.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            
+
             // Update theme toggle icon
-            themeToggle.innerHTML = theme === 'dark' ? 
+            themeToggle.innerHTML = theme === 'dark' ?
                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>' :
                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>';
         }
@@ -3093,7 +3093,7 @@
             // Set initial theme
             const initialTheme = getCurrentTheme();
             setTheme(initialTheme);
-            
+
             // Theme toggle event
             themeToggle.addEventListener('click', () => {
                 const currentTheme = getCurrentTheme();
@@ -3136,7 +3136,7 @@
                 if (href.startsWith('#')) {
                     e.preventDefault();
                     smoothScrollTo(href);
-                    
+
                     // Close mobile menu if open
                     if (mobileNavigation.classList.contains('open')) {
                         mobileNavigation.classList.remove('open');
@@ -3190,20 +3190,20 @@
             function updateToolVisibility() {
                 const searchTerm = toolSearch.value.toLowerCase();
                 const toolCategories = document.querySelectorAll('.tools-category');
-                
+
                 toolCategories.forEach(category => {
                     const categoryName = category.querySelector('h4').textContent.trim().toLowerCase();
                     const toolsInCategory = category.querySelectorAll('.tools-list li');
                     let hasVisibleTools = false;
-                    
+
                     const categoryIsVisible = activeCategories.has('all') || activeCategories.has(categoryName);
-                    
+
                     toolsInCategory.forEach(item => {
                         const toolName = item.querySelector('.tool-name').textContent.toLowerCase();
                         const toolDescription = item.querySelector('.tool-description').textContent.toLowerCase();
-                        
+
                         const matchesSearch = toolName.includes(searchTerm) || toolDescription.includes(searchTerm);
-                        
+
                         if (matchesSearch && categoryIsVisible) {
                             item.style.display = 'block';
                             hasVisibleTools = true;
@@ -3211,7 +3211,7 @@
                             item.style.display = 'none';
                         }
                     });
-                    
+
                     category.style.display = hasVisibleTools ? 'block' : 'none';
                 });
             }
@@ -3221,7 +3221,7 @@
                 button.onclick = function(e) {
                     e.preventDefault();
                     const category = this.getAttribute('data-category').toLowerCase();
-                    
+
                     if (category === 'all') {
                         activeCategories.clear();
                         activeCategories.add('all');
@@ -3232,7 +3232,7 @@
                             activeCategories.clear();
                             document.querySelector('.filter-btn[data-category="all"]').classList.remove('active');
                         }
-                        
+
                         if (this.classList.contains('active')) {
                             this.classList.remove('active');
                             activeCategories.delete(category);
@@ -3245,7 +3245,7 @@
                             activeCategories.add(category);
                         }
                     }
-                    
+
                     updateToolVisibility();
                 };
             });
