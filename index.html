@@ -1347,40 +1347,7 @@
 
 
 
-        /* Add these styles for the menu toggle button */
-        #menu-toggle {
-            display: none;
-            position: fixed;
-            top: 2vh;
-            right: 2vw;
-            z-index: 1002;
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            box-shadow: 0 0 15px var(--glow-effect);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
 
-        #menu-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        /* Dark mode styles for menu toggle */
-        [data-theme="dark"] #menu-toggle {
-            background-color: #2a2a2a;
-            border-color: #444;
-            color: #fff;
-        }
-
-        [data-theme="dark"] #menu-toggle:hover {
-            background-color: #3a3a3a;
-        }
 
         /* Update mobile navigation styles */
         #mobile-navigation {
@@ -1490,7 +1457,7 @@
         }
 
         /* Common button styles for all circular buttons */
-        #to-bottom, #to-top, #theme-toggle, #menu-toggle {
+        #to-bottom, #to-top, #theme-toggle {
             width: 2.5vw;
             height: 2.5vw;
             min-width: 28px;
@@ -1510,7 +1477,7 @@
         }
 
         /* Button icon styles */
-        #to-bottom svg, #to-top svg, #theme-toggle svg, #menu-toggle svg {
+        #to-bottom svg, #to-top svg, #theme-toggle svg {
             width: 1.5vw;
             height: 1.5vw;
             min-width: 16px;
@@ -1600,20 +1567,20 @@
                 padding: 2%;
             }
 
-            #to-bottom, #to-top, #theme-toggle, #menu-toggle {
+            #to-bottom, #to-top, #theme-toggle {
                 width: 28px;
                 height: 28px;
                 padding: 4px;
             }
 
-            #to-bottom svg, #to-top svg, #theme-toggle svg, #menu-toggle svg {
+            #to-bottom svg, #to-top svg, #theme-toggle svg {
                 width: 16px;
                 height: 16px;
             }
         }
 
         /* Hover effects */
-        #to-top:hover, #theme-toggle:hover, #menu-toggle:hover {
+        #to-top:hover, #theme-toggle:hover {
             transform: scale(1.1);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
@@ -1646,15 +1613,13 @@
         /* Dark mode adjustments */
         [data-theme="dark"] #to-bottom svg,
         [data-theme="dark"] #to-top svg,
-        [data-theme="dark"] #theme-toggle svg,
-        [data-theme="dark"] #menu-toggle svg {
+        [data-theme="dark"] #theme-toggle svg {
             fill: #fff;
         }
 
         [data-theme="dark"] #to-bottom,
         [data-theme="dark"] #to-top,
-        [data-theme="dark"] #theme-toggle,
-        [data-theme="dark"] #menu-toggle {
+        [data-theme="dark"] #theme-toggle {
             background-color: rgba(42, 42, 42, 0.9);
             border-color: rgba(255, 255, 255, 0.2);
         }
@@ -1898,10 +1863,6 @@
                 padding-top: 60px;
             }
 
-            #menu-toggle {
-                display: none;
-                z-index: 1002;
-            }
 
             .overlay {
                 background-color: rgba(0, 0, 0, 0.5);
@@ -1938,19 +1899,6 @@
             }
         }
 
-        /* Menu toggle button styles */
-        #menu-toggle {
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        #menu-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        [data-theme="dark"] #menu-toggle {
-            color: #fff;
-        }
 
         .search-box input {
             width: 100%;
@@ -2478,13 +2426,6 @@
             </nav>
 
             <!-- Mobile Menu Toggle Button -->
-            <button id="menu-toggle" aria-label="Toggle mobile menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
 
             <!-- Mobile Navigation -->
             <nav id="mobile-navigation">
@@ -3612,7 +3553,6 @@
         });
 
         // Mobile menu elements
-        const menuToggle = document.getElementById('menu-toggle');
         const mobileNavigation = document.getElementById('mobile-navigation');
         const overlay = document.getElementById('overlay');
 
@@ -3661,13 +3601,6 @@
             });
         });
 
-        // Mobile menu initialization
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileNavigation.classList.toggle('open');
-            overlay.classList.toggle('open');
-            document.body.style.overflow = mobileNavigation.classList.contains('open') ? 'hidden' : '';
-        });
 
         overlay.addEventListener('click', () => {
             mobileNavigation.classList.remove('open');
@@ -3675,14 +3608,6 @@
             document.body.style.overflow = '';
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mobileNavigation.contains(e.target) && !menuToggle.contains(e.target)) {
-                mobileNavigation.classList.remove('open');
-                overlay.classList.remove('open');
-                document.body.style.overflow = '';
-            }
-        });
 
         // Tools filtering functionality
         document.addEventListener('DOMContentLoaded', function() {
