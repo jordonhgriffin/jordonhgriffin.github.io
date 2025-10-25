@@ -2402,6 +2402,30 @@
                     <li><a href="https://github.com/jordonhgriffin" target="_blank">GitHub</a></li>
                 </ul>
             </nav>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-toggle" aria-label="Toggle mobile menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            
+            <!-- Mobile Navigation -->
+            <nav id="mobile-navigation">
+                <ul>
+                    <li><a href="#welcome">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://github.com/jordonhgriffin" target="_blank">GitHub</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Overlay for mobile menu -->
+            <div id="overlay"></div>
         </div>
 
         <!-- Content Section -->
@@ -3456,8 +3480,8 @@
     </div>
     <div id="theme-toggle">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.iffin" target="_blank">GitHub</a></li>
-        </ul>
+            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+        </svg>
     </div>
 
     <!-- Add overlay -->
@@ -3512,6 +3536,11 @@
             // Initialize navigation
             updateActiveLink();
         });
+
+        // Mobile menu elements
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileNavigation = document.getElementById('mobile-navigation');
+        const overlay = document.getElementById('overlay');
 
         // Add scroll event listener for navigation
         window.addEventListener('scroll', () => {
