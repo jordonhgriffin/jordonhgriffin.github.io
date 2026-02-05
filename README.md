@@ -14,8 +14,8 @@ I am a **Project Manager and Information Technology professional** with a passio
 
 - 🏛️ **Civicism**: Exploring urban systems through data and design.
 - 📐 **Light-Bicone-Spectrum**: Investigating the intersection of physics, color, and visualization.
-- 🛠️ **Integrations**: Specialized in Salesforce transitions and foundational business POS systems.
-- ⚡ **Fun fact**: My digital workspace is meticulously organized in alphabetical order.
+- 🏰 **Castle**: A strategic card game based on the perfect balance of luck and skill.
+- ⚡ **Fun fact**: My digital tools are organized in alphabetical order.
 
 ---
 
