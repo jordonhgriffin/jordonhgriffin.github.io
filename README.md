@@ -17,6 +17,10 @@ I am a **Project Manager and Information Technology professional** with a passio
 - 🏰 **Castle**: A strategic card game based on the perfect balance of luck and skill.
 - ⚡ **Fun fact**: My digital tools are organized in alphabetical order.
 
+### 🌐 Portfolio
+
+Since Github Pages only allows for one html file for a portfolio, my entire portfolio is built and hosted as a single, clean HTML file. Don't mind the images, they are cluttered in the same folder as the html file on purpose.
+
 ---
 
 <p align="center">
