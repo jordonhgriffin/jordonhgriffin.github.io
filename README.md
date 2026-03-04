@@ -14,7 +14,7 @@ I am a **Project Manager and Information Technology professional** with a passio
 
 - 🏛️ **[Civicism](https://civicism.vercel.app)**: Exploring urban systems through data and design.
 - 🌈 **[Color-Bicone-Spectrum](https://color-bicone-spectrum.vercel.app)**: Investigating the intersection of physics, color, and visualization.
-- ⚡ **[EM Spectrum](https://em-spectrum.vercel.app)**: An interactive visualization of the electromagnetic spectrum.
+- ⚡ **[Electromagnetic Spectrum](https://em-spectrum.vercel.app)**: An interactive visualization of the electromagnetic spectrum.
 - 🏰 **[Castle](https://github.com/jordonhgriffin/castle)**: A strategic card game based on the perfect balance of luck and skill.
 - 🔤 **Fun fact**: My digital tools are organized in alphabetical order.
 
