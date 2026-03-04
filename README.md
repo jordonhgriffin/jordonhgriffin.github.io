@@ -12,14 +12,15 @@
 
 I am a **Project Manager and Information Technology professional** with a passion for building efficient systems and elegant digital experiences. My work spans from **GIS and system integration** to advanced **agentic coding workflows**.
 
-- 🏛️ **Civicism**: Exploring urban systems through data and design.
-- 📐 **Light-Bicone-Spectrum**: Investigating the intersection of physics, color, and visualization.
-- 🏰 **Castle**: A strategic card game based on the perfect balance of luck and skill.
-- ⚡ **Fun fact**: My digital tools are organized in alphabetical order.
+- 🏛️ **[Civicism](https://civicism.vercel.app)**: Exploring urban systems through data and design.
+- 🌈 **[Color-Bicone-Spectrum](https://color-bicone-spectrum.vercel.app)**: Investigating the intersection of physics, color, and visualization.
+- ⚡ **[EM Spectrum](https://em-spectrum.vercel.app)**: An interactive visualization of the electromagnetic spectrum.
+- 🏰 **[Castle](https://github.com/jordonhgriffin/castle)**: A strategic card game based on the perfect balance of luck and skill.
+- 🔤 **Fun fact**: My digital tools are organized in alphabetical order.
 
 ### 🌐 Portfolio
 
-Since Github Pages only allows for one html file for a portfolio, my entire portfolio is built and hosted as a single, clean HTML file. Don't mind the images, they are cluttered in the same folder as the html file on purpose.
+My portfolio is a single, clean HTML file hosted on **Cloudflare Pages**, deployed automatically from this GitHub repo. Domain also registered through Cloudflare. Don't mind the images — they're intentionally kept in the same folder as the HTML file.
 
 ---
 
