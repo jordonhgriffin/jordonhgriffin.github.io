@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Version 26.3.6.2 - Added Claude to Development tools; added CarX Street to Games; moved all images to img/ folder; updated macapps.csv and mac_workflows.md (2026-03-06) -->
+<!-- Version 26.3.6.3 - Added Tron background game in dark mode with two AI racers using competitive Voronoi + ε-greedy AI, random spawn positions per game (2026-03-06) -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -2319,6 +2319,19 @@
           font-size: 1em;
         }
       }
+
+      /* Tron background game */
+      #tron-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
     </style>
     <script>
       // Initialize tools filtering as soon as possible
@@ -2466,6 +2479,7 @@
     </script>
   </head>
   <body>
+    <canvas id="tron-bg" aria-hidden="true"></canvas>
     <div id="main-container">
       <!-- Navigation Section -->
       <div id="nav-section">
@@ -4925,6 +4939,178 @@
         updateToolVisibility();
       });
     </script>
-    <footer>Version 26.3.6.2</footer>
+    <script>
+      (function () {
+        const canvas = document.getElementById("tron-bg");
+        const ctx = canvas.getContext("2d");
+
+        let CELL, cols, rows, grid;
+        let p1, p2;
+        let lastTime = 0;
+        let waiting = false;
+
+        const SPEED = 110;
+        const P1 = { color: "#00e5ff", glow: "rgba(0,229,255,0.55)" };
+        const P2 = { color: "#ff6b35", glow: "rgba(255,107,53,0.55)" };
+
+        function resize() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          CELL = Math.max(8, Math.round(window.innerWidth * 0.0125));
+          cols = Math.floor(canvas.width / CELL);
+          rows = Math.floor(canvas.height / CELL);
+          init();
+        }
+
+        // Spawn at a random position along one edge, facing inward.
+        // side: 0=top 1=right 2=bottom 3=left
+        function spawnOnSide(side) {
+          const inset = 3;
+          const mid = 0.2 + Math.random() * 0.6; // middle 60% of each edge
+          switch (side) {
+            case 0: return { x: Math.floor(mid * cols), y: inset,                 dx:  0, dy:  1 };
+            case 1: return { x: cols - 1 - inset,        y: Math.floor(mid * rows), dx: -1, dy:  0 };
+            case 2: return { x: Math.floor(mid * cols), y: rows - 1 - inset,      dx:  0, dy: -1 };
+            case 3: return { x: inset,                   y: Math.floor(mid * rows), dx:  1, dy:  0 };
+          }
+        }
+
+        function init() {
+          grid = new Uint8Array(cols * rows);
+          waiting = false;
+          // Random opposite-edge pair each game for variety
+          const side1 = Math.floor(Math.random() * 4);
+          const side2 = (side1 + 2) % 4;
+          p1 = spawnOnSide(side1);
+          p2 = spawnOnSide(side2);
+          grid[p1.y * cols + p1.x] = 1;
+          grid[p2.y * cols + p2.x] = 2;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawCell(p1.x, p1.y, P1.color, P1.glow);
+          drawCell(p2.x, p2.y, P2.color, P2.glow);
+        }
+
+        // BFS from a cell — counts reachable open space.
+        // The start cell itself may be any value; neighbors must be 0.
+        function bfsCount(startX, startY) {
+          const visited = new Uint8Array(cols * rows);
+          const q = new Int32Array(cols * rows * 2);
+          let head = 0, tail = 0;
+          q[tail++] = startX; q[tail++] = startY;
+          visited[startY * cols + startX] = 1;
+          let count = 0;
+          const d = [1, 0, -1, 0, 0, 1, 0, -1];
+          while (head < tail) {
+            const cx = q[head++], cy = q[head++];
+            count++;
+            for (let i = 0; i < 8; i += 2) {
+              const nx = cx + d[i], ny = cy + d[i + 1];
+              if (nx >= 0 && nx < cols && ny >= 0 && ny < rows) {
+                const idx = ny * cols + nx;
+                if (!visited[idx] && grid[idx] === 0) {
+                  visited[idx] = 1;
+                  q[tail++] = nx; q[tail++] = ny;
+                }
+              }
+            }
+          }
+          return count;
+        }
+
+        // Competitive Voronoi: score = mySpace - opponentSpace.
+        // ε-greedy: 15% of moves are random to break deterministic loops
+        // and create different patterns each game.
+        const EPSILON = 0.15;
+        function getAIDir(p, other, playerNum) {
+          const candidates = [
+            { dx: p.dx,   dy: p.dy  },
+            { dx: -p.dy,  dy: p.dx  },
+            { dx: p.dy,   dy: -p.dx },
+          ];
+
+          // Only consider moves that don't immediately kill
+          const valid = candidates.filter(({ dx, dy }) => {
+            const nx = p.x + dx, ny = p.y + dy;
+            return nx >= 0 && nx < cols && ny >= 0 && ny < rows && grid[ny * cols + nx] === 0;
+          });
+
+          if (valid.length === 0) return { dx: p.dx, dy: p.dy };
+
+          // Random move 15% of the time — breaks predictable loops
+          if (Math.random() < EPSILON) {
+            return valid[Math.floor(Math.random() * valid.length)];
+          }
+
+          // Otherwise: competitive Voronoi
+          let best = null, bestScore = -Infinity;
+          for (const dir of valid) {
+            const nx = p.x + dir.dx, ny = p.y + dir.dy;
+            grid[ny * cols + nx] = playerNum;
+            const mySpace    = bfsCount(nx, ny);
+            const theirSpace = bfsCount(other.x, other.y);
+            grid[ny * cols + nx] = 0;
+            if (mySpace === 0) continue;
+            const score = mySpace - theirSpace;
+            if (score > bestScore) { bestScore = score; best = dir; }
+          }
+          return best || valid[0];
+        }
+
+        function drawCell(x, y, color, glow) {
+          ctx.shadowColor = glow;
+          ctx.shadowBlur = 6;
+          ctx.fillStyle = color;
+          ctx.fillRect(x * CELL + 0.5, y * CELL + 0.5, CELL - 1, CELL - 1);
+          ctx.shadowBlur = 0;
+        }
+
+        function isDark() {
+          return document.documentElement.getAttribute("data-theme") === "dark";
+        }
+
+        function step(ts) {
+          requestAnimationFrame(step);
+          if (!isDark() || waiting) return;
+          if (ts - lastTime < SPEED) return;
+          lastTime = ts;
+
+          const d1 = getAIDir(p1, p2, 1);
+          const d2 = getAIDir(p2, p1, 2);
+
+          const nx1 = p1.x + d1.dx, ny1 = p1.y + d1.dy;
+          const nx2 = p2.x + d2.dx, ny2 = p2.y + d2.dy;
+
+          const dead1 = nx1 < 0 || nx1 >= cols || ny1 < 0 || ny1 >= rows || grid[ny1 * cols + nx1] !== 0;
+          const dead2 = nx2 < 0 || nx2 >= cols || ny2 < 0 || ny2 >= rows || grid[ny2 * cols + nx2] !== 0;
+
+          if (dead1 || dead2) {
+            waiting = true;
+            setTimeout(init, 1200);
+            return;
+          }
+
+          p1.x = nx1; p1.y = ny1; p1.dx = d1.dx; p1.dy = d1.dy;
+          p2.x = nx2; p2.y = ny2; p2.dx = d2.dx; p2.dy = d2.dy;
+          grid[ny1 * cols + nx1] = 1;
+          grid[ny2 * cols + nx2] = 2;
+
+          drawCell(p1.x, p1.y, P1.color, P1.glow);
+          drawCell(p2.x, p2.y, P2.color, P2.glow);
+        }
+
+        function syncOpacity() {
+          canvas.style.opacity = isDark() ? "0.22" : "0";
+        }
+
+        const mo = new MutationObserver(syncOpacity);
+        mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+        window.addEventListener("resize", resize);
+        resize();
+        syncOpacity();
+        requestAnimationFrame(step);
+      })();
+    </script>
+    <footer>Version 26.3.6.3</footer>
   </body>
 </html>
