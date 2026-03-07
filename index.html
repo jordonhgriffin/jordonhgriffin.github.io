@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Version 26.3.6.3 - Added Tron background game in dark mode with two AI racers using competitive Voronoi + ε-greedy AI, random spawn positions per game (2026-03-06) -->
+<!-- Version 26.3.6.4 - Updated Tron background game to three AI racers (cyan, orange, magenta); players eliminated individually, last racer standing wins (2026-03-06) -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -4945,13 +4945,16 @@
         const ctx = canvas.getContext("2d");
 
         let CELL, cols, rows, grid;
-        let p1, p2;
+        let players = [];
         let lastTime = 0;
         let waiting = false;
 
         const SPEED = 110;
-        const P1 = { color: "#00e5ff", glow: "rgba(0,229,255,0.55)" };
-        const P2 = { color: "#ff6b35", glow: "rgba(255,107,53,0.55)" };
+        const DEFS = [
+          { color: "#0055ff", glow: "rgba(0,85,255,0.55)"   },  // blue
+          { color: "#ff2020", glow: "rgba(255,32,32,0.55)"  },  // red
+          { color: "#00ff55", glow: "rgba(0,255,85,0.55)"   },  // green
+        ];
 
         function resize() {
           canvas.width = window.innerWidth;
@@ -4966,32 +4969,38 @@
         // side: 0=top 1=right 2=bottom 3=left
         function spawnOnSide(side) {
           const inset = 3;
-          const mid = 0.2 + Math.random() * 0.6; // middle 60% of each edge
+          const mid = 0.2 + Math.random() * 0.6;
           switch (side) {
-            case 0: return { x: Math.floor(mid * cols), y: inset,                 dx:  0, dy:  1 };
-            case 1: return { x: cols - 1 - inset,        y: Math.floor(mid * rows), dx: -1, dy:  0 };
-            case 2: return { x: Math.floor(mid * cols), y: rows - 1 - inset,      dx:  0, dy: -1 };
-            case 3: return { x: inset,                   y: Math.floor(mid * rows), dx:  1, dy:  0 };
+            case 0: return { x: Math.floor(mid * cols), y: inset,              dx:  0, dy:  1 };
+            case 1: return { x: cols - 1 - inset,       y: Math.floor(mid * rows), dx: -1, dy:  0 };
+            case 2: return { x: Math.floor(mid * cols), y: rows - 1 - inset,   dx:  0, dy: -1 };
+            case 3: return { x: inset,                  y: Math.floor(mid * rows), dx:  1, dy:  0 };
           }
         }
 
         function init() {
           grid = new Uint8Array(cols * rows);
           waiting = false;
-          // Random opposite-edge pair each game for variety
-          const side1 = Math.floor(Math.random() * 4);
-          const side2 = (side1 + 2) % 4;
-          p1 = spawnOnSide(side1);
-          p2 = spawnOnSide(side2);
-          grid[p1.y * cols + p1.x] = 1;
-          grid[p2.y * cols + p2.x] = 2;
+
+          // Pick 3 different random sides (shuffle [0,1,2,3], take first 3)
+          const sides = [0, 1, 2, 3];
+          for (let i = 3; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [sides[i], sides[j]] = [sides[j], sides[i]];
+          }
+
+          players = DEFS.map((def, i) => {
+            const pos = spawnOnSide(sides[i]);
+            return { ...pos, num: i + 1, def, alive: true };
+          });
+
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          drawCell(p1.x, p1.y, P1.color, P1.glow);
-          drawCell(p2.x, p2.y, P2.color, P2.glow);
+          players.forEach(p => {
+            grid[p.y * cols + p.x] = p.num;
+            drawCell(p.x, p.y, p.def.color, p.def.glow);
+          });
         }
 
-        // BFS from a cell — counts reachable open space.
-        // The start cell itself may be any value; neighbors must be 0.
         function bfsCount(startX, startY) {
           const visited = new Uint8Array(cols * rows);
           const q = new Int32Array(cols * rows * 2);
@@ -5017,18 +5026,15 @@
           return count;
         }
 
-        // Competitive Voronoi: score = mySpace - opponentSpace.
-        // ε-greedy: 15% of moves are random to break deterministic loops
-        // and create different patterns each game.
+        // Competitive Voronoi vs all opponents + ε-greedy randomness.
         const EPSILON = 0.15;
-        function getAIDir(p, other, playerNum) {
+        function getAIDir(p, others) {
           const candidates = [
-            { dx: p.dx,   dy: p.dy  },
-            { dx: -p.dy,  dy: p.dx  },
-            { dx: p.dy,   dy: -p.dx },
+            { dx: p.dx,  dy: p.dy  },
+            { dx: -p.dy, dy: p.dx  },
+            { dx: p.dy,  dy: -p.dx },
           ];
 
-          // Only consider moves that don't immediately kill
           const valid = candidates.filter(({ dx, dy }) => {
             const nx = p.x + dx, ny = p.y + dy;
             return nx >= 0 && nx < cols && ny >= 0 && ny < rows && grid[ny * cols + nx] === 0;
@@ -5036,18 +5042,17 @@
 
           if (valid.length === 0) return { dx: p.dx, dy: p.dy };
 
-          // Random move 15% of the time — breaks predictable loops
           if (Math.random() < EPSILON) {
             return valid[Math.floor(Math.random() * valid.length)];
           }
 
-          // Otherwise: competitive Voronoi
           let best = null, bestScore = -Infinity;
           for (const dir of valid) {
             const nx = p.x + dir.dx, ny = p.y + dir.dy;
-            grid[ny * cols + nx] = playerNum;
-            const mySpace    = bfsCount(nx, ny);
-            const theirSpace = bfsCount(other.x, other.y);
+            grid[ny * cols + nx] = p.num;
+            const mySpace = bfsCount(nx, ny);
+            // Sum all opponents' reachable space — minimize it
+            const theirSpace = others.reduce((sum, o) => sum + bfsCount(o.x, o.y), 0);
             grid[ny * cols + nx] = 0;
             if (mySpace === 0) continue;
             const score = mySpace - theirSpace;
@@ -5074,28 +5079,47 @@
           if (ts - lastTime < SPEED) return;
           lastTime = ts;
 
-          const d1 = getAIDir(p1, p2, 1);
-          const d2 = getAIDir(p2, p1, 2);
-
-          const nx1 = p1.x + d1.dx, ny1 = p1.y + d1.dy;
-          const nx2 = p2.x + d2.dx, ny2 = p2.y + d2.dy;
-
-          const dead1 = nx1 < 0 || nx1 >= cols || ny1 < 0 || ny1 >= rows || grid[ny1 * cols + nx1] !== 0;
-          const dead2 = nx2 < 0 || nx2 >= cols || ny2 < 0 || ny2 >= rows || grid[ny2 * cols + nx2] !== 0;
-
-          if (dead1 || dead2) {
+          const alive = players.filter(p => p.alive);
+          if (alive.length <= 1) {
             waiting = true;
             setTimeout(init, 1200);
             return;
           }
 
-          p1.x = nx1; p1.y = ny1; p1.dx = d1.dx; p1.dy = d1.dy;
-          p2.x = nx2; p2.y = ny2; p2.dx = d2.dx; p2.dy = d2.dy;
-          grid[ny1 * cols + nx1] = 1;
-          grid[ny2 * cols + nx2] = 2;
+          // Plan all moves first (simultaneous)
+          alive.forEach(p => {
+            const others = alive.filter(o => o !== p);
+            const dir = getAIDir(p, others);
+            p._nx = p.x + dir.dx;
+            p._ny = p.y + dir.dy;
+            p._dx = dir.dx;
+            p._dy = dir.dy;
+          });
 
-          drawCell(p1.x, p1.y, P1.color, P1.glow);
-          drawCell(p2.x, p2.y, P2.color, P2.glow);
+          // Detect wall/trail collisions
+          alive.forEach(p => {
+            if (p._nx < 0 || p._nx >= cols || p._ny < 0 || p._ny >= rows || grid[p._ny * cols + p._nx] !== 0) {
+              p.alive = false;
+            }
+          });
+
+          // Detect head-on collisions between players
+          for (let i = 0; i < alive.length; i++) {
+            for (let j = i + 1; j < alive.length; j++) {
+              if (alive[i].alive && alive[j].alive &&
+                  alive[i]._nx === alive[j]._nx && alive[i]._ny === alive[j]._ny) {
+                alive[i].alive = false;
+                alive[j].alive = false;
+              }
+            }
+          }
+
+          // Move survivors
+          alive.filter(p => p.alive).forEach(p => {
+            p.x = p._nx; p.y = p._ny; p.dx = p._dx; p.dy = p._dy;
+            grid[p.y * cols + p.x] = p.num;
+            drawCell(p.x, p.y, p.def.color, p.def.glow);
+          });
         }
 
         function syncOpacity() {
@@ -5111,6 +5135,6 @@
         requestAnimationFrame(step);
       })();
     </script>
-    <footer>Version 26.3.6.3</footer>
+    <footer>Version 26.3.6.4</footer>
   </body>
 </html>
