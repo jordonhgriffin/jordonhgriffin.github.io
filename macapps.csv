@@ -1,48 +1,102 @@
 Application Name,Category,Description,Download Link
-AdGuard for Safari,Utilities,Ad blocking and privacy protection extension for Safari browser,https://adguard.com/en/adguard-safari/overview.html
-AutoRaise,Utilities,Window management tool that automatically brings windows to front when hovering and can center mouse cursor after cmd-tab,https://github.com/sbmpost/AutoRaise
-Brave Browser,Internet,Privacy-focused web browser with built-in ad blocking,https://brave.com/download
-ChatGPT,Internet,AI-powered chatbot and language model interface,https://chat.openai.com
-Clone Hero,Games,Guitar Hero-style rhythm game clone,https://clonehero.net
-Clop,Utilities,Automatic file optimization tool for photos PDFs and videos in watched folders,https://lowtechguys.com/clop
-coconutBattery,Utilities,Battery health monitoring tool for Mac and iOS devices,https://www.coconut-flavour.com/coconutbattery
-Cursor,Development,AI-powered code editor with intelligent code completion,https://cursor.sh
-DaisyDisk,Utilities,Disk space analyzer with visual interface,https://daisydiskapp.com
 Discord,Communication,Voice chat and messaging platform for communities,https://discord.com/download
-Docker,Development,Container platform for building and running applications,https://www.docker.com/products/docker-desktop
-Dolphin,Games,Nintendo GameCube and Wii emulator,https://dolphin-emu.org
-draw.io,Productivity,Diagram and flowchart creation tool,https://www.drawio.com
-Dropover,Utilities,Drag and drop enhancement utility for file management,https://dropoverapp.com
-Freeform,Productivity,Digital whiteboard and collaboration tool,Built into macOS
-Ice,Utilities,Powerful menu bar management tool for hiding, showing, and arranging menu bar items with customizable appearance,https://icemenubar.app
-IINA,Media,Modern media player for macOS,https://iina.io
-iPhone Mirroring,Utilities,Screen mirroring tool for iOS devices,Built into macOS
-Keynote,Productivity,Apple's presentation software,https://www.apple.com/keynote
-Macs Fan Control,Utilities,Fan speed control and monitoring application,https://crystalidea.com/macs-fan-control
 Mail,Communication,Email client by Apple,Built into macOS
-Maps,Navigation,Apple's mapping and navigation application,Built into macOS
-Microsoft Excel,Productivity,Spreadsheet software,https://www.microsoft.com/microsoft-365
-Microsoft PowerPoint,Productivity,Presentation software,https://www.microsoft.com/microsoft-365
-Microsoft Word,Productivity,Word processing software,https://www.microsoft.com/microsoft-365
-MiddleClick,Utilities,Emulate a scroll wheel click with three finger Click or Tap on MacBook trackpad and Magic Mouse,https://github.com/artginzburg/MiddleClick-Catalina
-MonitorControl,Utilities,External monitor brightness and volume control,https://github.com/MonitorControl/MonitorControl
-Notes,Productivity,Note-taking application by Apple,Built into macOS
+Blender,Development,Open-source 3D creation suite for modeling animation and rendering,https://www.blender.org
+Cisco Packet Tracer,Development,Network simulation and visualization tool for learning networking,https://www.cisco.com/c/en/us/products/security/packet-tracer/index.html
+Claude,Development,AI assistant by Anthropic for coding writing and analysis,https://claude.ai
+Docker,Development,Container platform for building and running applications,https://www.docker.com/products/docker-desktop
+GitHub Desktop,Development,Git repository management with a graphical interface,https://desktop.github.com
+Homebrew,Development,The missing package manager for macOS,https://brew.sh
+KiCad,Development,Open-source electronic design automation suite,https://www.kicad.org
+VS Code,Development,Powerful open-source code editor by Microsoft,https://code.visualstudio.com
+Xcode,Development,Apple's integrated development environment,https://developer.apple.com/xcode
+Coinbase,Finance,Cryptocurrency exchange and wallet platform,https://www.coinbase.com
+ThinkorSwim,Finance,Professional trading platform by TD Ameritrade,https://www.tdameritrade.com/tools-and-platforms/thinkorswim.html
+TradingView,Finance,Financial market analysis and trading platform,https://www.tradingview.com
+CarX Street,Games,Open-world street racing game,https://store.steampowered.com/app/1114150/CarX_Street/
+Clone Hero,Games,Guitar Hero-style rhythm game clone,https://clonehero.net
+Dolphin,Games,Nintendo GameCube and Wii emulator,https://dolphin-emu.org
+Minecraft,Games,Sandbox building and survival game,https://www.minecraft.net
+Steam,Games,Digital game distribution platform,https://store.steampowered.com
+Brave Browser,Internet,Privacy-focused web browser with built-in ad blocking,https://brave.com/download
+Safari,Internet,Apple's default web browser,Built into macOS
+IINA,Media,Modern media player for macOS,https://iina.io
 OBS,Media,Open Broadcaster Software for streaming and recording,https://obsproject.com
-Onyx,Utilities,Rhythm game file converter supporting Clone Hero, Rock Band, Guitar Hero and other music games,https://github.com/mtolly/onyx/releases
-OSCulator,Utilities,OSC and MIDI controller mapping tool,https://osculator.net
+SoundSource,Media,Advanced audio control and routing utility,https://rogueamoeba.com/soundsource
+DaVinci Resolve,Media,Professional video editing and color grading software,https://www.blackmagicdesign.com/products/davinciresolve
+Maps,GIS,Apple's mapping and navigation application,Built into macOS
+ArcGIS,GIS,Professional geographic information system for working with maps and geographic data,https://www.arcgis.com/index.html
+Google Maps,GIS,Google's web mapping platform offering navigation satellite imagery and street view,https://www.google.com/maps
+QGIS,GIS,Open-source geographic information system,https://qgis.org
+draw.io,Productivity,Diagram and flowchart creation tool,https://www.drawio.com
+Canva,Productivity,Online graphic design platform for creating visual content,https://www.canva.com
+Freeform,Productivity,Digital whiteboard and collaboration tool,Built into macOS
+Keynote,Productivity,Apple's presentation software,https://www.apple.com/keynote
+Microsoft Office Suite,Productivity,Excel PowerPoint and Word for professional document creation,https://www.microsoft.com/microsoft-365
+Notes,Productivity,Note-taking application by Apple,Built into macOS
 Pages,Productivity,Word processing software by Apple,https://www.apple.com/pages
-Parallels Desktop,Virtualization,Virtual machine software for running Windows on Mac,https://www.parallels.com/products/desktop
+Reminders,Productivity,Task and reminder management app by Apple,Built into macOS
+LibreOffice,Productivity,Free and open-source office suite,https://www.libreoffice.org
+Numbers,Productivity,Spreadsheet application by Apple,https://www.apple.com/numbers
+Shortcuts,Productivity,Automation app for creating custom workflows,Built into macOS
+Brew,Raycast Extensions,Package manager for macOS applications via Raycast,https://www.raycast.com/nhojb/brew
+Calculator,Raycast Extensions,Quick calculations and math operations,https://www.raycast.com/core-features/calculator
+Clipboard History,Raycast Extensions,Access and manage clipboard history,https://www.raycast.com/core-features/clipboard-history
+Color Picker,Raycast Extensions,Pick and copy colors from anywhere on screen,https://www.raycast.com/thomas/color-picker
+Define Word,Raycast Extensions,Quick dictionary and word definitions,https://www.raycast.com/changelog/1-3-0
+Google Translate,Raycast Extensions,Quick text translation between languages,https://www.raycast.com/gebeto/translate
+Image Modification,Raycast Extensions,Resize convert and modify images,https://www.raycast.com/HelloImSteven/sips
+Kill Process,Raycast Extensions,Force quit applications and processes,https://www.raycast.com/rolandleth/kill-process
+Port Manager,Raycast Extensions,Manage network ports and connections,https://www.raycast.com/lucaschultz/port-manager
+Quit Applications,Raycast Extensions,Quickly quit running applications,https://www.raycast.com/mackopes/quit-applications
+Raycast Notes,Raycast Extensions,Quick note-taking and text snippets,https://www.raycast.com/core-features/notes
+RayTyping,Raycast Extensions,Typing practice and speed testing,https://www.raycast.com/louishuyng/raytyping
+Remove Paywall,Raycast Extensions,Bypass paywalls and access articles,https://www.raycast.com/tegola/remove-paywall
+Single Disk Eject,Raycast Extensions,Eject individual disks and volumes,https://www.raycast.com/johndturn/single-disk-eject
+System,Raycast Extensions,System information and controls,https://www.raycast.com/core-features/system
+System Monitor,Raycast Extensions,Monitor system resources and performance,https://www.raycast.com/hossammourad/raycast-system-monitor
+TempMail,Raycast Extensions,Generate temporary email addresses,https://www.raycast.com/Joshlucpoll/tempmail
+Test Internet Speed,Raycast Extensions,Quick internet speed testing,https://www.raycast.com/tonka3000/speedtest
+Toothpick,Raycast Extensions,Bluetooth device management,https://www.raycast.com/VladCuciureanu/toothpick
+Uninstall Application,Raycast Extensions,Remove applications and their data,https://www.raycast.com/dziad/appcleaner
+Video Downloader,Raycast Extensions,Download videos from various platforms,https://www.raycast.com/vimtor/video-downloader
+Window Management,Raycast Extensions,Organize and manage application windows,https://www.raycast.com/core-features/window-management
+Hover for Safari,Safari Extensions,Preview links and media by hovering over them in Safari,https://apps.apple.com/us/app/hover-for-safari/id1540705431?mt=12
+Super Agent,Safari Extensions,Cookie consent automation tool,https://www.super-agent.com
+The Camelizer,Safari Extensions,Amazon price tracking and history extension for Safari,https://camelcamelcamel.com/camelizer
+wBlock,Safari Extensions,Ad blocking and privacy protection extension for Safari browser,https://github.com/0xCUB3/wBlock
 Passwords,Security,Password management tool,Built into macOS
 ProtonVPN,Security,Secure VPN service client,https://protonvpn.com
+AutoRaise,Utilities,Window management tool that automatically brings windows to front when hovering,https://github.com/sbmpost/AutoRaise
+BetterTouchTool,Utilities,Advanced touch bar and gesture customization,https://folivora.ai
+Clop,Utilities,Automatic file optimization tool for photos PDFs and videos,https://lowtechguys.com/clop
+coconutBattery,Utilities,Battery health monitoring tool for Mac and iOS devices,https://www.coconut-flavour.com/coconutbattery
+CoverageMap,Utilities,Network coverage mapping and analysis tool,https://coveragemap.com
+DaisyDisk,Utilities,Disk space analyzer with visual interface,https://daisydiskapp.com
+Google Gemini,Utilities,Advanced AI assistant by Google,https://gemini.google.com
+Ice,Utilities,Powerful menu bar management tool,https://icemenubar.app
+iCloud,Utilities,Cloud storage and synchronization service by Apple,https://www.icloud.com
+iPhone Mirroring,Utilities,Screen mirroring tool for iOS devices,Built into macOS
+Jump Desktop,Utilities,Remote desktop and VNC client,https://jumpdesktop.com
+Macs Fan Control,Utilities,Fan speed control and monitoring,https://crystalidea.com/macs-fan-control
+MonitorControl,Utilities,External monitor brightness and volume control,https://github.com/MonitorControl/MonitorControl
+Onyx,Utilities,Rhythm game file converter,https://github.com/mtolly/onyx/releases
+OSCulator,Utilities,OSC and MIDI controller mapping tool,https://osculator.net
+PearCleaner,Utilities,Comprehensive app uninstaller with thorough cleanup of associated files,https://github.com/alienator88/Pearcleaner
+QLMarkdown,Utilities,Quick Look extension for Markdown files,https://github.com/sbarex/QLMarkdown
 Raycast,Utilities,Productivity launcher and command palette,https://www.raycast.com
-Reminders,Productivity,Task and reminder management app by Apple,Built into macOS
-Remote for Mac,Utilities,Remote control application for Mac,App Store
-Safari,Internet,Apple's default web browser,Built into macOS
-SoundSource,Media,Advanced audio control and routing utility,https://rogueamoeba.com/soundsource
-Super Agent,Utilities,Cookie consent automation tool,https://www.super-agent.com
-Telegram,Communication,Secure messaging and communication platform,https://telegram.org
-TradingView,Finance,Financial market analysis and trading platform,https://www.tradingview.com
-ThinkorSwim,Finance,Professional trading platform by TD Ameritrade,https://www.tdameritrade.com/tools-and-platforms/thinkorswim.html
+Remote for Mac,Utilities,Remote control application for Mac,https://cherpake.com/get/
+Thock,Utilities,Keyboard sound effects and audio feedback for typing,https://github.com/kamillobinski/thock
 Unzip - RAR ZIP 7Z Unarchiver,Utilities,File compression and extraction tool,App Store
-Xcode,Development,Apple's integrated development environment,https://developer.apple.com/xcode
 Xnip,Utilities,Screenshot and annotation tool,https://xnipapp.com
+vscode-pdf,VSCode Extensions,PDF viewer extension for Visual Studio Code,https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf
+Rainbow CSV,VSCode Extensions,CSV file syntax highlighting and editing,https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv
+Prettier - Code Formatter,VSCode Extensions,Code formatting extension for consistent style,https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+Markdown All in One,VSCode Extensions,Comprehensive Markdown editing and preview tools,https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
+Live Server,VSCode Extensions,Local development server with live reload,https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+File Tree Generator,VSCode Extensions,Generate file tree structures from directories,https://marketplace.visualstudio.com/items?itemName=MutableUniverse.vscode-file-tree-generator
+Excel Viewer,VSCode Extensions,View and edit Excel files in VS Code,https://marketplace.visualstudio.com/items?itemName=GrapeCity.gc-excelviewer
+Excalidraw,VSCode Extensions,Hand-drawn style diagramming tool,https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor
+Color Picker,VSCode Extensions,Color picker and palette tool for developers,https://marketplace.visualstudio.com/items?itemName=anseki.vscode-color
+Crossover,Virtualization,Run Windows applications on macOS,https://www.codeweavers.com/crossover#mac
+Parallels Desktop,Virtualization,Virtual machine software for running Windows on Mac,https://www.parallels.com/products/desktop
