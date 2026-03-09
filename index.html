@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Version 26.3.6.4 - Updated Tron background game to three AI racers (cyan, orange, magenta); players eliminated individually, last racer standing wins (2026-03-06) -->
+<!-- Version 26.3.9.1 - logo update -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -2485,7 +2485,11 @@
       <div id="nav-section">
         <nav id="navigation">
           <div id="logo">
-            <img src="img/logo-fade.png" alt="Jordon Griffin Logo" id="logo-img" />
+            <img
+              src="img/logo-fade.png"
+              alt="Jordon Griffin Logo"
+              id="logo-img"
+            />
           </div>
           <ul>
             <li><a href="#welcome">About</a></li>
@@ -2897,7 +2901,11 @@
                       target="_blank"
                     >
                       <div class="tool-header">
-                        <img src="img/mail.png" alt="Mail Logo" class="tool-logo" />
+                        <img
+                          src="img/mail.png"
+                          alt="Mail Logo"
+                          class="tool-logo"
+                        />
                         <span class="tool-name">Mail</span>
                       </div>
                       <span class="tool-description"
@@ -2947,10 +2955,7 @@
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://claude.ai"
-                      target="_blank"
-                    >
+                    <a href="https://claude.ai" target="_blank">
                       <div class="tool-header">
                         <img
                           src="img/claude.png"
@@ -3244,7 +3249,11 @@
                   <li>
                     <a href="https://iina.io" target="_blank">
                       <div class="tool-header">
-                        <img src="img/iina.png" alt="IINA Logo" class="tool-logo" />
+                        <img
+                          src="img/iina.png"
+                          alt="IINA Logo"
+                          class="tool-logo"
+                        />
                         <span class="tool-name">IINA</span>
                       </div>
                       <span class="tool-description"
@@ -3314,7 +3323,11 @@
                   <li>
                     <a href="https://www.apple.com/maps/" target="_blank">
                       <div class="tool-header">
-                        <img src="img/maps.png" alt="Maps Logo" class="tool-logo" />
+                        <img
+                          src="img/maps.png"
+                          alt="Maps Logo"
+                          class="tool-logo"
+                        />
                         <span class="tool-name">Maps</span>
                       </div>
                       <span class="tool-description"
@@ -3357,7 +3370,11 @@
                   <li>
                     <a href="https://qgis.org" target="_blank">
                       <div class="tool-header">
-                        <img src="img/qgis.png" alt="QGIS Logo" class="tool-logo" />
+                        <img
+                          src="img/qgis.png"
+                          alt="QGIS Logo"
+                          class="tool-logo"
+                        />
                         <span class="tool-name">QGIS</span>
                       </div>
                       <span class="tool-description"
@@ -4193,7 +4210,11 @@
                   <li>
                     <a href="https://icemenubar.app" target="_blank">
                       <div class="tool-header">
-                        <img src="img/ice.png" alt="Ice Logo" class="tool-logo" />
+                        <img
+                          src="img/ice.png"
+                          alt="Ice Logo"
+                          class="tool-logo"
+                        />
                         <span class="tool-name">Ice</span>
                       </div>
                       <span class="tool-description"
@@ -4292,7 +4313,11 @@
                       target="_blank"
                     >
                       <div class="tool-header">
-                        <img src="img/onyx.png" alt="Onyx Logo" class="tool-logo" />
+                        <img
+                          src="img/onyx.png"
+                          alt="Onyx Logo"
+                          class="tool-logo"
+                        />
                         <span class="tool-name">Onyx</span>
                       </div>
                       <span class="tool-description"
@@ -4425,7 +4450,11 @@
                   <li>
                     <a href="https://xnipapp.com" target="_blank">
                       <div class="tool-header">
-                        <img src="img/xnip.png" alt="Xnip Logo" class="tool-logo" />
+                        <img
+                          src="img/xnip.png"
+                          alt="Xnip Logo"
+                          class="tool-logo"
+                        />
                         <span class="tool-name">Xnip</span>
                       </div>
                       <span class="tool-description"
@@ -4951,9 +4980,9 @@
 
         const SPEED = 110;
         const DEFS = [
-          { color: "#0055ff", glow: "rgba(0,85,255,0.55)"   },  // blue
-          { color: "#ff2020", glow: "rgba(255,32,32,0.55)"  },  // red
-          { color: "#00ff55", glow: "rgba(0,255,85,0.55)"   },  // green
+          { color: "#0055ff", glow: "rgba(0,85,255,0.55)" }, // blue
+          { color: "#ff2020", glow: "rgba(255,32,32,0.55)" }, // red
+          { color: "#00ff55", glow: "rgba(0,255,85,0.55)" }, // green
         ];
 
         function resize() {
@@ -4971,10 +5000,24 @@
           const inset = 3;
           const mid = 0.2 + Math.random() * 0.6;
           switch (side) {
-            case 0: return { x: Math.floor(mid * cols), y: inset,              dx:  0, dy:  1 };
-            case 1: return { x: cols - 1 - inset,       y: Math.floor(mid * rows), dx: -1, dy:  0 };
-            case 2: return { x: Math.floor(mid * cols), y: rows - 1 - inset,   dx:  0, dy: -1 };
-            case 3: return { x: inset,                  y: Math.floor(mid * rows), dx:  1, dy:  0 };
+            case 0:
+              return { x: Math.floor(mid * cols), y: inset, dx: 0, dy: 1 };
+            case 1:
+              return {
+                x: cols - 1 - inset,
+                y: Math.floor(mid * rows),
+                dx: -1,
+                dy: 0,
+              };
+            case 2:
+              return {
+                x: Math.floor(mid * cols),
+                y: rows - 1 - inset,
+                dx: 0,
+                dy: -1,
+              };
+            case 3:
+              return { x: inset, y: Math.floor(mid * rows), dx: 1, dy: 0 };
           }
         }
 
@@ -4995,7 +5038,7 @@
           });
 
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          players.forEach(p => {
+          players.forEach((p) => {
             grid[p.y * cols + p.x] = p.num;
             drawCell(p.x, p.y, p.def.color, p.def.glow);
           });
@@ -5004,21 +5047,26 @@
         function bfsCount(startX, startY) {
           const visited = new Uint8Array(cols * rows);
           const q = new Int32Array(cols * rows * 2);
-          let head = 0, tail = 0;
-          q[tail++] = startX; q[tail++] = startY;
+          let head = 0,
+            tail = 0;
+          q[tail++] = startX;
+          q[tail++] = startY;
           visited[startY * cols + startX] = 1;
           let count = 0;
           const d = [1, 0, -1, 0, 0, 1, 0, -1];
           while (head < tail) {
-            const cx = q[head++], cy = q[head++];
+            const cx = q[head++],
+              cy = q[head++];
             count++;
             for (let i = 0; i < 8; i += 2) {
-              const nx = cx + d[i], ny = cy + d[i + 1];
+              const nx = cx + d[i],
+                ny = cy + d[i + 1];
               if (nx >= 0 && nx < cols && ny >= 0 && ny < rows) {
                 const idx = ny * cols + nx;
                 if (!visited[idx] && grid[idx] === 0) {
                   visited[idx] = 1;
-                  q[tail++] = nx; q[tail++] = ny;
+                  q[tail++] = nx;
+                  q[tail++] = ny;
                 }
               }
             }
@@ -5030,14 +5078,21 @@
         const EPSILON = 0.15;
         function getAIDir(p, others) {
           const candidates = [
-            { dx: p.dx,  dy: p.dy  },
-            { dx: -p.dy, dy: p.dx  },
-            { dx: p.dy,  dy: -p.dx },
+            { dx: p.dx, dy: p.dy },
+            { dx: -p.dy, dy: p.dx },
+            { dx: p.dy, dy: -p.dx },
           ];
 
           const valid = candidates.filter(({ dx, dy }) => {
-            const nx = p.x + dx, ny = p.y + dy;
-            return nx >= 0 && nx < cols && ny >= 0 && ny < rows && grid[ny * cols + nx] === 0;
+            const nx = p.x + dx,
+              ny = p.y + dy;
+            return (
+              nx >= 0 &&
+              nx < cols &&
+              ny >= 0 &&
+              ny < rows &&
+              grid[ny * cols + nx] === 0
+            );
           });
 
           if (valid.length === 0) return { dx: p.dx, dy: p.dy };
@@ -5046,17 +5101,25 @@
             return valid[Math.floor(Math.random() * valid.length)];
           }
 
-          let best = null, bestScore = -Infinity;
+          let best = null,
+            bestScore = -Infinity;
           for (const dir of valid) {
-            const nx = p.x + dir.dx, ny = p.y + dir.dy;
+            const nx = p.x + dir.dx,
+              ny = p.y + dir.dy;
             grid[ny * cols + nx] = p.num;
             const mySpace = bfsCount(nx, ny);
             // Sum all opponents' reachable space — minimize it
-            const theirSpace = others.reduce((sum, o) => sum + bfsCount(o.x, o.y), 0);
+            const theirSpace = others.reduce(
+              (sum, o) => sum + bfsCount(o.x, o.y),
+              0,
+            );
             grid[ny * cols + nx] = 0;
             if (mySpace === 0) continue;
             const score = mySpace - theirSpace;
-            if (score > bestScore) { bestScore = score; best = dir; }
+            if (score > bestScore) {
+              bestScore = score;
+              best = dir;
+            }
           }
           return best || valid[0];
         }
@@ -5079,7 +5142,7 @@
           if (ts - lastTime < SPEED) return;
           lastTime = ts;
 
-          const alive = players.filter(p => p.alive);
+          const alive = players.filter((p) => p.alive);
           if (alive.length <= 1) {
             waiting = true;
             setTimeout(init, 1200);
@@ -5087,8 +5150,8 @@
           }
 
           // Plan all moves first (simultaneous)
-          alive.forEach(p => {
-            const others = alive.filter(o => o !== p);
+          alive.forEach((p) => {
+            const others = alive.filter((o) => o !== p);
             const dir = getAIDir(p, others);
             p._nx = p.x + dir.dx;
             p._ny = p.y + dir.dy;
@@ -5097,8 +5160,14 @@
           });
 
           // Detect wall/trail collisions
-          alive.forEach(p => {
-            if (p._nx < 0 || p._nx >= cols || p._ny < 0 || p._ny >= rows || grid[p._ny * cols + p._nx] !== 0) {
+          alive.forEach((p) => {
+            if (
+              p._nx < 0 ||
+              p._nx >= cols ||
+              p._ny < 0 ||
+              p._ny >= rows ||
+              grid[p._ny * cols + p._nx] !== 0
+            ) {
               p.alive = false;
             }
           });
@@ -5106,8 +5175,12 @@
           // Detect head-on collisions between players
           for (let i = 0; i < alive.length; i++) {
             for (let j = i + 1; j < alive.length; j++) {
-              if (alive[i].alive && alive[j].alive &&
-                  alive[i]._nx === alive[j]._nx && alive[i]._ny === alive[j]._ny) {
+              if (
+                alive[i].alive &&
+                alive[j].alive &&
+                alive[i]._nx === alive[j]._nx &&
+                alive[i]._ny === alive[j]._ny
+              ) {
                 alive[i].alive = false;
                 alive[j].alive = false;
               }
@@ -5115,11 +5188,16 @@
           }
 
           // Move survivors
-          alive.filter(p => p.alive).forEach(p => {
-            p.x = p._nx; p.y = p._ny; p.dx = p._dx; p.dy = p._dy;
-            grid[p.y * cols + p.x] = p.num;
-            drawCell(p.x, p.y, p.def.color, p.def.glow);
-          });
+          alive
+            .filter((p) => p.alive)
+            .forEach((p) => {
+              p.x = p._nx;
+              p.y = p._ny;
+              p.dx = p._dx;
+              p.dy = p._dy;
+              grid[p.y * cols + p.x] = p.num;
+              drawCell(p.x, p.y, p.def.color, p.def.glow);
+            });
         }
 
         function syncOpacity() {
@@ -5127,7 +5205,10 @@
         }
 
         const mo = new MutationObserver(syncOpacity);
-        mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+        mo.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["data-theme"],
+        });
 
         window.addEventListener("resize", resize);
         resize();
@@ -5135,6 +5216,6 @@
         requestAnimationFrame(step);
       })();
     </script>
-    <footer>Version 26.3.6.4</footer>
+    <footer>Version 26.3.9.1</footer>
   </body>
 </html>
